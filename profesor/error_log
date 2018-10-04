@@ -1,0 +1,8 @@
+[26-Sep-2018 11:41:12 America/Chicago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/etnoleng/public_html/profesor/index.php on line 108
+[26-Sep-2018 11:41:12 America/Chicago] PHP Notice:  Undefined variable: ft in /home/etnoleng/public_html/profesor/index.php on line 111
+[26-Sep-2018 12:53:53 America/Chicago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/etnoleng/public_html/profesor/index.php on line 108
+[26-Sep-2018 12:53:53 America/Chicago] PHP Notice:  Undefined variable: ft in /home/etnoleng/public_html/profesor/index.php on line 111
+[26-Sep-2018 16:04:57 America/Chicago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/etnoleng/public_html/profesor/index.php on line 108
+[26-Sep-2018 16:04:57 America/Chicago] PHP Notice:  Undefined variable: ft in /home/etnoleng/public_html/profesor/index.php on line 111
+[27-Sep-2018 16:14:32 America/Chicago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/etnoleng/public_html/profesor/index.php on line 108
+[27-Sep-2018 16:14:32 America/Chicago] PHP Notice:  Undefined variable: ft in /home/etnoleng/public_html/profesor/index.php on line 111

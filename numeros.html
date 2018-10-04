@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Etnolengua</title>
+	<link rel="icon" type="image/png" href="images/favicon.png">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.0.0.css" rel="stylesheet">
+	  
+	<script type="text/javascript">
+//<![CDATA[
+var audios = new Array();
+function rep(elaudio){
+
+audios=document.getElementsByTagName('audio');
+var i;
+for (i=0; i<audios.length; i++) {
+if (audios[i].id==elaudio){
+audios[i].load();
+audios[i].play();
+}else{
+audios[i].pause();
+}
+}
+
+}
+//]]>
+</script>
+  </head>
+  <body >
+	  <audio preload="auto" id="n1">
+	<source src="numero/audio/1.mp3" type="audio/mp3">
+</audio>
+<audio preload="auto" id="n2">
+	<source src="numero/audio/2.mp3" type="audio/mp3">
+</audio>
+<audio preload="auto" id="n3">
+	<source src="numero/audio/3.mp3" type="audio/mp3">
+</audio>
+<audio preload="auto" id="n4">
+	<source src="numero/audio/4.mp3" type="audio/mp3">
+</audio>
+<audio preload="auto" id="n5">
+	<source src="numero/audio/5.mp3" type="audio/mp3">
+</audio>
+<audio preload="auto" id="n6">
+	<source src="numero/audio/6.mp3" type="audio/mp3">
+</audio>
+<audio preload="auto" id="n7">
+	<source src="numero/audio/7.mp3" type="audio/mp3">
+</audio>
+<audio preload="auto" id="n8">
+	<source src="numero/audio/8.mp3" type="audio/mp3">
+</audio>
+<audio preload="auto" id="n9">
+	<source src="numero/audio/9.mp3" type="audio/mp3">
+</audio>
+<audio preload="auto" id="n10">
+	<source src="numero/audio/10.mp3" type="audio/mp3">
+</audio>
+	<!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+	<a class="navbar-brand logo" href="profile.html" ></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+         
+          
+          
+        </ul>
+        <form class="form-inline my-2 my-lg-0" action="index.html">
+		  <img src="images/PERFIL.png" width="auto" height="32" alt="" >
+          <a class="nav-link" href="#" style="color:#FFFFFF";> ¡Hola Emmanuel! </a>
+          <button class="btn btn-primary my-2 my-sm-0" type="submit">Cerrar sesión</button>
+        </form>
+      </div>
+    </nav>
+	  
+	
+	  
+	 <!-- Quienes somos --> 
+    <section id="Quienes" >
+	 <div class="row">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 mb-4 mt-2 text-center">
+            <h2>Conoce los Números</h2>
+          </div>
+        </div>
+      </div>
+	  <div class="col-sm-8 col-lg-8 container">
+         
+		
+			<div class="col-lg-12 mb-4 mt-2 text-center">
+				<p class="text-size">Selecciona el número que corresponda a "Tu'uk"</p>
+			</div> 
+		  	<div class="row" align="center">
+			<div class="col-lg-4 col-md-4 bg-1 text-center container" onclick="rep('n1');">
+		  		<img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="numero/1.png" data-holder-rendered="true">
+           		<h3>Uno</h3>
+		   		<p>&nbsp;</p>
+		    </div>
+		  	<div class="col-lg-4 col-md-4 bg-1 text-center container" onclick="rep('n6');">
+		  		<img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="numero/6.png" data-holder-rendered="true">
+           		<h3>Seis</h3>
+		   		<p>&nbsp;</p>
+		    </div>
+		  	<div class="col-lg-4 col-md-4 bg-1 text-center container" onclick="rep('n3');">
+		  		<img class="rounded-circle" alt="140x140" style="width: 140px; height: 140px;" src="numero/3.png" data-holder-rendered="true">
+           		<h3>Tres</h3>
+		   		<p>&nbsp;</p>
+		    </div>
+				</div>
+			<div class="text-center">
+				<button class="btn btn-outline-success btn-lg">Calificar</button>
+		  		<button class="btn btn-lg btn-danger text-right">Omitir</button>
+				
+		  	</div>
+		  
+		</div>
+           
+		
+		
+	  
+		</div>
+      </section> <!-- Fin de la seccion quienes somos -->
+	  
+	  
+   <br> <br> <br> <br> <br> <br> <br> 
+    <footer class="text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <p>Copyright © Etnolengua. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+    <script src="js/jquery-3.2.1.min.js"></script> 
+    <!-- Include all compiled plugins (below), or include individual files as needed --> 
+    <script src="js/popper.min.js"></script> 
+    <script src="js/bootstrap-4.0.0.js"></script>
+  </body>
+</html>

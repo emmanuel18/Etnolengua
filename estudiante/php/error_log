@@ -1,0 +1,242 @@
+[26-May-2018 23:18:31 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:18:31 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:18:31 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:18:31 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:18:31 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:18:31 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:18:31 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:18:31 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:18:31 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:18:31 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:18:31 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:18:31 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:18:41 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:18:41 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:18:41 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:18:41 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:18:41 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:18:42 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:18:42 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:18:42 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:18:42 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:18:42 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:18:42 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:18:42 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:20:48 America/Chicago] PHP Warning:  mysqli_connect(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:20:48 America/Chicago] PHP Notice:  Trying to get property of non-object in /home/etnoleng/public_html/php/conexion.php on line 5
+[26-May-2018 23:20:48 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function set_charset() on boolean in /home/etnoleng/public_html/php/conexion.php:6
+Stack trace:
+#0 /home/etnoleng/public_html/php/search.php(8): getConnexion()
+#1 /home/etnoleng/public_html/php/search.php(19): search()
+#2 {main}
+  thrown in /home/etnoleng/public_html/php/conexion.php on line 6
+[26-May-2018 23:20:48 America/Chicago] PHP Warning:  mysqli_connect(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:20:48 America/Chicago] PHP Notice:  Trying to get property of non-object in /home/etnoleng/public_html/php/conexion.php on line 5
+[26-May-2018 23:20:48 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function set_charset() on boolean in /home/etnoleng/public_html/php/conexion.php:6
+Stack trace:
+#0 /home/etnoleng/public_html/php/search2.php(8): getConnexion()
+#1 /home/etnoleng/public_html/php/search2.php(19): search()
+#2 {main}
+  thrown in /home/etnoleng/public_html/php/conexion.php on line 6
+[26-May-2018 23:20:48 America/Chicago] PHP Warning:  mysqli_connect(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:20:48 America/Chicago] PHP Notice:  Trying to get property of non-object in /home/etnoleng/public_html/php/conexion.php on line 5
+[26-May-2018 23:20:48 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function set_charset() on boolean in /home/etnoleng/public_html/php/conexion.php:6
+Stack trace:
+#0 /home/etnoleng/public_html/php/search.php(8): getConnexion()
+#1 /home/etnoleng/public_html/php/search.php(19): search()
+#2 {main}
+  thrown in /home/etnoleng/public_html/php/conexion.php on line 6
+[26-May-2018 23:20:48 America/Chicago] PHP Warning:  mysqli_connect(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:20:48 America/Chicago] PHP Notice:  Trying to get property of non-object in /home/etnoleng/public_html/php/conexion.php on line 5
+[26-May-2018 23:20:48 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function set_charset() on boolean in /home/etnoleng/public_html/php/conexion.php:6
+Stack trace:
+#0 /home/etnoleng/public_html/php/search3.php(8): getConnexion()
+#1 /home/etnoleng/public_html/php/search3.php(25): search()
+#2 {main}
+  thrown in /home/etnoleng/public_html/php/conexion.php on line 6
+[26-May-2018 23:20:48 America/Chicago] PHP Warning:  mysqli_connect(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:20:48 America/Chicago] PHP Notice:  Trying to get property of non-object in /home/etnoleng/public_html/php/conexion.php on line 5
+[26-May-2018 23:20:48 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function set_charset() on boolean in /home/etnoleng/public_html/php/conexion.php:6
+Stack trace:
+#0 /home/etnoleng/public_html/php/search2.php(8): getConnexion()
+#1 /home/etnoleng/public_html/php/search2.php(19): search()
+#2 {main}
+  thrown in /home/etnoleng/public_html/php/conexion.php on line 6
+[26-May-2018 23:20:48 America/Chicago] PHP Warning:  mysqli_connect(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:20:48 America/Chicago] PHP Notice:  Trying to get property of non-object in /home/etnoleng/public_html/php/conexion.php on line 5
+[26-May-2018 23:20:48 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function set_charset() on boolean in /home/etnoleng/public_html/php/conexion.php:6
+Stack trace:
+#0 /home/etnoleng/public_html/php/search4.php(8): getConnexion()
+#1 /home/etnoleng/public_html/php/search4.php(22): search()
+#2 {main}
+  thrown in /home/etnoleng/public_html/php/conexion.php on line 6
+[26-May-2018 23:20:48 America/Chicago] PHP Warning:  mysqli_connect(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:20:48 America/Chicago] PHP Notice:  Trying to get property of non-object in /home/etnoleng/public_html/php/conexion.php on line 5
+[26-May-2018 23:20:48 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function set_charset() on boolean in /home/etnoleng/public_html/php/conexion.php:6
+Stack trace:
+#0 /home/etnoleng/public_html/php/search4.php(8): getConnexion()
+#1 /home/etnoleng/public_html/php/search4.php(22): search()
+#2 {main}
+  thrown in /home/etnoleng/public_html/php/conexion.php on line 6
+[26-May-2018 23:20:48 America/Chicago] PHP Warning:  mysqli_connect(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:20:48 America/Chicago] PHP Notice:  Trying to get property of non-object in /home/etnoleng/public_html/php/conexion.php on line 5
+[26-May-2018 23:20:48 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function set_charset() on boolean in /home/etnoleng/public_html/php/conexion.php:6
+Stack trace:
+#0 /home/etnoleng/public_html/php/search3.php(8): getConnexion()
+#1 /home/etnoleng/public_html/php/search3.php(25): search()
+#2 {main}
+  thrown in /home/etnoleng/public_html/php/conexion.php on line 6
+[26-May-2018 23:20:56 America/Chicago] PHP Warning:  mysqli_connect(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:20:56 America/Chicago] PHP Notice:  Trying to get property of non-object in /home/etnoleng/public_html/php/conexion.php on line 5
+[26-May-2018 23:20:56 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function set_charset() on boolean in /home/etnoleng/public_html/php/conexion.php:6
+Stack trace:
+#0 /home/etnoleng/public_html/php/search.php(8): getConnexion()
+#1 /home/etnoleng/public_html/php/search.php(19): search()
+#2 {main}
+  thrown in /home/etnoleng/public_html/php/conexion.php on line 6
+[26-May-2018 23:20:56 America/Chicago] PHP Warning:  mysqli_connect(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:20:56 America/Chicago] PHP Notice:  Trying to get property of non-object in /home/etnoleng/public_html/php/conexion.php on line 5
+[26-May-2018 23:20:56 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function set_charset() on boolean in /home/etnoleng/public_html/php/conexion.php:6
+Stack trace:
+#0 /home/etnoleng/public_html/php/search3.php(8): getConnexion()
+#1 /home/etnoleng/public_html/php/search3.php(25): search()
+#2 {main}
+  thrown in /home/etnoleng/public_html/php/conexion.php on line 6
+[26-May-2018 23:20:56 America/Chicago] PHP Warning:  mysqli_connect(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:20:56 America/Chicago] PHP Notice:  Trying to get property of non-object in /home/etnoleng/public_html/php/conexion.php on line 5
+[26-May-2018 23:20:56 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function set_charset() on boolean in /home/etnoleng/public_html/php/conexion.php:6
+Stack trace:
+#0 /home/etnoleng/public_html/php/search4.php(8): getConnexion()
+#1 /home/etnoleng/public_html/php/search4.php(22): search()
+#2 {main}
+  thrown in /home/etnoleng/public_html/php/conexion.php on line 6
+[26-May-2018 23:20:56 America/Chicago] PHP Warning:  mysqli_connect(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:20:56 America/Chicago] PHP Notice:  Trying to get property of non-object in /home/etnoleng/public_html/php/conexion.php on line 5
+[26-May-2018 23:20:56 America/Chicago] PHP Fatal error:  Uncaught Error: Call to a member function set_charset() on boolean in /home/etnoleng/public_html/php/conexion.php:6
+Stack trace:
+#0 /home/etnoleng/public_html/php/search2.php(8): getConnexion()
+#1 /home/etnoleng/public_html/php/search2.php(19): search()
+#2 {main}
+  thrown in /home/etnoleng/public_html/php/conexion.php on line 6
+[26-May-2018 23:21:13 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:21:13 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:21:13 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:21:13 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:21:13 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:21:13 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:21:14 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:21:14 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:40:00 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:40:00 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:40:00 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:40:00 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:40:00 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:40:00 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:40:00 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:40:00 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:40:00 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:40:00 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:40:00 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:40:00 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:40:00 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:40:00 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:40:00 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:40:00 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:40:01 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:40:01 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:40:01 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:40:01 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:40:01 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:40:01 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:40:01 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:40:01 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:40:02 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:40:02 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:40:02 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:40:02 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:27 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:27 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:27 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:27 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:27 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:27 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:28 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:28 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:28 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:28 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:28 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:28 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:28 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:28 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:28 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:28 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:28 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:28 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:28 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:28 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:28 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:28 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:28 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:28 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:28 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:28 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:28 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:28 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:29 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:29 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:29 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:29 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:31 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:31 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:31 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:31 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:31 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:31 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:31 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:31 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:31 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:31 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:31 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:31 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:32 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:32 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:32 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:32 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:32 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:32 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:32 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:32 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:34 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:34 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:34 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:34 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:34 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:34 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:34 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:34 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:34 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:34 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:34 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:34 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:36 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:36 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:36 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:36 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:36 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:36 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:36 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:36 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:36 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:36 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:36 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:36 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:37 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:37 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:37 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:37 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:37 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:37 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:37 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:41:37 America/Chicago] PHP Warning:  mysqli::__construct(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/conexion.php on line 4
+[26-May-2018 23:48:01 America/Chicago] PHP Warning:  mysqli_connect(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/cn.php on line 2
+[26-May-2018 23:48:56 America/Chicago] PHP Warning:  mysqli_connect(): (HY000/2005): Unknown MySQL server host 'localhost:3306' (0) in /home/etnoleng/public_html/php/cn.php on line 2

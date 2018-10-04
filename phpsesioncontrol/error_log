@@ -1,0 +1,2 @@
+[27-Sep-2018 09:52:58 America/Chicago] PHP Notice:  Undefined index: correo in /home/etnoleng/public_html/phpsesioncontrol/login.php on line 5
+[27-Sep-2018 09:52:58 America/Chicago] PHP Notice:  Undefined index: Password in /home/etnoleng/public_html/phpsesioncontrol/login.php on line 6
