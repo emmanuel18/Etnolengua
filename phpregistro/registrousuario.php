@@ -8,6 +8,7 @@ $Pass1=$_POST ['pass'];
 $Pass2=$_POST ['pass2'];
 $Fecha=$_POST ['fecha'];
 
+
 $uploadid=1;
 $imageFileType=strtolower(pathinfo($Target_file, PATHINFO_EXTENSION));
 /*
@@ -20,10 +21,6 @@ if (isset($_POST ['submit'])) {
 	}else 
 	{echo "nel".$check['mime'].".";}
 }*/
-
-
-
-
 $query2="SELECT Correo From userestudiante where Correo='$Correo'";
 $resultado2=mysqli_query($conexion, $query2);
 if($row=mysqli_fetch_row($resultado2)){
@@ -51,10 +48,8 @@ if($Pass1==$Pass2){
 				$query="INSERT INTO userestudiante (Nombre, Correo, Password, Fecnac, Fotoperfil) VALUES ('$Nombre', '$Correo', MD5('$Pass1'), '$Fecha', '$arch')";
 				$resultado=mysqli_query($conexion, $query);
 				if (!$resultado) {
-
        				echo 'Error ';
        				echo($resultado);
-
        			}else{
 					echo '<script languaje="javascript">alert("Registro exitoso, inicia sesión");
 					window.location.href="../index.php";

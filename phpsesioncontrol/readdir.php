@@ -3,6 +3,7 @@ session_start();
 $id=$_SESSION['id'];
 $cr=$_SESSION['Correo'];
 $ps=$_SESSION['Password'];
+$IdSesion=$_SESSION['IdSesion'];
 echo($id);
 if ($_SESSION['id']==1){
 	header('location: ../estudiante/index.php');

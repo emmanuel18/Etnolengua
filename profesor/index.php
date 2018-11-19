@@ -3,6 +3,7 @@ session_start();
 $id=$_SESSION['id'];
 $cr=$_SESSION['Correo'];
 $ps=$_SESSION['Password'];
+$sesion=$_SESSION['IdSesion'];
 $Query="SELECT Nombre FROM userprofe WHERE Correo='$cr'";
 $conexion = mysqli_connect("localhost", "etnoleng_emmanue", "estrada_18", "etnoleng_mixe");
 $qr=mysqli_query($conexion,$Query);
@@ -44,15 +45,7 @@ if ($_SESSION['id']==null){
   </head>
 
   <body id="page-top">
-	 <!-- <script>
-	  $('.btn-fl').hover(function(){
-		  $('.btn').addClass('animacionVer');
-	  })
-		$('.container2').mouseleave(function(){
-			$('.btn').removeClass('animacionVer');
-		})	
-		  
-	  </script> -->
+	 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
       <a class="navbar-brand mr-1" href="index.php"><img src="../images/logo.png" width="150" height="auto" alt=""/></a>
@@ -137,11 +130,12 @@ if ($_SESSION['id']==null){
       <!-- Sidebar -->
       <ul class="sidebar navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link" href="Cursos.php">
             <i class="fas fa-fw fa-book-open"></i>
             <span>Mis Cursos</span>
           </a>
         </li>
+		  
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-fw fa-folder"></i>
@@ -171,160 +165,120 @@ if ($_SESSION['id']==null){
 			<div class="col-12 col-md-8 mx-auto">
 				
 			<div class="text-center">
-			<form action="" method="post" >
+			<form action="php/ncurso.php" method="POST" enctype="multipart/form-data">
 				
 				<div class="form-group">
-					<label class="input-group-text">Introduce el nombre del curso </label>
+					<label class="input-group-text bg-primary text-light">Nombre del curso </label>
 					<input class="form-control" type="text" name="Curso" placeholder="" required>						
 				</div>
 					
 				<div class="dropdown-divider"></div>
 					
 				<div class="form-group">
-					<label class="input-group-text">Agrega una descripción</label>
-					<textarea class="form-control" name="Descripcion"></textarea>
+					<label class="input-group-text bg-primary text-light">Agrega una descripción</label>
+					<textarea class="form-control" name="Descripcion" required></textarea>
 				</div> 
 				<div class="dropdown-divider"></div>
 				
 				<div class="form-group">
-					<label class="input-group-text"> Elige una lengua indígena </label>
-					<select class="form-control" id="exampleFormControlSelect1">
-      					<option>Mixe</option>
-      					<option>Nahuatl</option>
-      					<option>Maya</option>
-      					<option>Azteca</option>
-    				  	<option>Totonaca</option>
-						<option>Olmeca</option>
-						<option>Zapoteco</option>
-						<option>Mixteco</option>
-    				</select>
-				</div>
-				
+					<label class="input-group-text bg-primary text-light">Agrega una imagen de Presentación</label>
+						<div class="custom-file">
+    						<input type="file" class="custom-file-input" name="foto" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" accept="image/png, image/jpeg" required>
+    						<label class="custom-file-label" for="validatedCustomFile">Elige una Imagen</label>
+  						</div>
+				</div> 
 				<div class="dropdown-divider"></div>
-				<label class="input-group-text"> Agrega Archivos de Audio y Video </label>
 				<div class="form-group">
-					
-					<div class="input-group mb-3">
-  						<div class="input-group-prepend">
-    						<span class="input-group-text" id="inputGroupFileAddon01">Cargar Archivo1</span>
-  						</div>
-  						<div class="custom-file">
-    						<input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" >
-    						<label class="custom-file-label" for="validatedCustomFile">Elige Archivo de Audio/Video</label>
-  						</div>
-					</div>
-					
-					<div class="input-group mb-3">
-  						<div class="input-group-prepend">
-    						<span class="input-group-text" id="inputGroupFileAddon01">Cargar Archivo2</span>
-  						</div>
-  						<div class="custom-file">
-    						<input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" >
-    						<label class="custom-file-label" for="validatedCustomFile">Elige Archivo de Audio/Video</label>
-  						</div>
-					</div>
-					
-					<div class="input-group mb-3">
-  						<div class="input-group-prepend">
-    						<span class="input-group-text" id="inputGroupFileAddon01">Cargar Archivo3</span>
-  						</div>
-  						<div class="custom-file">
-    						<input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" >
-    						<label class="custom-file-label" for="validatedCustomFile">Elige Archivo de Audio/Video</label>
-  						</div>
-					</div>
-					
-					<div class="input-group mb-3">
-  						<div class="input-group-prepend">
-    						<span class="input-group-text" id="inputGroupFileAddon01">Cargar Archivo4</span>
-  						</div>
-  						<div class="custom-file">
-    						<input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" >
-    						<label class="custom-file-label" for="validatedCustomFile">Elige Archivo de Audio/Video</label>
-  						</div>
-					</div>
-				
-				</div>	
-					
+					<label class="input-group-text bg-primary text-light"> Elige una lengua indígena </label>
+					<select class="form-control" name="Lenguas" id="exampleFormControlSelect1" required>
+      					<option>Akateko</option>
+						<option>Amuzga</option>
+						<option>Awakateco </option>
+						<option>Ayapaneco </option>
+						<option>Chatina</option>
+						<option>Chichimeco jonas</option>
+						<option>Chinanteco</option>
+						<option>Chocholteco</option>
+						<option>Ch’ol</option>
+						<option>Chontal de Oaxaca </option>
+						<option>Chontal de Tabasco </option>
+						<option>Chuj </option>
+						<option>Cora</option>
+						<option>Cucapá </option>
+						<option>Cuicateca </option>
+						<option>Guarijía </option>
+						<option>Huasteco</option>
+						<option>Huaves</option>
+						<option>Huicolas</option>
+						<option>Ixcateco </option>
+						<option>Ixil </option>
+						<option>Jakalteco </option>
+						<option>Kaqchikel </option>
+						<option>K’iche’s </option>
+						<option>Kickapoo </option>
+						<option>Kiliwa </option>
+						<option>Ku’ahl </option>
+						<option>Kumiai </option>
+						<option>Lacandón </option>
+						<option>Mam </option>
+						<option>Matlatzinca </option>
+						<option>Maya </option>
+						<option>Mayo </option>
+						<option>Mazahuas </option>
+						<option>Mazateco </option>
+						<option>Mixe</option>
+						<option>Mixteco </option>
+						<option>Nahuatl </option>
+						<option>Oluteco </option>
+						<option>Otomí </option>
+						<option>Paipai </option>
+						<option>Pames </option>
+						<option>Pápago </option>
+						<option>Pimas </option>
+						<option>Popolocas </option>
+						<option>Popoluca de la sierra </option>
+						<option>Purépecha </option>
+						<option>Q’anjob’al </option>
+						<option>Qato’k </option>
+						<option>Q’echi’ </option>
+						<option>Sayulteco </option>
+						<option>Seri </option>
+						<option>Tarahumara </option>
+						<option>Teko </option>
+						<option>Tepehua</option>
+						<option>Tepehuano del norte </option>
+						<option>Tepehuano del sur </option>
+						<option>Texistepequeño </option>
+						<option>Tlahuica </option>
+						<option>Tlapaneca</option>
+						<option>Tojolabal </option>
+						<option>Totonaca</option>
+						<option>Triqui</option>
+						<option>Tseltal </option>
+						<option>Tsoltsil </option>
+						<option>Yaqui </option>
+						<option>Zapoteco</option>
+						<option>Zoque</option>						
+					</select></div>
+				<div class="dropdown-divider"></div>
+				<div class="form-group">
+					<label class="input-group-text bg-primary text-light">Variante Lingüística</label>
+					<input class="form-control" type="text" name="Variante" placeholder="" required>						
+				</div>
+				<div class="dropdown-divider"></div>
+				<div class="form-group">
+					<label class="input-group-text bg-primary text-light"> Nivel </label>
+					<select class="form-control" name="Nivel" id="exampleFormControlSelect1" required>
+      					<option>Bajo</option>
+						<option>Intermedio</option>
+						<option>Avanzado</option>
+					</select>
+				</div>
 				 
 				<div class="dropdown-divider"></div>
-				<label class="input-group-text" for="file">Agrega Documentación</label>
-				<div class="form-group">
-					<div class="input-group mb-3">
-  						<div class="custom-file">
-    						<input type="file" class="custom-file-input" id="inputGroupFile02">
-    						<label class="custom-file-label" for="inputGroupFile02 validatedCustomFile" aria-describedby="inputGroupFileAddon02">Elige un Documento/PDF</label>
-  						</div>
-  						<div class="input-group-append">
-    						<span class="input-group-text" id="inputGroupFileAddon02">Cargar Archivo1</span>
-  						</div>
-					</div>
-					<div class="input-group mb-3">
-  						<div class="custom-file">
-    						<input type="file" class="custom-file-input" id="inputGroupFile02">
-    						<label class="custom-file-label" for="inputGroupFile02 validatedCustomFile" aria-describedby="inputGroupFileAddon02">Elige un Documento/PDF</label>
-  						</div>
-  						<div class="input-group-append">
-    						<span class="input-group-text" id="inputGroupFileAddon02">Cargar Archivo2</span>
-  						</div>
-					</div>
-					<div class="input-group mb-3">
-  						<div class="custom-file">
-    						<input type="file" class="custom-file-input" id="inputGroupFile02">
-    						<label class="custom-file-label" for="inputGroupFile02 validatedCustomFile" aria-describedby="inputGroupFileAddon02">Elige un Documento/PDF</label>
-  						</div>
-  						<div class="input-group-append">
-    						<span class="input-group-text" id="inputGroupFileAddon02">Cargar Archivo3</span>
-  						</div>
-					</div>
-					<div class="input-group mb-3">
-  						<div class="custom-file">
-    						<input type="file" class="custom-file-input" id="inputGroupFile02">
-    						<label class="custom-file-label" for="inputGroupFile02 validatedCustomFile" aria-describedby="inputGroupFileAddon02">Elige un Documento/PDF</label>
-  						</div>
-  						<div class="input-group-append">
-    						<span class="input-group-text" id="inputGroupFileAddon02">Cargar Archivo4</span>
-  						</div>
-					</div>
-				</div> 
-				
-				<div class="dropdown-divider"></div>
 				
 				<div class="form-group">
-				<label class="input-group-text">Crea una Actividad de Aprendizaje</label><br>
-					<div class="row justify-content-lg-center table-hover">
-					
-						<div class="col-lg-auto">
-							<a class="dropdown-item" href="#" data-toggle="modal" data-target="#quest"> 
-							<i class="fa fa-address-book fa-7x text-dark"></i> 
-							<h4>Cuestionario</h4>							
-							</a> 
-						</div>
-						
-						<div class="col-lg-auto">
-							<a class="dropdown-item" href="#" data-toggle="modal" data-target="#reading">
-							<i class="fa fa-book-reader fa-7x text-primary"></i>
-							<h4>Lectura</h4>
-							</a>
-						</div>
-					
-						<div class="col-lg-auto">
-							<a class="dropdown-item" href="#" data-toggle="modal" data-target="#test">
-							<i class="fa fa-book fa-7x text-danger"></i>
-							<h4>Evaluación</h4>							
-							</a> 
-						</div>
-						
-						<div class="col-lg-auto">
-							<a class="dropdown-item" href="#" data-toggle="modal" data-target="#">
-							<i class="fa fa-gamepad fa-7x text-success"></i>	
-							<h4>Juego(beta)</h4>
-							</a> 
-						</div>
-					</div>
-				</div>
-				<div class="form-group">
-					<input type="submit" class="btn btn-success btn-lg" value="Enviar">
+					<input type="submit" class="btn btn-success" value="Crear Curso">
 				</div>
 			</form>
 			</div>
@@ -372,346 +326,6 @@ if ($_SESSION['id']==null){
         </div>
       </div>
     </div>
-	  
-	<div class="modal fade" id="quest" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"  aria-hidden="true">
-	 <div class="modal-dialog" role="document">
-		 <div class="modal-content">
-			 <div class="modal-header">
-			 <h5 class="modal-title" id="exampleModalLabel">Crea tu propio cuestionario</h5>
-				 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-				 <span aria-hidden="true">X</span> 
-				 </button>
-			 </div> 
-		<div class="modal-body"> 
-		<form action="" method="post" id="cuestionario">
-	  		<div class="form-group">
-				<center>
-				<label for="exampleInputTittle"><b>Título del Cuestionario</b></label></center>
-				<input class="form-control" type="text" name="Titulo" placeholder="Insertar Título" required>
-			</div>
-			<div class="form-group">
-				<label for="exampleInputQuestion">Pregunta 1</label>
-				<input class="form-control" type="text" name="Pregunta1" placeholder="Escribe la primer pregunta" required>
-				</div>
-			
-					<div class="form-group">
-				<label for="exampleInputQuestion">Pregunta 2</label>
-				<input class="form-control" type="text" name="Pregunta2" placeholder="Escribe la segunda pregunta" required>
-				</div>
-			
-					<div class="form-group">
-				<label for="exampleInputQuestion">Pregunta 3</label>
-				<input class="form-control" type="text" name="Pregunta3" placeholder="Escribe la tercer pregunta" required>
-				</div>
-			
-					<div class="form-group">
-				<label for="exampleInputQuestion">Pregunta 4</label>
-				<input class="form-control" type="text" name="Pregunta4" placeholder="Escribe la cuarta pregunta" required>
-				</div>
-			
-					<div class="form-group">
-				<label for="exampleInputQuestion">Pregunta 5</label>
-				<input class="form-control" type="text" name="Pregunta5" placeholder="Escribe la quinta pregunta" required>
-				</div>
-			
-					<div class="form-group">
-				<label for="exampleInputQuestion">Pregunta 6</label>
-				<input class="form-control" type="text" name="Pregunta6" placeholder="Escribe la sexta pregunta" required>
-				</div>
-			
-					<div class="form-group">
-				<label for="exampleInputQuestion">Pregunta 7</label>
-				<input class="form-control" type="text" name="Pregunta7" placeholder="Escribe la septima pregunta" required>
-				</div>
-			
-					<div class="form-group">
-				<label for="exampleInputQuestion">Pregunta 8</label>
-				<input class="form-control" type="text" name="Pregunta8" placeholder="Escribe la octava pregunta" required>
-			    </div>
-			</div>
-			<div class="modal-footer">
-            	<button class="btn btn-primary" type="button" data-dismiss="modal">Enviar</button>
-            	
-          </div>
-	  	</form>
-		 </div>
-		</div>
-		</div>
-	<div class="modal fade" id="reading" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"  aria-hidden="true">
-	 <div class="modal-dialog" role="document">
-		 <div class="modal-content">
-			 <div class="modal-header">
-			 <h5 class="modal-title" id="exampleModalLabel">Crear una lectura para tus estudiantes</h5>
-				 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-				 <span aria-hidden="true">X</span> 
-				 </button>
-			 </div> 
-		<div class="modal-body"> 
-		<form action="" method="post" id="cuestionario">
-	  		<div class="form-group">
-				<center>
-				<label for="exampleInputTittle"><b>Inserta Texto en Lengua Indígena</b></label></center>
-				<textarea class="form-control" type="text" name="txtind" placeholder="Lengua Indígena" rows="5"></textarea>
-				
-			</div>
-			<div class="form-group">
-				<center>
-				<label for="exampleInputTittle"><b>Inserta Texto en Español</b></label></center>
-				<textarea class="form-control" type="text" name="esp" placeholder="Español" rows="5"></textarea>
-				
-			</div>
-			
-			
-			<div class="modal-footer">
-            	<button class="btn btn-primary" type="button" data-dismiss="modal">Enviar</button>
-            	
-          </div>
-	  	</form>
-		</div>
-		</div>
-		</div>
-	  </div>
-	<div class="modal fade" id="test" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"  aria-hidden="true">
-	 <div class="modal-dialog" role="document">
-		 <div class="modal-content">
-			 <div class="modal-header">
-			 <h5 class="modal-title" id="exampleModalLabel">Crea una evaluación general del curso</h5>
-				 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-				 <span aria-hidden="true">X</span> 
-				 </button>
-			 </div> 
-			<div class="modal-body"> 
-				<form action="" method="post" id="cuestionario">
-	  		
-					<div class="form-group">
-						<center><label for="exampleInputQuestion" class="font-weight-bold">Pregunta 1</label></center>
-						<input class="form-control" type="text" name="Pregunta1" placeholder="Escribe la primer pregunta" required>
-						<label for="exampleInputAnswer">Respuestas</label>
-						<div class="form-row">
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta 1">
-    						</div>
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta 2">
-    						</div>
-  						</div>
-						<br>
-						<div class="form-row">
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta 3">
-    						</div>
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta Correcta">
-    						</div>
-  						</div>
-					</div>
-					<div class="form-group">
-						<center><label for="exampleInputQuestion" class="font-weight-bold">Pregunta 2</label></center>
-						<input class="form-control" type="text" name="Pregunta1" placeholder="Escribe la primer pregunta" required>
-						<label for="exampleInputAnswer">Respuestas</label>
-						<div class="form-row">
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta 1">
-    						</div>
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta 2">
-    						</div>
-  						</div>
-						<br>
-						<div class="form-row">
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta 3">
-    						</div>
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta Correcta">
-    						</div>
-  						</div>
-					</div>
-					<div class="form-group">
-						<center><label for="exampleInputQuestion" class="font-weight-bold">Pregunta 3</label></center>
-						<input class="form-control" type="text" name="Pregunta1" placeholder="Escribe la primer pregunta" required>
-						<label for="exampleInputAnswer">Respuestas</label>
-						<div class="form-row">
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta 1">
-    						</div>
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta 2">
-    						</div>
-  						</div>
-						<br>
-						<div class="form-row">
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta 3">
-    						</div>
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta Correcta">
-    						</div>
-  						</div>
-					</div>
-					<div class="form-group">
-						<center><label for="exampleInputQuestion" class="font-weight-bold">Pregunta 4</label></center>
-						<input class="form-control" type="text" name="Pregunta1" placeholder="Escribe la primer pregunta" required>
-						<label for="exampleInputAnswer">Respuestas</label>
-						<div class="form-row">
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta 1">
-    						</div>
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta 2">
-    						</div>
-  						</div>
-						<br>
-						<div class="form-row">
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta 3">
-    						</div>
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta Correcta">
-    						</div>
-  						</div>
-					</div>
-					<div class="form-group">
-						<center><label for="exampleInputQuestion" class="font-weight-bold">Pregunta 5</label></center>
-						<input class="form-control" type="text" name="Pregunta1" placeholder="Escribe la primer pregunta" required>
-						<label for="exampleInputAnswer">Respuestas</label>
-						<div class="form-row">
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta 1">
-    						</div>
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta 2">
-    						</div>
-  						</div>
-						<br>
-						<div class="form-row">
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta 3">
-    						</div>
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta Correcta">
-    						</div>
-  						</div>
-					</div>
-					<div class="form-group">
-						<center><label for="exampleInputQuestion" class="font-weight-bold">Pregunta 6</label></center>
-						<input class="form-control" type="text" name="Pregunta1" placeholder="Escribe la primer pregunta" required>
-						<label for="exampleInputAnswer">Respuestas</label>
-						<div class="form-row">
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta 1">
-    						</div>
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta 2">
-    						</div>
-  						</div>
-						<br>
-						<div class="form-row">
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta 3">
-    						</div>
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta Correcta">
-    						</div>
-  						</div>
-					</div>
-					<div class="form-group">
-						<center><label for="exampleInputQuestion" class="font-weight-bold">Pregunta 7</label></center>
-						<input class="form-control" type="text" name="Pregunta1" placeholder="Escribe la primer pregunta" required>
-						<label for="exampleInputAnswer">Respuestas</label>
-						<div class="form-row">
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta 1">
-    						</div>
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta 2">
-    						</div>
-  						</div>
-						<br>
-						<div class="form-row">
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta 3">
-    						</div>
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta Correcta">
-    						</div>
-  						</div>
-					</div>
-					<div class="form-group">
-						<center><label for="exampleInputQuestion" class="font-weight-bold">Pregunta 8</label></center>
-						<input class="form-control" type="text" name="Pregunta1" placeholder="Escribe la primer pregunta" required>
-						<label for="exampleInputAnswer">Respuestas</label>
-						<div class="form-row">
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta 1">
-    						</div>
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta 2">
-    						</div>
-  						</div>
-						<br>
-						<div class="form-row">
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta 3">
-    						</div>
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta Correcta">
-    						</div>
-  						</div>
-					</div>
-					<div class="form-group">
-						<center><label for="exampleInputQuestion" class="font-weight-bold">Pregunta 9</label></center>
-						<input class="form-control" type="text" name="Pregunta1" placeholder="Escribe la primer pregunta" required>
-						<label for="exampleInputAnswer">Respuestas</label>
-						<div class="form-row">
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta 1">
-    						</div>
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta 2">
-    						</div>
-  						</div>
-						<br>
-						<div class="form-row">
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta 3">
-    						</div>
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta Correcta">
-    						</div>
-  						</div>
-					</div>
-					<div class="form-group">
-						<center><label for="exampleInputQuestion" class="font-weight-bold">Pregunta 10</label></center>
-						<input class="form-control" type="text" name="Pregunta1" placeholder="Escribe la primer pregunta" required>
-						<label for="exampleInputAnswer">Respuestas</label>
-						<div class="form-row">
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta 1">
-    						</div>
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta 2">
-    						</div>
-  						</div>
-						<br>
-						<div class="form-row">
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta 3">
-    						</div>
-    						<div class="col">
-      							<input type="text" class="form-control" placeholder="Respuesta Correcta">
-    						</div>
-  						</div>
-					</div>
-			
-			<div class="modal-footer">
-            	<button class="btn btn-primary" type="button" data-dismiss="modal">Enviar</button>
-            	
-          </div>
-	  	</form>
-		 </div>
-		</div>
-		</div>
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

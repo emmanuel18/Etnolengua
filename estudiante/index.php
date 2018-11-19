@@ -136,13 +136,20 @@ if ($_SESSION['id']==null){
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-fw fa-folder"></i>
-            <span>Mis Cursos</span>
+            <span>Cursos</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
             <h6 class="dropdown-header">Lenguas</h6>
             <a class="dropdown-item" data-toggle="modal" data-target="#act" href="">Mixe</a>
 			  <a class="dropdown-item" data-toggle="modal" data-target="#act2" href="">Nahuatl</a>
           </div>
+        </li>
+		  <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="MisCursos.php" id="pagesDropdown" role="button" >
+            <i class="fas fa-fw fa-folder-open"></i>
+            <span>Mis Cursos</span>
+          </a>
+          
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="pagesDropdown" href="charts.html" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -156,7 +163,7 @@ if ($_SESSION['id']==null){
 				
 			</div>
         </li>
-		<li class="nav-item active">
+		<li class="nav-item">
           <a class="nav-link" data-toggle="modal" data-target="#bot">
             <i class="fas fa-fw fa-robot"></i>
             <span>Bot(beta)</span>
@@ -172,7 +179,7 @@ if ($_SESSION['id']==null){
 
       <div id="content-wrapper">
 
-        <div class="container-fluid">
+        <div class="container-fluid align-content-center">
 
           <!-- Breadcrumbs-->
           
@@ -180,34 +187,58 @@ if ($_SESSION['id']==null){
           
 
           <!-- Page Content -->
-          <div class="row container-fluid center">
-			<div class="col-lg-6 mb-6 mt-6 text-center">
+		<center>
+          <div class="row container align-content-lg-center">
 			  
-				<h4>Mixe</h4>
-				<img src="../images/mixe.png">
-				<div class="dropdown-item text-center">
-					<div class="btn-group-toggle">	
-						<a class="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#mixe">
-						Aprendamos Mixe 
-						<Span ></Span>
-						</a>						
-					</div>
-			  	</div>
+			  <div class="card text-center" style=" width: 240px; height: auto;">
+			  	<img class="card-img-top" src="../images/mixe.png" alt="mixe" height="auto" width="150px">
+				  <div class="card-body" style="background-color: #EFEFEF">
+				  	<h5 class="card-title">Mixe</h5>
+					  <p class="card-text">Curso Basico de la Lengua Mixe</p>
+					  <a href="#" class="btn btn-outline-primary" data-toggle="modal" data-target="#mixe">Ir al Curso</a>
+				  </div>
 			  </div>
+			  <p>&nbsp; &nbsp; &nbsp; &nbsp;</p>
+			  <div class="card text-center" style=" width: 240px; height: auto;">
+			  	<img class="card-img-top" src="../images/nahuatl.png" alt="nahuatl" height="auto" width="150px">
+				  <div class="card-body" style="background-color: #EFEFEF">
+				  	<h5 class="card-title">Nahuatl</h5>
+					  <p class="card-text">Curso Basico de la Lengua Nahuatl</p>
+					  <a href="#" class="btn btn-outline-primary" data-toggle="modal" data-target="#nahuatl">Ir al Curso</a>
+				  </div>
+			  </div>
+			  <p>&nbsp; &nbsp; &nbsp; &nbsp;</p>
+			  <div class="card text-center" style=" width: 240px; height: auto;">
+			  	<img class="card-img-top" src="../images/yum.png" alt="chol" height="auto" width="150px">
+				  <div class="card-body" style="background-color: #EFEFEF">
+				  	<h5 class="card-title">Chol</h5>
+					  <p class="card-text">Curso Basico de la Lengua Chol</p>
+					  <a href="#" class="btn btn-outline-primary" data-toggle="modal" data-target="#chol">Ir al Curso</a>
+				  </div>
+			  </div>
+			  <p>&nbsp; &nbsp; &nbsp; &nbsp;</p>
+			  <?php
+				  	$cursos="SELECT Nombre, Descripcion, Presentacion From Cursos ";
+				  	$nomcur=mysqli_query($conexion, $cursos);
+				  	while ($arrayres=mysqli_fetch_array($nomcur)){
+						echo "<div class='card text-center' style=' width: 240px; height: auto;'>";						
+						echo "<img class='card-img-top' src='../profesor/php/bdfiles/"; 
+						echo $arrayres["Presentacion"];
+						echo "' height='auto' width='150px'>";
+						echo "<div class='card-body' style='background-color: #EFEFEF'>";
+						echo "<h5 class='card-title'>";
+						echo utf8_encode ($arrayres["Nombre"]);
+						echo "</h5>";
+						echo "<p class='card-text'>";
+						echo utf8_encode ($arrayres["Descripcion"]);
+						echo "</p> </div></div> <p>&nbsp; &nbsp; &nbsp; &nbsp;</p>";
+					}
+				   
+				  ?>
+			  
 			
-			<div class="col-lg-6 mb-6 mt-6 text-center">
-			  <h4>Nahuatl</h4>
-				<img src="../images/nahuatl.png" width="auto" height="250" alt="">
-				<div class="dropdown-item text-center">
-					<div class="btn-group-toggle">	
-						<a class="btn btn-block btn-outline-success" data-toggle="modal" data-target="#nahutl">
-						Aprendamos Nahuatl 
-						<Span ></Span>
-						</a>						
-					</div>
-			  	</div>
-			  </div>
-			</div>
+			
+			</div></center>
         </div>
         <!-- /.container-fluid -->
 
@@ -266,7 +297,7 @@ if ($_SESSION['id']==null){
           
         </div>
       </div>
-    </div>
+		</div></div>
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -590,7 +621,7 @@ if ($_SESSION['id']==null){
 		  </div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-            <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#ev">Evaluar</button>
+            <button class="btn btn-primary" type="submit" data-toggle="modal" data-target="#ev">Evaluar</button>
 			  </form>
           </div>
         </div>
@@ -633,12 +664,10 @@ if ($_SESSION['id']==null){
 				$cal=$cal+10;
 			  }
 			  $prom=$cal/6*10;
-			  function porcentaje($cantidad,$decimales){
-				  return number_format($cantidad,$decimales);
-			  }
-			  $porciento =  porcentaje($prom,2);
+			  
+			  
 			  //echo ($porciento);
-			  echo("66.67%");
+			  echo($prom);
 			  ?>
 		  </div>
           <div class="modal-footer">
