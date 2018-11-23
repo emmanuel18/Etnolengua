@@ -7,6 +7,19 @@
 	font-family: Optien;
 	src: url(../../fonts/Optien.ttf);
 }
+@font-face{
+	font-family: "Branding Light";
+	src: url(../../fonts/BrandingLight.otf);
+	
+}
+@font-face{
+	font-family: Brandingbold;
+	src: url(../../fonts/Branding-Bold.otf);
+	
+}
+b{
+	font-family: Brandingbold;
+}
 html {
   position: relative;
   min-height: 100%;
@@ -14,6 +27,7 @@ html {
 
 body {
   height: 100%;
+  font-family: "Branding Light";
 }
 
 .text-black{
@@ -46,7 +60,13 @@ body {
 	color: #5BB4A3;
 	text-shadow: 3px 3px 3px #000;
 }
-
+.container-full {
+  margin: 0 auto;
+  width: 100%;
+}
+.bg-gray{
+	background-color: #e9ecef;
+}
 #wrapper {
   display: -webkit-box;
   display: -ms-flexbox;

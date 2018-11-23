@@ -35,8 +35,8 @@ $tipo=$_POST['tipo'];
 </head>
 <body>
     <div class="row">
-        <div class="col-md-12">
-            <div class="col-md-12 text-center">
+          <div class="col-md-10 mx-auto">
+            <div class="col-md-12 text-center container jumbotron">
 				
                 <form role="form" action="upload.php" method="post" enctype="multipart/form-data">
                     <div class="row">

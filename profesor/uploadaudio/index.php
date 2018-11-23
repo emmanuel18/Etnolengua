@@ -34,25 +34,26 @@ $tipo=$_POST['tipo'];
     </script>
 </head>
 <body>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="col-md-12 text-center">
+    <div class="row ">
+        <div class="col-md-10 mx-auto">
+            <div class="col-md-12 text-center container jumbotron">
 				
                 <form role="form" action="upload.php" method="post" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-xs-12 col-md-12">
                             <div class="col-md-12 col-lg-12 col-xs-12" id="columns">
-                                <h3 class="form-label">Selecciona Audio</h3>
+                                <h3 class="form-label"><b>Selecciona los audios</b></h3>
                                 <div class="desc"><p class="text-center">o arrastra al cuadro</p></div>
                                 <div id="uploads"><!-- Upload Content --></div>
                             </div>
-							<?php echo($idcurso); ?>
-							<?php echo($tipo); ?>
+							
 							<input type="hidden" name="idcurso" value="<?php echo($idcurso); ?>">
 							<input type="hidden" name="tipo" value="<?php echo($tipo); ?>">
                             <div class="clearfix"></div>
-                            <button class="btn btn-danger btn-lg pull-left" id="reset" type="button" ><i class="fa fa-history"></i> Clear</button>
-                            <button class="btn btn-primary btn-lg pull-right" type="submit" ><i class="fa fa-upload"></i> Upload </button>
+							
+								<button class="btn btn-danger btn-lg pull-left " id="reset" type="button" ><i class="fa fa-history"></i> Clear</button>
+								<button class="btn btn-primary btn-lg pull-right " type="submit" ><i class="fa fa-upload"></i> Upload </button>
+							
                         </div>
                     </div>
                 </form>

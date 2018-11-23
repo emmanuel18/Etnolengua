@@ -3,18 +3,17 @@ session_start();
 $id=$_SESSION['id'];
 $cr=$_SESSION['Correo'];
 $ps=$_SESSION['Password'];
-$sesion=$_SESSION['IdSesion'];
-$Query="SELECT Nombre FROM userprofe WHERE Correo='$cr'";
+$Query="SELECT Nombre FROM userestudiante WHERE Correo='$cr'";
 $conexion = mysqli_connect("localhost", "etnoleng_emmanue", "estrada_18", "etnoleng_mixe");
 $qr=mysqli_query($conexion,$Query);
 if($rw=mysqli_fetch_row($qr)){
 	$rs=trim($rw[0]);	
 }
-
 if ($_SESSION['id']==null){
-	header('location: ../default.php');
+	header('location: ../index.php');
 }
 
+$ncurso=$_POST['ncurso'];
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -27,9 +26,8 @@ if ($_SESSION['id']==null){
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Perfil || Profesor</title>
+    <title>Perfil || Estudiante</title>
 	<link rel="icon" type="image/png" href="../images/favicon.png" alt="Etnolengua Favicon">
-
     <!-- Bootstrap core CSS-->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -41,39 +39,32 @@ if ($_SESSION['id']==null){
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
-
+	
   </head>
 
   <body id="page-top">
-	 <!-- <script>
-	  $('.btn-fl').hover(function(){
-		  $('.btn').addClass('animacionVer');
-	  })
-		$('.container2').mouseleave(function(){
-			$('.btn').removeClass('animacionVer');
-		})	
-		  
-	  </script> -->
+
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <a class="navbar-brand mr-1" href="index.php"><img src="../images/logo.png" width="150" height="auto" alt=""/></a>
+      <a class="navbar-brand mr-1 logo" href="index.php"><img src="../images/logo.png" width="150" height="auto" alt=""/></a>
+      
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
       </button>
-
-      <!-- Navbar Search -->
+	  
+       
       <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Buscar Herramientas" aria-label="Search" aria-describedby="basic-addon2">
+          <!--<input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
           <div class="input-group-append">
             <button class="btn btn-primary" type="button">
               <i class="fas fa-search"></i>
             </button>
-          </div>
+          </div>-->
         </div>
       </form>
-
+		
       <!-- Navbar -->
       <ul class="navbar-nav ml-auto ml-md-0">
         <li class="nav-item dropdown no-arrow mx-1">
@@ -81,54 +72,60 @@ if ($_SESSION['id']==null){
             <i class="fas fa-bell fa-fw"></i>
             <span class="badge badge-danger">9+</span>
           </a>
+			<!--
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
             <a class="dropdown-item" href="#">Action</a>
             <a class="dropdown-item" href="#">Another action</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Something else here</a>
           </div>
+           -->
         </li>
         <li class="nav-item dropdown no-arrow mx-1">
           <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-envelope fa-fw"></i>
             <span class="badge badge-danger">7</span>
           </a>
+			<!--
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
             <a class="dropdown-item" href="#">Action</a>
             <a class="dropdown-item" href="#">Another action</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Something else here</a>
           </div>
+          -->
         </li>
         <li class="nav-item dropdown no-arrow">
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas">
 				<?php
-				$query2="SELECT Fotoperfil FROM Userprofe WHERE Correo='$cr'";
+				$query2="SELECT Fotoperfil FROM userestudiante WHERE Correo='$cr'";
 				$Foto=mysqli_query($conexion, $query2);
-				if($row2=mysqli_fetch_array($Foto)){
+				if($row2=mysqli_fetch_row($Foto)){
 					$ft=trim($row2[0]);
 				}
-				echo("<img src='../phpregistro/bdimagen/$ft' width='35' height='35' class='rounded-circle'>");
+				echo "<img src='../phpregistro/bdimagen/$ft' width='auto' height='32'>";
 				?>  
 			</i>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">Configuración</a>
+            <a class="dropdown-item" href="#">Configuración</a>
             <a class="dropdown-item" href="#">Editar perfil</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Cerrar sesión</a>
           </div>
         </li>
-		<li class="navbar-text mr-1">
-		   	<?php
-			  $Token=strtok($rs, " \n\t");
-			  if($Token!==false){
-				  echo("$Token<br>");
-			  }
-			 ?>
+		  <div class="navbar-text mr-1">
+		
+		  <?php
+			$token=strtok($rs, " \n\t");
+			if($token!==false){
+				echo("$token");
+			}
+			?>
 		  
-		</li>
+		</div>
+
       </ul>
 
     </nav>
@@ -137,72 +134,121 @@ if ($_SESSION['id']==null){
 
       <!-- Sidebar -->
       <ul class="sidebar navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="index.php">
-            <i class="fas fa-fw fa-book-open"></i>
-            <span>Crear nuevo curso</span>
-          </a>
-        </li>
+        
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-fw fa-folder"></i>
-            <span>Archivos</span>
+            <span>Cursos</span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+            <h6 class="dropdown-header">Lenguas</h6>
+            <a class="dropdown-item" data-toggle="modal" data-target="#act" href="">Mixe</a>
+			  <a class="dropdown-item" data-toggle="modal" data-target="#act2" href="">Nahuatl</a>
+          </div>
+        </li>
+		  <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="MisCursos.php" id="pagesDropdown" role="button" >
+            <i class="fas fa-fw fa-folder-open"></i>
+            <span>Mis Cursos</span>
           </a>
           
         </li>
-         <!-- <li class="nav-item">
-          <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Estadisticas</span></a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="pagesDropdown" href="charts.html" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-fw fa-list a-li"></i>
+            <span>Traductor</span>
+			</a>
+			<div class="dropdown-menu" aria-labelledby="pagesDropdown">
+				<h6 class="dropdown-header">Lenguas</h6>
+				<a class="dropdown-item" href="traslatormixe.php">Mixe</a>
+				<a class="dropdown-item" href="traslatornahuatl.php">Nahuatl</a>
+				
+			</div>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link" data-toggle="modal" data-target="#bot">
+            <i class="fas fa-fw fa-robot"></i>
+            <span>Bot(beta)</span>
+          </a>
+        </li>
+        <!--<li class="nav-item">
+          <a class="nav-link" href="index.html">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Avance</span>
+          </a>
         </li>-->
       </ul>
 
-      <div id="content-wrapper">
+      <div id="content-wrapper" >
 
-        <div class="container-fluid">
+        <div class="container-fluid align-content-center">
 
+          <!-- Breadcrumbs-->
+          
+            <center><h2>Curso: <?php echo($ncurso); ?></h2></center>
           
           <!-- Page Content -->
-          
-          <div class="form-group">
-			  <h1 class="h1 text-center">Mis cursos</h1>
-			  <div class="row container">
+			<?php
+				$idcurso="SELECT IdCurso From cursos where Nombre='$ncurso'";
+				$Query3=mysqli_query($conexion, $idcurso);
+				if($rw2=mysqli_fetch_row($Query3)){
+					$idcur=trim($rw2[0]);	
+				}
+				$consultimg="SELECT Nombre From archivo where IdCurso='$idcur' AND Tipo='imagen'";
+				$img=mysqli_query($conexion, $consultimg);
+			?>
+		<center>
+          <div class="row bg-light ">
+			  <div class="text-center mx-auto">
+				  <div class="container-fluid">
+					 <div id='carouselExampleControls' class='carousel' data-ride='carousel'> 
+						 <div class='carousel-inner'>
+							 <br>
+							  <?php
+							 	$cont=1;
+								while ($arrayimg=mysqli_fetch_array($img)){
+									if($cont==1){
+										echo"<div class='carousel-item active'>
+										<img class='d-block rounded' src='../profesor/uploadimg/uploads/";
+										echo($arrayimg["Nombre"]);	
+										echo"' height='450px' width='auto' alt=''>
+										</div>";
+										$cont=2;
+									}else{
+										echo"<div class='carousel-item w-100'>
+										<img class='d-block rounded' src='../profesor/uploadimg/uploads/";
+										echo($arrayimg["Nombre"]);	
+										echo"' height='450px' width='auto' alt=''>
+										</div>";
+									}
+									
+								}					  
+							  ?>					  
+					  	
+						  </div>
+						  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+							<span class="carousel-control-prev-icon text-black" aria-hidden="true"></span>
+							<span class="sr-only">Previous</span>
+						  </a>
+						  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="sr-only">Next</span>
+						  </a>
+					</div>
+				  </div>
 				  
-				  <?php
-				  	$cursos="SELECT IdCurso, Nombre, Descripcion, Presentacion From Cursos Where $sesion=IdProfesor";
-				  	$nomcur=mysqli_query($conexion, $cursos);
-				  	while ($arrayres=mysqli_fetch_array($nomcur)){
-						$idcurso=$arrayres["IdCurso"];						
-										
-						echo "<div class='card text-center' style=' width: 15rem; '>";						
-						echo "<img class='card-img-top align-middle' src='php/bdfiles/"; 
-						echo $arrayres["Presentacion"];
-						echo "' height='160' width='286px'>";
-						echo "<div class='card-body' style='background-color: #EFEFEF'>";
-						echo "<h5 class='card-title'>";
-						echo utf8_encode ($arrayres["Nombre"]);
-						echo "</h5>";
-						echo "<p class='card-text'>";
-						echo utf8_encode ($arrayres["Descripcion"]);
-						echo " <form action='act.php' method='post'>
-			  	<input type='hidden' name='idcurso' value=$idcurso>
-				<input type='submit' class='btn btn-outline-primary' name='enviar' value='Crear Actividades'>
-			  </form>";
-						echo "</p> </div></div> <p>&nbsp; &nbsp; &nbsp; </p>";
-						
-					}
-				   
-				  ?>
-				
+				  <div class="form-group">
+					  <form action="contentvid.php" method="post"><br>
+						  <input type="hidden" name="ncurso" value="<?php echo($ncurso); ?>">
+						  <input type="hidden" name="idcurso" value="<?php echo($idcur); ?>">
+						  <button class="btn btn-outline-primary" type="submit">Siguiente lección</button>					  
+					  </form>				  	
+				  </div>  
 			  </div>
-		</div>
-			 	
-			  
-			  
-			<div class="row">	
-				
-		  	</div>
-			
+			    
+			 </div>
+			</div>
+		</center>
         </div>
         <!-- /.container-fluid -->
 
@@ -225,7 +271,7 @@ if ($_SESSION['id']==null){
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fas fa-angle-up"></i>
     </a>
-
+	
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -244,9 +290,9 @@ if ($_SESSION['id']==null){
         </div>
       </div>
     </div>
+	
 	  
-
-    <!-- Bootstrap core JavaScript-->
+	    <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -255,7 +301,7 @@ if ($_SESSION['id']==null){
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin.min.js"></script>
-
+	<script src="js/script.js"></script>
   </body>
 
 </html>

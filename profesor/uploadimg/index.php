@@ -35,14 +35,14 @@ $tipo=$_POST['tipo'];
 </head>
 <body>
     <div class="row">
-        <div class="col-md-12">
-            <div class="col-md-12 text-center">
+          <div class="col-md-10 mx-auto">
+            <div class="col-md-12 text-center container jumbotron">
 				
                 <form role="form" action="upload.php" method="post" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-xs-12 col-md-12">
                             <div class="col-md-12 col-lg-12 col-xs-12" id="columns">
-                                <h3 class="form-label">Selecciona las imágenes</h3>
+                                <h3 class="form-label"><b>Selecciona las imágenes</b></h3>
                                 <div class="desc"><p class="text-center">o arrastra al cuadro</p></div>
                                 <div id="uploads"><!-- Upload Content --></div>
                             </div>
