@@ -185,7 +185,9 @@ $ncurso=$_POST['ncurso'];
 
           <!-- Breadcrumbs-->
           
-            <center><h2>Curso: <?php echo($ncurso); ?></h2></center>
+            <div class="container-fluid text-center">
+			  <h2 class="btn-info btn-block btn-lg" style="font-size: 25px;"><i class="fas fa-chalkboard-teacher" style="color: #1B1E49;"></i> Curso: <?php echo($ncurso); ?></h2>
+		    </div>
           
           <!-- Page Content -->
 			<?php
@@ -241,7 +243,7 @@ $ncurso=$_POST['ncurso'];
 					  <form action="contentvid.php" method="post"><br>
 						  <input type="hidden" name="ncurso" value="<?php echo($ncurso); ?>">
 						  <input type="hidden" name="idcurso" value="<?php echo($idcur); ?>">
-						  <button class="btn btn-outline-primary" type="submit">Siguiente lección</button>					  
+						  <button class="btn btn-primary" type="submit"><i class="fas fa-arrow-circle-right"></i> Siguiente lección</button>					  
 					  </form>				  	
 				  </div>  
 			  </div>

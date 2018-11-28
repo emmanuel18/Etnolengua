@@ -3,11 +3,13 @@ session_start();
 $id=$_SESSION['id'];
 $cr=$_SESSION['Correo'];
 $ps=$_SESSION['Password'];
+$iduser=$_SESSION['IdSesion'];
 $Query="SELECT Nombre FROM userestudiante WHERE Correo='$cr'";
 $conexion = mysqli_connect("localhost", "etnoleng_emmanue", "estrada_18", "etnoleng_mixe");
 $qr=mysqli_query($conexion,$Query);
 if($rw=mysqli_fetch_row($qr)){
-	$rs=trim($rw[0]);	
+	$rs=trim($rw[0]);
+	
 }
 if ($_SESSION['id']==null){
 	header('location: ../index.php');
@@ -189,8 +191,8 @@ $idcurso=$_POST['idcurso'];
 			?>
 		   
 			  <div class="text-center">
-				  <h3>Leccion: 1</h3>
-				  <video width='720' height='auto' controls>
+				  <h3>Lección: 1</h3>
+				  <video class="img-fluid" width='720' height='auto' controls>
 					 <?php
 					  while ($arrayvid=mysqli_fetch_array($vid)){
 						echo"<source src='../profesor/uploadvideo/uploads/";
@@ -204,7 +206,7 @@ $idcurso=$_POST['idcurso'];
 			    
 			 </div>
 			
-		
+
 		<div class="container-fluid text-center">
 			<h2 class="btn-info btn-block btn-lg" style="font-size: 25px;"><i class="fas fa-play-circle" style="color: #1B1E49;"></i>  Contenido</h2>
 		</div>
@@ -222,28 +224,30 @@ $idcurso=$_POST['idcurso'];
 				  </thead>
 				  <tbody>
 					  <tr>
-						  <form action='content.php' method='post'>
-							  <?php 
-							  $consultvid="SELECT Nombre From archivo where IdCurso='$idcurso' AND Tipo='video'";
-							  $vid=mysqli_query($conexion, $consultvid);
-							  $leccion=0;
-							  while ($arrayvid=mysqli_fetch_array($vid)){
-								  echo("<input type='hidden' name='idcurso' value='$idcurso'><input type='hidden' name='nomarch' value='");
-								  echo("'>");
-								  echo("<tr>");
-								  echo("<th>");	
-								  echo("<button type='submit' class='btn btn-outline-success'>");
-								  echo("<i class='fas fa-video'> </i>");
-								  echo("  Lección: ");
-								  echo($leccion+1);
-								  echo("</button>");
-								  echo("</th>");
-								  echo("</tr>");
-								  $leccion++;
-							  }
-							  ?>
-						  </form>
+						  <?php 
+						  $consultvid="SELECT Nombre From archivo where IdCurso='$idcurso' AND Tipo='video'";
+						  $vid=mysqli_query($conexion, $consultvid);
+						  $leccion=0;
+						  while ($arrayvid=mysqli_fetch_array($vid)){
+							  $leccion++;								 
+							  echo("<tr>");
+							  echo("<th>");
+							  echo("<form action='content.php' method='post'>");
+							  echo("<input type='hidden' name='idcurso' value='$idcurso'><input type='hidden' name='nomarch' value='");
+							  echo($arrayvid['Nombre']);
+							  echo("'><input type='hidden' name='ncurso' value='$ncurso'>");
+							  echo("<input type='hidden' name='nleccion' value='$leccion'>");
+							  echo("<input type='hidden' name='tipo' value='video'>");
+							  echo("<button type='submit' class='btn btn-outline-success'>");
+							  echo("<i class='fas fa-video'> </i>");
+							  echo("  Lección: ");
+							  echo($leccion);
+							  echo("</button></form>");
+							  echo("</th>");
+							  echo("</tr>");
 
+						  }
+						  ?>
 					 </tr>
 				  </tbody>
 				</table>
@@ -259,27 +263,30 @@ $idcurso=$_POST['idcurso'];
 				  </thead>
 				  <tbody>
 					  <tr>
-						 <form action='content.php' method='post'>
-							  <?php 
-							  $consultvid="SELECT Nombre From archivo where IdCurso='$idcurso' AND Tipo='audio'";
-							  $vid=mysqli_query($conexion, $consultvid);
-							  $leccion=0;
-							  while ($arrayvid=mysqli_fetch_array($vid)){
-								  echo("<input type='hidden' name='idcurso' value='$idcurso'><input type='hidden' name='nomarch' value='");
-								  echo("'>");
-								  echo("<tr>");
-								  echo("<th>");	
-								  echo("<button type='submit' class='btn btn-outline-danger'>");
-								  echo("<i class='fas fa-volume-up'></i>");
-								  echo("  Lección: ");
-								  echo($leccion+1);
-								  echo("</button>");
-								  echo("</th>");
-								  echo("</tr>");
-								  $leccion++;
-							  }
-							  ?>
-						  </form>
+						 <?php 
+						  $consultvid="SELECT Nombre From archivo where IdCurso='$idcurso' AND Tipo='audio'";
+						  $vid=mysqli_query($conexion, $consultvid);
+						  $leccion=0;
+						  while ($arrayvid=mysqli_fetch_array($vid)){
+							  $leccion++;								 
+							  echo("<tr>");
+							  echo("<th>");
+							  echo("<form action='content.php' method='post'>");
+							  echo("<input type='hidden' name='idcurso' value='$idcurso'><input type='hidden' name='nomarch' value='");
+							  echo($arrayvid['Nombre']);
+							  echo("'><input type='hidden' name='ncurso' value='$ncurso'>");
+							  echo("<input type='hidden' name='nleccion' value='$leccion'>");
+							  echo("<input type='hidden' name='tipo' value='audio'>");
+							  echo("<button type='submit' class='btn btn-outline-danger'>");
+							  echo("<i class='fas fa-volume-up'> </i>");
+							  echo("  Lección: ");
+							  echo($leccion);
+							  echo("</button></form>");
+							  echo("</th>");
+							  echo("</tr>");
+
+						  }
+						  ?>
 					 </tr>
 				  </tbody>
 				</table>	
@@ -295,27 +302,30 @@ $idcurso=$_POST['idcurso'];
 				  </thead>
 				  <tbody>
 					  <tr>
-						  <form action='content.php' method='post'>
-							  <?php 
-							  $consultvid="SELECT Nombre From archivo where IdCurso='$idcurso' AND Tipo='audio'";
-							  $vid=mysqli_query($conexion, $consultvid);
-							  $leccion=0;
-							  while ($arrayvid=mysqli_fetch_array($vid)){
-								  echo("<input type='hidden' name='idcurso' value='$idcurso'><input type='hidden' name='nomarch' value='");
-								  echo("'>");
-								  echo("<tr>");
-								  echo("<th>");	
-								  echo("<button type='submit' class='btn btn-outline-primary w-100'>");
-								  echo("<i class='fas fa-file-word'></i>");
-								  echo("  Lección: ");
-								  echo($leccion+1);
-								  echo("</button>");
-								  echo("</th>");
-								  echo("</tr>");
-								  $leccion++;
-							  }
-							  ?>
-						  </form>
+						  <?php 
+						  $consultvid="SELECT Nombre From archivo where IdCurso='$idcurso' AND Tipo='documento'";
+						  $vid=mysqli_query($conexion, $consultvid);
+						  $leccion=0;
+						  while ($arrayvid=mysqli_fetch_array($vid)){
+							  $leccion++;								 
+							  echo("<tr>");
+							  echo("<th>");
+							  echo("<form action='content.php' method='post'>");
+							  echo("<input type='hidden' name='idcurso' value='$idcurso'><input type='hidden' name='nomarch' value='");
+							  echo($arrayvid['Nombre']);
+							  echo("'><input type='hidden' name='ncurso' value='$ncurso'>");
+							  echo("<input type='hidden' name='nleccion' value='$leccion'>");
+							  echo("<input type='hidden' name='tipo' value='documento'>");
+							  echo("<button type='submit' class='btn btn-outline-primary w-100'>");
+							  echo("<i class='fas fa-file-word'> </i>");
+							  echo("  Lección: ");
+							  echo($leccion);
+							  echo("</button></form>");
+							  echo("</th>");
+							  echo("</tr>");
+
+						  }
+						  ?>
 
 					 </tr>
 				  </tbody>
@@ -326,7 +336,7 @@ $idcurso=$_POST['idcurso'];
 		</div>
 		  <br>
 		<div class="form-group container row text-center">
-            <div class="col-xl-4 col-sm-8 mx-auto">
+            <div class="col-xl-4 col-sm-8 mx-auto" style="margin-bottom: 10px;">
               <div class="card text-white bg-primary o-hidden h-100">
                 <div class="card-body">
                   <div class="card-body-icon">
@@ -334,7 +344,7 @@ $idcurso=$_POST['idcurso'];
                   </div>
                   <h4>Lectura</h4>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
+                <a class="card-footer text-white clearfix small z-1" href="#" data-toggle="modal" data-target="#Lectura">
                   <h6 class="float-left">Ir a actividad</h6>
                   <span class="float-right">
                     <i class="fas fa-angle-right"></i>
@@ -342,7 +352,7 @@ $idcurso=$_POST['idcurso'];
                 </a>
               </div>
             </div>
-            <div class="col-xl-4 col-sm-8 mx-auto">
+            <div class="col-xl-4 col-sm-8 mx-auto" style="margin-bottom: 10px;">
               <div class="card text-white bg-dark o-hidden h-100">
                 <div class="card-body">
                   <div class="card-body-icon">
@@ -350,7 +360,7 @@ $idcurso=$_POST['idcurso'];
                   </div>
                   <h4>Cuestionario</h4>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
+                <a class="card-footer text-white clearfix small z-1" href="#" data-toggle="modal" data-target="#Cuestionario">
                   <h6 class="float-left">Ir a actividad</h6>
                   <span class="float-right">
                     <i class="fas fa-angle-right"></i>
@@ -358,26 +368,32 @@ $idcurso=$_POST['idcurso'];
                 </a>
               </div>
             </div>
-            <div class="col-xl-4 col-sm-8 mx-auto">
-              <div class="card text-white bg-danger o-hidden h-100">
-                <div class="card-body">
-                  <div class="card-body-icon">
-                    <i class="fas fa-fw fa-pencil-ruler"></i>
-                  </div>
-                  <h4>Evaluación</h4>
+			
+            
+				<div class="col-xl-4 col-sm-8 mx-auto" style="margin-bottom: 10px;">
+					<form action="examen.php" method="post">
+				
+				<input type='hidden' name='idcurso' value='<?php echo($idcurso);?>'>
+				<input type='hidden' name='ncurso' value='<?php echo($ncurso);?>'>
+					<div class="card text-white bg-danger o-hidden h-100">
+						<div class="card-body">
+							<div class="card-body-icon">
+								<i class="fas fa-fw fa-pencil-ruler"></i>
+							</div>
+							<h4>Evaluación</h4>
+						</div>
+						<button class=" btn card-footer text-white clearfix small z-1" type="submit">
+							<h6 class="float-left">Resolver evaluación</h6>
+							<span class="float-right">
+								<i class="fas fa-angle-right"></i>
+							</span>
+                		</button>
+                    </div>
+						</form>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
-                  <h6 class="float-left">Resolver evaluación</h6>
-                  <span class="float-right">
-                    <i class="fas fa-angle-right"></i>
-                  </span>
-                </a>
-              </div>
-            </div>
-           
+			
           </div>
         <!-- /.container-fluid -->
-
         <!-- Sticky Footer -->
         <footer class="sticky-footer">
           <div class="container my-auto">
@@ -386,13 +402,10 @@ $idcurso=$_POST['idcurso'];
             </div>
           </div>
         </footer>
-
       </div>
       <!-- /.content-wrapper -->
-
     </div>
     <!-- /#wrapper -->
-
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fas fa-angle-up"></i>
@@ -416,8 +429,108 @@ $idcurso=$_POST['idcurso'];
         </div>
       </div>
     </div>
+	<!-- Lectura Modal-->
+	<div class="modal fade bd-example-modal-lg" id="Lectura" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Lectura</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+			  <div class="row">
+			  
+					  <div class="col-lg-6 mb-6 mt-6 bg-light text-justify">
+						  
+							  <h5 class="text-center"><?php echo($ncurso); ?></h5>
+							  <p class="text-justify">
+
+								<?php
+								$lecturaleng="SELECT TextLngInd from lectura where IdCurso='$idcurso'";
+								$lecturalengcon=mysqli_query($conexion, $lecturaleng);
+								if($reslec=mysqli_fetch_row($lecturalengcon)){
+									$rslec1=trim($reslec[0]);	
+								}
+								echo(utf8_encode ($rslec1));
+								?>
+							  </p>
+					  	 
+					  </div>
+					  <div class="col-lg-6 mb-6 mt-6 bg-light text-justify">
+					 
+						  <h5 class="text-center">Español</h5>
+						  <p class="text-justify">
+							<?php
+							$lecturaleng="SELECT TextEsp from lectura where IdCurso='$idcurso'";
+							$lecturalengcon=mysqli_query($conexion, $lecturaleng);
+							if($reslec=mysqli_fetch_row($lecturalengcon)){
+								$rslec1=trim($reslec[0]);	
+							}
+							echo(utf8_encode ($rslec1));
+							?>
+					      </p>						  
+					  
+					  </div>
+					  
+				 
+		  </div>
+          <div class="modal-footer">            
+			  <button class="btn btn-secondary" type="button" data-dismiss="modal">Cerrar</button>
+          </div>
+			</div>
+        </div>
+      </div>
+    </div>
+	<div class="modal fade bd-example-modal-lg" id="Cuestionario" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Cuestionario</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+			 <div class="container-fluid">
+				 <form action="contentvid.php" method="post" >					 
+					 <input type='hidden' name='idcurso' value='<?php echo($idcurso);?>'>
+					 <input type='hidden' name='ncurso' value='<?php echo($ncurso);?>'>
+					 
+					 
+				 	
+				 <?php 
+				 $pregunta="SELECT Nombre, Pregunta1, Pregunta2, Pregunta3, Pregunta4, Pregunta5, Pregunta6, Pregunta7, Pregunta8 FROM cuestionario WHERE IdCurso='$idcurso'";
+				 $consulpreg=mysqli_query($conexion, $pregunta);
+				 if($arraypreg=mysqli_fetch_array($consulpreg)){
+					 $npreg=1;
+					 echo("<h5 class='text-center'><b>");
+					 echo($arraypreg['Nombre']);
+					 echo("</h5></b>");
+					 while($npreg<=8){
+						 $pregunta="Pregunta".$npreg;
+						 echo("<div class='form-group'>
+						 <label class='form-check-label'>");
+						 echo(utf8_encode( $arraypreg[$pregunta]));
+						 echo("</label>
+							 <input class='form-control' type='text' name='Respuesta$npreg' placeholder='Respuesta' required>
+						 </div>");
+						 $npreg++;
+					 }
+				 }
+				 ?>
+					 <input type="submit" class="btn btn-primary" value="Enviar Respuestas">
+				</form>
+			  </div>
+          <div class="modal-footer">            
+			  <button class="btn btn-secondary" type="button" data-dismiss="modal">Cerrar</button>
+          </div>
+			</div>
+        </div>
+      </div>
+    </div>
 	
-	  
 	    <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -426,7 +539,19 @@ $idcurso=$_POST['idcurso'];
     
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin.min.js"></script>
-	
+	<?php
+	  error_reporting(0);
+	  $respuesta1=$_POST['Respuesta1'];
+	  $respuesta2=$_POST['Respuesta2'];
+	  $respuesta3=$_POST['Respuesta3'];
+	  $respuesta4=$_POST['Respuesta4'];
+	  $respuesta5=$_POST['Respuesta5'];
+	  $respuesta6=$_POST['Respuesta6'];
+	  $respuesta7=$_POST['Respuesta7'];
+	  $respuesta8=$_POST['Respuesta8'];
+	  $INSERTAR="insert into respcues (IdCurso, IdEstudiante, Respuesta1, Respuesta2, Respuesta3, Respuesta4, Respuesta5, Respuesta6,Respuesta7, Respuesta8) VALUES('$idcurso', '$iduser', '$respuesta1', '$respuesta2', '$respuesta3', '$respuesta4','$respuesta5', '$respuesta6', '$respuesta7', '$respuesta8')";
+	  $ConsultaInsersion=mysqli_query($conexion, $INSERTAR);
+	  ?>
   </body>
 
 </html>

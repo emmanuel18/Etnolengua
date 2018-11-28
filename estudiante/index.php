@@ -183,13 +183,13 @@ if ($_SESSION['id']==null){
 
           <!-- Breadcrumbs-->
           
-            <center><h2>¿Qué deseas aprender hoy?</h2></center>
+            <center><h2 class="breadcrumb text-center">¿Qué deseas aprender hoy?</h2></center>
           
 
           <!-- Page Content -->
 		<center>
-          <div class="row container-fluid">
-					  <div class="card text-center mr-auto" style=" width: 15rem; margin-top: 7px;">
+          <div class="row container-fluid mx-auto">
+					  <div class="card text-center mr-4" style=" width: 15rem; margin-top: 7px;">
 						<img class="card-img-top" src="../images/mixe.png" alt="mixe" height="160" width="286px">
 						  <div class="card-body" style="background-color: #EFEFEF">
 							<h5 class="card-title">Mixe</h5>
@@ -198,7 +198,7 @@ if ($_SESSION['id']==null){
 						  </div>
 					  </div>
 								 
-					  <div class="card text-center mr-auto" style=" width: 15rem; margin-top: 7px;">
+					  <div class="card text-center mr-4" style=" width: 15rem; margin-top: 7px;">
 						<img class="card-img-top" src="../images/nahuatl.png" alt="nahuatl" height="160" width="286px">
 						  <div class="card-body" style="background-color: #EFEFEF">
 							<h5 class="card-title">Nahuatl</h5>
@@ -207,7 +207,7 @@ if ($_SESSION['id']==null){
 						  </div>
 					  </div>
 				  
-					  <div class="card text-center mr-auto" style=" width: 15rem; margin-top: 7px;">
+					  <div class="card text-center mr-4" style=" width: 15rem; margin-top: 7px;">
 						<img class="card-img-top" src="../images/yum.png" alt="chol" height="160" width="286px">
 						  <div class="card-body" style="background-color: #EFEFEF">
 							<h5 class="card-title">Chol</h5>
@@ -218,9 +218,10 @@ if ($_SESSION['id']==null){
 				 
 				       
 				  <?php
-						$cursos="SELECT Nombre, Descripcion, Presentacion From Cursos ";
+						$cursos="SELECT IdCurso, Nombre, Descripcion, Presentacion From Cursos ";
 						$nomcur=mysqli_query($conexion, $cursos);
 						while ($arrayres=mysqli_fetch_array($nomcur)){
+							
 							echo "<form action='learn.php' method='post'>";
 							echo "<div class='card text-center mr-4' style=' width: 15rem; margin-top: 7px;'>";						
 							echo "<img class='card-img-top' src='../profesor/php/bdfiles/"; 
@@ -231,6 +232,9 @@ if ($_SESSION['id']==null){
 							echo utf8_encode ($arrayres["Nombre"]);
 							echo "<input type='hidden' name='nombre' value='";
 							echo utf8_encode ($arrayres["Nombre"]);
+							echo "'>";
+							echo "<input type='hidden' name='idcurso' value='";
+							echo utf8_encode ($arrayres["IdCurso"]);
 							echo "'>";
 							echo "</h5>";
 							echo "<p class='card-text'>";

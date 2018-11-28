@@ -88,16 +88,17 @@ if (isset($_SESSION['id'])){
           </div>
         </div>
       </div>
-	  <div class="row">
+	  <div class="row jumbotron1">
+		  
           <div class="col-sm-6 col-lg-6">
             <blockquote class="blockquote">
-              <p class="mb-0">Etnolengua es una plataforma donde se aprende una lengua indígena de manera eficiente, eficaz y divertida. El material didáctico está diseñado para cada tipo de alumno y el vocabulario está estructurado desde el más básico al más avanzado.</p>
+              <p class="mb-0 text-justify">Etnolengua es una plataforma donde se aprende una lengua indígena de manera eficiente, eficaz y divertida. El material didáctico está diseñado para cada tipo de alumno y el vocabulario está estructurado desde el más básico al más avanzado.</p>
              
             </blockquote>
           </div>
           <div class="col-sm-6 col-lg-6">
             <blockquote class="blockquote">
-              <p class="mb-0">Etnolengua es una organización que cuenta con estudiantes de lingüística que se dedica a la investigación y documentación de lenguas indígenas.</p>
+              <p class="mb-0 text-justify">Etnolengua es una organización que cuenta con estudiantes de lingüística que se dedica a la investigación y documentación de lenguas indígenas.</p>
                
             </blockquote>
                

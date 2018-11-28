@@ -3,24 +3,26 @@ session_start();
 $id=$_SESSION['id'];
 $cr=$_SESSION['Correo'];
 $ps=$_SESSION['Password'];
+$iduser=$_SESSION['IdSesion'];
 $Query="SELECT Nombre FROM userestudiante WHERE Correo='$cr'";
 $conexion = mysqli_connect("localhost", "etnoleng_emmanue", "estrada_18", "etnoleng_mixe");
 $qr=mysqli_query($conexion,$Query);
 if($rw=mysqli_fetch_row($qr)){
-	$rs=trim($rw[0]);	
+	$rs=trim($rw[0]);
+	
 }
 if ($_SESSION['id']==null){
 	header('location: ../index.php');
 }
 
-$ncurso=$_POST['nombre'];
+$ncurso=$_POST['ncurso'];
 $idcurso=$_POST['idcurso'];
 ?>
 <!DOCTYPE html>
 <html lang="es">
 
   <head>
-
+    
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -87,7 +89,14 @@ $idcurso=$_POST['idcurso'];
             <i class="fas fa-envelope fa-fw"></i>
             <span class="badge badge-danger">7</span>
           </a>
-			
+			<!--
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+          -->
         </li>
         <li class="nav-item dropdown no-arrow">
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -159,12 +168,7 @@ $idcurso=$_POST['idcurso'];
 				
 			</div>
         </li>
-		<li class="nav-item">
-          <a class="nav-link" data-toggle="modal" data-target="#bot">
-            <i class="fas fa-fw fa-robot"></i>
-            <span>Bot(beta)</span>
-          </a>
-        </li>
+		
         <!--<li class="nav-item">
           <a class="nav-link" href="index.html">
             <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -173,53 +177,100 @@ $idcurso=$_POST['idcurso'];
         </li>-->
       </ul>
 
-      <div id="content-wrapper" class="bg-light">
-
-        <div class="container-fluid align-content-center">
-
-          <div class="container-fluid text-center">
+      <div id="content-wrapper">
+		  <div class="container-fluid text-center">
 			  <h2 class="btn-info btn-block btn-lg" style="font-size: 25px;"><i class="fas fa-chalkboard-teacher" style="color: #1B1E49;"></i> Curso: <?php echo($ncurso); ?></h2>
 		  </div>
-          <!-- Page Content -->
-		<center>
-          <div class="mr-auto">
-			  <div class="jumbotron-fluid text-center mx-auto container-fluid">
-				  <div class="container-fluid">
-					  <p><b>Descripción: </b>
-						  <?php 
-						  
-							$descripcion="SELECT Descripcion FROM Cursos where  IdCurso='$idcurso'";
-							$foto1="SELECT Presentacion FROM Cursos where IdCurso='$idcurso'";
-							$condes=mysqli_query($conexion, $descripcion);
-							$foto2=mysqli_query($conexion, $foto1);
-							if($xondes1=mysqli_fetch_row($condes)){
-								$condes1=trim($xondes1[0]);	
-							}
-							if($foto3=mysqli_fetch_row($foto2)){
-								$foto1=trim($foto3[0]);	
-							}
-							echo(utf8_encode ($condes1));
-						  ?>
-					  </p>
-				  </div>
-				  <div class="figure-img">
-			  	  	<img src="../profesor/php/bdfiles/<?php echo($foto1) ?>" class="rounded img-fluid" width="auto" height="350">
-				  </div>
-				  <div class="form-group">
-					  <form action="contentgallery.php" method="post">
-					  <form action="contentgallery.php" method="post">
-						  <input type="hidden" name="ncurso" value="<?php echo($ncurso); ?>">
-						  <button class="btn btn-primary" type="submit"><i class="fas fa-arrow-circle-right"></i> Comenzar curso</button>					  
-					  </form>				  	
-				  </div>  
-			  </div>
+
+          <div class="bg-white">
+			
+			<?php
+				
+				$consultvid="SELECT Nombre From archivo where IdCurso='$idcurso' AND Tipo='video'";
+				$vid=mysqli_query($conexion, $consultvid);
+			?>
+		    <div class="col-12 col-md-8 mx-auto">
+				<div class="container">
+					<div class="text-center">
+					  <h3>Evaluación</h3>
+					</div>
+					<form action="examen2.php" method="post" >
+						<input type='hidden' name='idcurso' value='<?php echo($idcurso);?>'>
+				 		<input type='hidden' name='ncurso' value='<?php echo($ncurso);?>'>
+						<div class='jumbotron'>
+							<?php
+						 $cont=0;
+						 $Evaluacion="SELECT Pregunta, Resp1, Resp2, Resp3, RespC from examen where IdCurso='$idcurso' LIMIT $cont, 1";
+						 $consultaEval=mysqli_query($conexion, $Evaluacion);
+
+						 
+						 if($row4=mysqli_fetch_array($consultaEval)){
+							 
+							 
+							 echo("<h5>");	
+							 echo($row4['Pregunta']);
+							 echo("</h5>");
+
+
+							 echo("<input type='radio' name='resp' value='");
+							 echo($row4['Resp1']);	  
+							 echo("' required>");
+							 echo("<label>");
+							 echo($row4['Resp1']);
+							 echo("</label>");
+							 echo("<br>");
+
+							 echo("<input type='radio' name='resp' value='");
+							 echo($row4['Resp2']);	  
+							 echo("'>");
+							 echo("<label>");
+							 echo($row4['Resp2']);
+							 echo("</label>");
+							 echo("<br>");
+
+							 echo("<input type='radio' name='resp' value='");
+							 echo($row4['Resp3']);	  
+							 echo("'>");
+							 echo("<label>");
+							 echo($row4['Resp3']);
+							 echo("</label>");
+							 echo("<br>");
+
+							 echo("<input type='radio' name='resp' value='");
+							 echo($row4['RespC']);	  
+							 echo("'>");
+							 echo("<label>");
+							 echo($row4['RespC']);
+							 echo("</label>");
+
+							 
+							 
+						 }
+						 $cont++;
+						 ?>
+							</div>
+						 <input type='hidden' name='contador' value='<?php echo($cont);?>'>
+						
+							<button class="btn btn-primary" type="submit">Siguiente Pregunta   <i class="fas fa-arrow-circle-right"></i></button>
+						
+
+				 		
+					</form>
+                </div>
+            </div>
+						
+		</div> 
+			  
+			  
 			    
 			 </div>
-			</div>
-		</center>
-        </div>
-        <!-- /.container-fluid -->
+			
 
+		
+		
+        
+		
+        <!-- /.container-fluid -->
         <!-- Sticky Footer -->
         <footer class="sticky-footer">
           <div class="container my-auto">
@@ -228,54 +279,15 @@ $idcurso=$_POST['idcurso'];
             </div>
           </div>
         </footer>
-
       </div>
       <!-- /.content-wrapper -->
-
     </div>
     <!-- /#wrapper -->
-
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fas fa-angle-up"></i>
     </a>
-	<!-- Bot -->
-	<div class="modal fade bd-example-modal-lg" id="bot" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-robot text-primary"></i> Yolkan</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">X</span>
-            </button>
-          </div>
-          <div class="modal-body">
-			  <div class="form-group">
-    			<h1>Yolkan</h1>
-    				<p>Pulsa el botón de "hablar" para iniciar el reconocimiento, al finalizar pulsa "detener".</p>
-					<div class="form-group">
-    				<center><button onClick="testSpeech()" class="btn btn-success form"><i class="fa fa-microphone"></i>Comenzar prueba</button></center> </div>
-
-    				
-						<div class="form-group">
-        				<textarea class="phrase form-control bg-light" rows="2">Palabra...</textarea>
-						</div>
-						<div class="form-group">
-        				<textarea class="result form-control" rows="2">Correcto o Incorrecto</textarea>
-						</div>
-						<div class="form-group">
-        				<textarea class="output form-control" rows="2">...diagnóstico</textarea>
-						</div>
-    				
-
-    				<script src="script.js"></script>
-			  
-			
-		  		</div>
-          
-        </div>
-      </div>
-		</div></div>
+	
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -294,67 +306,18 @@ $idcurso=$_POST['idcurso'];
         </div>
       </div>
     </div>
-
-	  
+	<!-- Lectura Modal-->
+	
+	
 	    <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
+    
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin.min.js"></script>
-	<script src="js/script.js"></script>
+	
   </body>
-<!--<script type="text/javascript">
 
-	var recognition;
-	var recognizing = false;
-	if (!('webkitSpeechRecognition' in window)) {
-		alert("¡API no soportada!");
-	} else {
-
-		recognition = new webkitSpeechRecognition();
-		recognition.lang = "es-VE";
-		recognition.continuous = true;
-		recognition.interimResults = true;
-
-		recognition.onstart = function() {
-			recognizing = true;
-			console.log("empezando a eschucar");
-		}
-		recognition.onresult = function(event) {
-
-		 for (var i = event.resultIndex; i < event.results.length; i++) {
-			if(event.results[i].isFinal)
-				document.getElementById("texto").value += event.results[i][0].transcript;
-		    }
-			
-			//texto
-		}
-		recognition.onerror = function(event) {
-		}
-		recognition.onend = function() {
-			recognizing = false;
-			document.getElementById("procesar").innerHTML = "<i class='fa fa-microphone'></i> Hablar";
-			console.log("terminó de eschucar, llegó a su fin");
-
-		}
-
-	}
-
-	function procesar() {
-
-		if (recognizing == false) {
-			recognition.start();
-			recognizing = true;
-			document.getElementById("procesar").innerHTML = "<i class='fa fa-microphone'></i> Detener";
-		} else {
-			recognition.stop();
-			recognizing = false;
-			document.getElementById("procesar").innerHTML = "<i class='fa fa-microphone'></i> Hablar";
-		}
-	}
-</script> -->
 </html>

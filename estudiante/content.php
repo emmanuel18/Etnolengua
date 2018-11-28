@@ -13,14 +13,18 @@ if ($_SESSION['id']==null){
 	header('location: ../index.php');
 }
 
-$ncurso=$_POST['nombre'];
+$ncurso=$_POST['ncurso'];
 $idcurso=$_POST['idcurso'];
+$narchivo=$_POST['nomarch'];
+$nleccion=$_POST['nleccion'];
+$tipo=$_POST['tipo'];
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
 
   <head>
-
+    
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -87,7 +91,14 @@ $idcurso=$_POST['idcurso'];
             <i class="fas fa-envelope fa-fw"></i>
             <span class="badge badge-danger">7</span>
           </a>
-			
+			<!--
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+          -->
         </li>
         <li class="nav-item dropdown no-arrow">
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -159,12 +170,7 @@ $idcurso=$_POST['idcurso'];
 				
 			</div>
         </li>
-		<li class="nav-item">
-          <a class="nav-link" data-toggle="modal" data-target="#bot">
-            <i class="fas fa-fw fa-robot"></i>
-            <span>Bot(beta)</span>
-          </a>
-        </li>
+		
         <!--<li class="nav-item">
           <a class="nav-link" href="index.html">
             <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -173,51 +179,222 @@ $idcurso=$_POST['idcurso'];
         </li>-->
       </ul>
 
-      <div id="content-wrapper" class="bg-light">
-
-        <div class="container-fluid align-content-center">
-
-          <div class="container-fluid text-center">
+      <div id="content-wrapper">
+		  <div class="container-fluid text-center">
 			  <h2 class="btn-info btn-block btn-lg" style="font-size: 25px;"><i class="fas fa-chalkboard-teacher" style="color: #1B1E49;"></i> Curso: <?php echo($ncurso); ?></h2>
 		  </div>
-          <!-- Page Content -->
-		<center>
-          <div class="mr-auto">
-			  <div class="jumbotron-fluid text-center mx-auto container-fluid">
-				  <div class="container-fluid">
-					  <p><b>Descripción: </b>
-						  <?php 
-						  
-							$descripcion="SELECT Descripcion FROM Cursos where  IdCurso='$idcurso'";
-							$foto1="SELECT Presentacion FROM Cursos where IdCurso='$idcurso'";
-							$condes=mysqli_query($conexion, $descripcion);
-							$foto2=mysqli_query($conexion, $foto1);
-							if($xondes1=mysqli_fetch_row($condes)){
-								$condes1=trim($xondes1[0]);	
-							}
-							if($foto3=mysqli_fetch_row($foto2)){
-								$foto1=trim($foto3[0]);	
-							}
-							echo(utf8_encode ($condes1));
-						  ?>
-					  </p>
-				  </div>
-				  <div class="figure-img">
-			  	  	<img src="../profesor/php/bdfiles/<?php echo($foto1) ?>" class="rounded img-fluid" width="auto" height="350">
-				  </div>
-				  <div class="form-group">
-					  <form action="contentgallery.php" method="post">
-					  <form action="contentgallery.php" method="post">
-						  <input type="hidden" name="ncurso" value="<?php echo($ncurso); ?>">
-						  <button class="btn btn-primary" type="submit"><i class="fas fa-arrow-circle-right"></i> Comenzar curso</button>					  
-					  </form>				  	
-				  </div>  
+
+          <div class="bg-white">
+			
+			<?php
+				
+				$consultvid="SELECT Nombre From archivo where IdCurso='$idcurso' AND Tipo='video'";
+				$vid=mysqli_query($conexion, $consultvid);
+			?>
+		   
+			  <div class="text-center">
+				  <h3>Leccion: <?php echo($nleccion); ?></h3>
+				  <?php 
+				  if($tipo=='video'){
+					  echo("<video class='img-fluid' width='720' height='auto' controls>
+						<source src='../profesor/uploadvideo/uploads/$narchivo' type=video/mp4>
+				  		</video>");					  
+				  }elseif($tipo=='documento'){
+					  echo("<iframe class='embed-responsive w-75 mx-auto' height='500' src='../profesor/uploaddoc/uploads/$narchivo'></iframe>");
+				  }
+				  elseif($tipo=='audio'){
+					  echo("<audio controls>
+					  <source src='../profesor/uploadaudio/uploads/$narchivo' type='audio/mp3'>
+				  		</audio>");
+				  }else{
+					  echo("<p>:( No hay mas contenido en el curso</p><p>Si ya haz visto todas las lecciones realiza las actividades y no la evaluación</p>");
+				  }
+				  ?>
+				   
 			  </div>
 			    
 			 </div>
-			</div>
-		</center>
-        </div>
+			
+		
+		<div class="container-fluid text-center">
+			<h2 class="btn-info btn-block btn-lg" style="font-size: 25px;"><i class="fas fa-play-circle" style="color: #1B1E49;"></i>  Contenido</h2>
+		</div>
+		  <br>
+		<div class="container row text-center">
+			  <table class="mx-auto text-center">
+				  <thead>
+					  <tr>
+						  <th class="btn btn-success w-100">
+							  <i class='fas fa-video'> </i>
+							  Videos								  
+						  </th>
+
+					  </tr>
+				  </thead>
+				  <tbody>
+					  <tr>
+						  <?php 
+						  $consultvid="SELECT Nombre From archivo where IdCurso='$idcurso' AND Tipo='video'";
+						  $vid=mysqli_query($conexion, $consultvid);
+						  $leccion=0;
+						  while ($arrayvid=mysqli_fetch_array($vid)){
+							  $leccion++;								 
+							  echo("<tr>");
+							  echo("<th>");
+							  echo("<form action='content.php' method='post'>");
+							  echo("<input type='hidden' name='idcurso' value='$idcurso'><input type='hidden' name='nomarch' value='");
+							  echo($arrayvid['Nombre']);
+							  echo("'><input type='hidden' name='ncurso' value='$ncurso'>");
+							  echo("<input type='hidden' name='nleccion' value='$leccion'>");
+							  echo("<input type='hidden' name='tipo' value='video'>");
+							  echo("<button type='submit' class='btn btn-outline-success'>");
+							  echo("<i class='fas fa-video'> </i>");
+							  echo("  Lección: ");
+							  echo($leccion);
+							  echo("</button></form>");
+							  echo("</th>");
+							  echo("</tr>");
+
+						  }
+						  ?>
+						 
+					 </tr>
+				  </tbody>
+				</table>
+			  <table class="mx-auto">
+				  <thead>
+					  <tr>
+						  <th class="btn-danger btn w-100">
+							  <i class='fas fa-volume-up'></i>
+							  Audios								  
+						  </th>
+
+					  </tr>
+				  </thead>
+				  <tbody>
+					  <tr>
+						 <?php 
+						  $consultvid="SELECT Nombre From archivo where IdCurso='$idcurso' AND Tipo='audio'";
+						  $vid=mysqli_query($conexion, $consultvid);
+						  $leccion=0;
+						  while ($arrayvid=mysqli_fetch_array($vid)){
+							  $leccion++;								 
+							  echo("<tr>");
+							  echo("<th>");
+							  echo("<form action='content.php' method='post'>");
+							  echo("<input type='hidden' name='idcurso' value='$idcurso'><input type='hidden' name='nomarch' value='");
+							  echo($arrayvid['Nombre']);
+							  echo("'><input type='hidden' name='ncurso' value='$ncurso'>");
+							  echo("<input type='hidden' name='nleccion' value='$leccion'>");
+							  echo("<input type='hidden' name='tipo' value='audio'>");
+							  echo("<button type='submit' class='btn btn-outline-danger'>");
+							  echo("<i class='fas fa-volume-up'> </i>");
+							  echo("  Lección: ");
+							  echo($leccion);
+							  echo("</button></form>");
+							  echo("</th>");
+							  echo("</tr>");
+
+						  }
+						  ?>
+					 </tr>
+				  </tbody>
+				</table>	
+			  <table class="mx-auto">
+				  <thead >
+					  <tr>
+						  <th class="btn btn-primary">
+							  <i class='fas fa-file-word'></i>
+							  Documentos								  
+						  </th>
+
+					  </tr>
+				  </thead>
+				  <tbody>
+					  <tr>
+						  <?php 
+						  $consultvid="SELECT Nombre From archivo where IdCurso='$idcurso' AND Tipo='documento'";
+						  $vid=mysqli_query($conexion, $consultvid);
+						  $leccion=0;
+						  while ($arrayvid=mysqli_fetch_array($vid)){
+							  $leccion++;								 
+							  echo("<tr>");
+							  echo("<th>");
+							  echo("<form action='content.php' method='post'>");
+							  echo("<input type='hidden' name='idcurso' value='$idcurso'><input type='hidden' name='nomarch' value='");
+							  echo($arrayvid['Nombre']);
+							  echo("'><input type='hidden' name='ncurso' value='$ncurso'>");
+							  echo("<input type='hidden' name='nleccion' value='$leccion'>");
+							  echo("<input type='hidden' name='tipo' value='documento'>");
+							  echo("<button type='submit' class='btn btn-outline-primary w-100'>");
+							  echo("<i class='fas fa-file-word'> </i>");
+							  echo("  Lección: ");
+							  echo($leccion);
+							  echo("</button></form>");
+							  echo("</th>");
+							  echo("</tr>");
+
+						  }
+						  ?>
+					 </tr>
+				  </tbody>
+				</table>	
+		  </div>  
+        <div class="container-fluid text-center">
+			<h2  class="btn-info btn-block btn-lg" style="font-size: 25px;"><i class="fas fa-edit" style="color: #1B1E49;"></i>Actividades</h2>
+		</div>
+		  <br>
+		<div class="form-group container row text-center">
+            <div class="col-xl-4 col-sm-8 mx-auto">
+              <div class="card text-white bg-primary o-hidden h-100">
+                <div class="card-body">
+                  <div class="card-body-icon">
+                    <i class="fas fa-fw fa-book-reader"></i>
+                  </div>
+                  <h4>Lectura</h4>
+                </div>
+                <a class="card-footer text-white clearfix small z-1" href="#">
+                  <h6 class="float-left">Ir a actividad</h6>
+                  <span class="float-right">
+                    <i class="fas fa-angle-right"></i>
+                  </span>
+                </a>
+              </div>
+            </div>
+            <div class="col-xl-4 col-sm-8 mx-auto">
+              <div class="card text-white bg-dark o-hidden h-100">
+                <div class="card-body">
+                  <div class="card-body-icon">
+                    <i class="fas fa-fw fa-question-circle"></i>
+                  </div>
+                  <h4>Cuestionario</h4>
+                </div>
+                <a class="card-footer text-white clearfix small z-1" href="#">
+                  <h6 class="float-left">Ir a actividad</h6>
+                  <span class="float-right">
+                    <i class="fas fa-angle-right"></i>
+                  </span>
+                </a>
+              </div>
+            </div>
+            <div class="col-xl-4 col-sm-8 mx-auto">
+              <div class="card text-white bg-danger o-hidden h-100">
+                <div class="card-body">
+                  <div class="card-body-icon">
+                    <i class="fas fa-fw fa-pencil-ruler"></i>
+                  </div>
+                  <h4>Evaluación</h4>
+                </div>
+                <a class="card-footer text-white clearfix small z-1" href="#">
+                  <h6 class="float-left">Resolver evaluación</h6>
+                  <span class="float-right">
+                    <i class="fas fa-angle-right"></i>
+                  </span>
+                </a>
+              </div>
+            </div>
+           
+          </div>
         <!-- /.container-fluid -->
 
         <!-- Sticky Footer -->
@@ -239,43 +416,7 @@ $idcurso=$_POST['idcurso'];
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fas fa-angle-up"></i>
     </a>
-	<!-- Bot -->
-	<div class="modal fade bd-example-modal-lg" id="bot" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-robot text-primary"></i> Yolkan</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">X</span>
-            </button>
-          </div>
-          <div class="modal-body">
-			  <div class="form-group">
-    			<h1>Yolkan</h1>
-    				<p>Pulsa el botón de "hablar" para iniciar el reconocimiento, al finalizar pulsa "detener".</p>
-					<div class="form-group">
-    				<center><button onClick="testSpeech()" class="btn btn-success form"><i class="fa fa-microphone"></i>Comenzar prueba</button></center> </div>
-
-    				
-						<div class="form-group">
-        				<textarea class="phrase form-control bg-light" rows="2">Palabra...</textarea>
-						</div>
-						<div class="form-group">
-        				<textarea class="result form-control" rows="2">Correcto o Incorrecto</textarea>
-						</div>
-						<div class="form-group">
-        				<textarea class="output form-control" rows="2">...diagnóstico</textarea>
-						</div>
-    				
-
-    				<script src="script.js"></script>
-			  
-			
-		  		</div>
-          
-        </div>
-      </div>
-		</div></div>
+	
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -294,67 +435,17 @@ $idcurso=$_POST['idcurso'];
         </div>
       </div>
     </div>
-
+	
 	  
 	    <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
+    
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin.min.js"></script>
-	<script src="js/script.js"></script>
+	
   </body>
-<!--<script type="text/javascript">
 
-	var recognition;
-	var recognizing = false;
-	if (!('webkitSpeechRecognition' in window)) {
-		alert("¡API no soportada!");
-	} else {
-
-		recognition = new webkitSpeechRecognition();
-		recognition.lang = "es-VE";
-		recognition.continuous = true;
-		recognition.interimResults = true;
-
-		recognition.onstart = function() {
-			recognizing = true;
-			console.log("empezando a eschucar");
-		}
-		recognition.onresult = function(event) {
-
-		 for (var i = event.resultIndex; i < event.results.length; i++) {
-			if(event.results[i].isFinal)
-				document.getElementById("texto").value += event.results[i][0].transcript;
-		    }
-			
-			//texto
-		}
-		recognition.onerror = function(event) {
-		}
-		recognition.onend = function() {
-			recognizing = false;
-			document.getElementById("procesar").innerHTML = "<i class='fa fa-microphone'></i> Hablar";
-			console.log("terminó de eschucar, llegó a su fin");
-
-		}
-
-	}
-
-	function procesar() {
-
-		if (recognizing == false) {
-			recognition.start();
-			recognizing = true;
-			document.getElementById("procesar").innerHTML = "<i class='fa fa-microphone'></i> Detener";
-		} else {
-			recognition.stop();
-			recognizing = false;
-			document.getElementById("procesar").innerHTML = "<i class='fa fa-microphone'></i> Hablar";
-		}
-	}
-</script> -->
 </html>
