@@ -1,6 +1,7 @@
 <?php
 $idcurso=$_POST['idcurso'];
 $tipo=$_POST['tipo'];
+$unidad=$_POST['unidad'];
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -49,6 +50,7 @@ $tipo=$_POST['tipo'];
 							
 							<input type="hidden" name="idcurso" value="<?php echo($idcurso); ?>">
 							<input type="hidden" name="tipo" value="<?php echo($tipo); ?>">
+							<input type="hidden" value="<?php echo($unidad); ?>" name="unidad">
                             <div class="clearfix"></div>
 							
 								<button class="btn btn-danger btn-lg pull-left " id="reset" type="button" ><i class="fa fa-history"></i> Clear</button>

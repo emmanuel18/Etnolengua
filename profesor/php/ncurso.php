@@ -14,7 +14,7 @@ $Variante=$_POST['Variante'];
 $Nivel=$_POST['Nivel'];
 
 if (move_uploaded_file($_FILES['foto'] ['tmp_name'], $Target_file)) {
-	echo 'Error ';
+	
 	$Presentacion=$_FILES['foto']['name'];
 	$Query=utf8_decode("INSERT INTO  cursos (IdProfesor, Nombre, Descripcion, Presentacion, Lengua, Variante, Nivel) VALUES ('$IdProfesor', '$Nombre', '$Descripcion', '$Presentacion', '$Lengua', '$Variante', '$Nivel')");
 	$consulta=mysqli_query($conexion, $Query);
@@ -22,7 +22,7 @@ if (move_uploaded_file($_FILES['foto'] ['tmp_name'], $Target_file)) {
     	echo 'Error ';
        	echo($consulta);
        	}else{
-			echo '<script languaje="javascript">alert("Curso creado exitosamente... Entrar a la sección ´Mis cursos´ para agregar contenido a tu curso.");
+			echo '<script languaje="javascript">alert("Curso creado exitosamente... Entrar a la sección ´Mis cursos´ para agregar contenido a tu curso. El curso será publicado hasta que hayas creado por lo menos una actividad por Unidad.");
 			window.location.href="../Cursos.php";
 			</script>';
 	}

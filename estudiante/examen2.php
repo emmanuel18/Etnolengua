@@ -194,68 +194,117 @@ $idcurso=$_POST['idcurso'];
 					<div class="text-center">
 					  <h3>Evaluación</h3>
 					</div>
-					<form action="examen.php" method="post" >
+					<div class="form-group">
+					<form action="examen2.php" method="post" class="mx-auto">
 						<input type='hidden' name='idcurso' value='<?php echo($idcurso);?>'>
 				 		<input type='hidden' name='ncurso' value='<?php echo($ncurso);?>'>
 						<div class='jumbotron'>
 							<?php
-						 $cont=0;
-						 $Evaluacion="SELECT Pregunta, Resp1, Resp2, Resp3, RespC from examen where IdCurso='$idcurso' LIMIT $cont, 1";
-						 $consultaEval=mysqli_query($conexion, $Evaluacion);
+							 $resp=$_POST['resp'];
+							 $cont=$_POST['contador'];
+							 $pregunta=$_POST['preg'];
+							 $contrue=$_POST['contrue'];
+							 $correc="SELECT RespC from examen where Pregunta='$pregunta'";
+							 $querycorrec=mysqli_query($conexion, $correc);
+							 if($row5=mysqli_fetch_array($querycorrec)){
+								 $rw5=trim($row5[0]);
+								 if($resp==$rw5){
+									$contrue=$contrue+1; 
+								 }
+							 }
+							
+							
+							 $Evaluacion="SELECT Pregunta, Resp1, Resp2, Resp3, RespC from examen where IdCurso='$idcurso' LIMIT $cont, 1";
+							 $consultaEval=mysqli_query($conexion, $Evaluacion);
 
-						 
-						 if($row4=mysqli_fetch_array($consultaEval)){
+							 if($row4=mysqli_fetch_array($consultaEval)){
+
+								 echo("<h5>");	
+								 echo($row4['Pregunta']);
+								 echo("</h5>");
+
+								 echo("<input type='radio' name='resp' value='");
+								 echo($row4['Resp1']);	  
+								 echo("'>");
+								 echo("<label>");
+								 echo($row4['Resp1']);
+								 echo("</label>");
+								 echo("<br>");
+
+								 echo("<input type='radio' name='resp' value='");
+								 echo($row4['Resp2']);	  
+								 echo("'>");
+								 echo("<label>");
+								 echo($row4['Resp2']);
+								 echo("</label>");
+								 echo("<br>");
+
+								 echo("<input type='radio' name='resp' value='");
+								 echo($row4['Resp3']);	  
+								 echo("'>");
+								 echo("<label>");
+								 echo($row4['Resp3']);
+								 echo("</label>");
+								 echo("<br>");
+
+								 echo("<input type='radio' name='resp' value='");
+								 echo($row4['RespC']);	  
+								 echo("'>");
+								 echo("<label>");
+								 echo($row4['RespC']);
+								 echo("</label>");
+								 
+								 echo("<input type='hidden' name='preg' value='");
+							     echo($row4['Pregunta']);	  
+							     echo("'>");
+								 echo("<input type='hidden' name='contrue' value='");
+							     echo($contrue);	  
+							     echo("'>");
+								 $cont++;
+								 echo("</div><input type='hidden' name='contador' value='$cont'>");
+								 echo("<button class='btn btn-primary' type='submit'>Siguiente Pregunta   <i class='fas fa-arrow-circle-right'></i></button></form>");
+								 
+							 }else{
+								 $npregun="select count(*) from examen where idcurso='$idcurso'";
+								 $consultapreg=mysqli_query($conexion, $npregun);							 
+								 if($pre=mysqli_fetch_array($consultapreg)){
+								 	$npreg=trim($pre[0]);								 
+							 	 }
+								 $calif=($contrue/$npreg)*10;
+								 if($calif>=8){
+									 echo("<center><h5>¡Felicidades!, tu puntaje es de ".round($calif, 2)."/10 </h5>");
+								 	 echo("<i class='fas fa-grin-stars text-success fa-10x'></i> <p>Sigue preparandote tomando otro de nuestros curso.</p></center>");
+								 }elseif($calif<8&&$calif>6){
+									 echo("<center><h5>Tu puntaje es de ".round($calif, 2)."/10 </h5>");
+								 	 echo("<i class='fas fa-smile-wink text-success fa-10x'></i> <p>Puedes volver a hacer la evaluación o tomar otro de nuestros cursos.</p></center>");
+								 }elseif($calif<=6){
+									 echo("<center><h5>¡Ups!, tu puntaje es de ".round($calif, 2)."/10 </h5>");
+								 	 echo("<i class='far fa-grin-beam-sweat text-primary fa-10x'></i><p> Te recomendamos repasar otra vez las lecciones.</p><p>Pero no te preocupes lo puedes seguir intentando cuantas veces sea necesario.</p><p>¡Te deseamos mucho exito!</p></center>");
+								 }
+								 
+								 					 
+								 echo("</div>");
+								 echo("</form><form action='regiscalif.php' method='post'>");
+								 
+								 echo("<input type='hidden' name='user' value='$iduser'>
+									<input type='hidden' name='calif' value='");
+								 echo(round($calif, 2));
+								 echo("'>
+									<button class='btn btn-success' type='submit'>Volver a 'Cursos' <i class='fas fa-undo'></i></button>
+									</form>");
+								 
+								 
+							 }
+											
 							 
-							 
-							 echo("<h5>");	
-							 echo($row4['Pregunta']);
-							 echo("</h5>");
-
-
-							 echo("<input type='radio' name='resp1' value='");
-							 echo($row4['Resp1']);	  
-							 echo("'>");
-							 echo("<label>");
-							 echo($row4['Resp1']);
-							 echo("</label>");
-							 echo("<br>");
-
-							 echo("<input type='radio' name='resp3' value='");
-							 echo($row4['Resp2']);	  
-							 echo("'>");
-							 echo("<label>");
-							 echo($row4['Resp2']);
-							 echo("</label>");
-							 echo("<br>");
-
-							 echo("<input type='radio' name='resp3' value='");
-							 echo($row4['Resp3']);	  
-							 echo("'>");
-							 echo("<label>");
-							 echo($row4['Resp3']);
-							 echo("</label>");
-							 echo("<br>");
-
-							 echo("<input type='radio' name='resp4' value='");
-							 echo($row4['RespC']);	  
-							 echo("'>");
-							 echo("<label>");
-							 echo($row4['RespC']);
-							 echo("</label>");
-
-							 
-							 
-						 }
-						 $cont++;
 						 ?>
-							</div>
-						 <input type='hidden' name='contador' value='<?php echo($cont);?>'>
+							
 						
-							<button class="btn btn-primary" type="submit">Siguiente Pregunta   <i class="fas fa-arrow-circle-right"></i></button>
+							
+										 		
+					
 						
-
-				 		
-					</form>
+						</div>
                 </div>
             </div>
 						

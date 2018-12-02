@@ -166,73 +166,42 @@ if ($_SESSION['id']==null){
           
           <div class="form-group">
 			  <h1 class="h1 text-center">Mis cursos</h1>
-			  <div class="row container justify-content-center clearfix">
+			  <div class="row container">
 				  
 				  <?php
-					$cursos="SELECT IdCurso, Nombre, Descripcion, Presentacion From Cursos Where $sesion=IdProfesor";
-					
-				    if($nomcur=mysqli_query($conexion, $cursos)){
-						 while($arrayres=mysqli_fetch_array($nomcur)){
-							$idcurso=$arrayres["IdCurso"];						
-							echo "<div class='card text-center mx-2' style=' width: 18rem; '>";				
-							echo "<img class='card-img-top align-middle' src='php/bdfiles/"; 
-							echo $arrayres["Presentacion"];
-							echo "' height='160' width='286px'>";
-							echo "<div class='card-body bg-light' >";
-							echo "<h5 class='card-title'><b>";
-							echo utf8_encode ($arrayres["Nombre"]);
-							echo "</b></h5>";
-							echo "<p class='card-text'>";
-							echo utf8_encode ($arrayres["Descripcion"]);
-							echo "<br><div class='dropdown-divider'></div><h6><b>Crear actividades</b></h6>";
-							echo "<form action='act.php' method='post' class='mx-auto'>
-									<input type='hidden' name='idcurso' value=$idcurso>
-									<input type='hidden' name='unidad' value=1>
-									<input type='submit' class='btn btn-primary btn-block' name='enviar' value='Unidad 1'>
-								  </form>
-
-								  <form action='act.php' method='post' style=' margin-top: 7px;'>
-									<input type='hidden' name='idcurso' value=$idcurso>
-									<input type='hidden' name='unidad' value=2>
-									<input type='submit' class='btn btn-success btn-block' name='enviar' value='Unidad 2'>
-								  </form>
-
-								  <form action='act.php' method='post'  style=' margin-top: 7px;'>
-									<input type='hidden' name='idcurso' value=$idcurso>
-									<input type='hidden' name='unidad' value=3>
-									<input type='submit' class='btn btn-info btn-block' name='enviar' value='Unidad 3'>
-								  </form>
-
-								";
-							echo "</p> </div>
-							<div class='card-footer' style='background-color: #EFEFEF'>
-								<a class='btn btn-secondary btn-block' href='#' data-toggle='modal' data-target='#test'>Crear examen final</a>
-								
-							</div>
-							</div> ";						
-					}
+				  	$cursos="SELECT IdCurso, Nombre, Descripcion, Presentacion From Cursos Where $sesion=IdProfesor";
+				  	$nomcur=mysqli_query($conexion, $cursos);
+				  	while ($arrayres=mysqli_fetch_array($nomcur)){
+						$idcurso=$arrayres["IdCurso"];						
+										
+						echo "<div class='card text-center' style=' width: 15rem; '>";						
+						echo "<img class='card-img-top align-middle' src='php/bdfiles/"; 
+						echo $arrayres["Presentacion"];
+						echo "' height='160' width='286px'>";
+						echo "<div class='card-body' style='background-color: #EFEFEF'>";
+						echo "<h5 class='card-title'>";
+						echo utf8_encode ($arrayres["Nombre"]);
+						echo "</h5>";
+						echo "<p class='card-text'>";
+						echo utf8_encode ($arrayres["Descripcion"]);
+						echo " <form action='act.php' method='post'>
+			  	<input type='hidden' name='idcurso' value=$idcurso>
+				<input type='submit' class='btn btn-outline-primary' name='enviar' value='Crear Actividades'>
+			  </form>";
+						echo "</p> </div></div> <p>&nbsp; &nbsp; &nbsp; </p>";
 						
 					}
-				    $validcurso=mysqli_query($conexion, $cursos);
-				    $valid=mysqli_num_rows($validcurso);
-				    if($valid==0){
-						echo("
-						<div class='card text-center bg-gris' style='width: 18rem;'>  
-						<div class='card-body'> <h5 class='card-title text-center'>Aún no tienes cursos resgistrados.</h5>
-						<a class='btn btn-primary' href='index.php'>Crea tu primer curso aquí <i class='fas fa-arrow-circle-down'></i></a>
-						</div>
-						</div>
-						 ");
-					}
-				    
-				    
-					
+				   
 				  ?>
-
 				
 			  </div>
 		</div>
-		
+			 	
+			  
+			  
+			<div class="row">	
+				
+		  	</div>
 			
         </div>
         <!-- /.container-fluid -->
@@ -275,36 +244,8 @@ if ($_SESSION['id']==null){
         </div>
       </div>
     </div>
-	<!-- evaluacion modal --> 
-	<div class="modal fade" id="test" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"  aria-hidden="true">
-	 <div class="modal-dialog" role="document">
-		 <div class="modal-content">
-			 <div class="modal-header">
-			 <h5 class="modal-title" id="exampleModalLabel">Crea una evaluación general del curso</h5>
-				 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-				 <span aria-hidden="true">X</span> 
-				 </button>
-			 </div> 
-			<div class="modal-body"> 
-				<form action="test.php" method="post" id="cuestionario">
-	  		
-					<div class="form-group">
-						<center><label for="exampleInputQuestion" class="font-weight-bold">Número de preguntas</label></center>
-						<input class="form-control" type="number" name="num" value="5" required>
-					</div>
-					
-					
-				    <input type="hidden" value="<?php echo($idcurso); ?>" name="idcurso">
-					<input type="hidden" value="<?php echo(0); ?>" name="introd">
-					<input type="hidden" value="4>" name="unidad">
-					<div class="modal-footer">
-            			<button class="btn btn-primary" type="submit">Crear</button>
-          			</div>
-	  			</form>
-		 </div>
-		</div>
-		</div>
-	  </div>
+	  
+
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

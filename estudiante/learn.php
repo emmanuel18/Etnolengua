@@ -159,12 +159,7 @@ $idcurso=$_POST['idcurso'];
 				
 			</div>
         </li>
-		<li class="nav-item">
-          <a class="nav-link" data-toggle="modal" data-target="#bot">
-            <i class="fas fa-fw fa-robot"></i>
-            <span>Bot(beta)</span>
-          </a>
-        </li>
+		
         <!--<li class="nav-item">
           <a class="nav-link" href="index.html">
             <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -203,7 +198,7 @@ $idcurso=$_POST['idcurso'];
 					  </p>
 				  </div>
 				  <div class="figure-img">
-			  	  	<img src="../profesor/php/bdfiles/<?php echo($foto1) ?>" class="rounded img-fluid" width="auto" height="350">
+			  	  	<img src="../profesor/php/bdfiles/<?php echo($foto1) ?>" class="rounded img-fluid" style="width: auto; height: 350px;">
 				  </div>
 				  <div class="form-group">
 					  <form action="contentgallery.php" method="post">
@@ -239,43 +234,7 @@ $idcurso=$_POST['idcurso'];
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fas fa-angle-up"></i>
     </a>
-	<!-- Bot -->
-	<div class="modal fade bd-example-modal-lg" id="bot" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-robot text-primary"></i> Yolkan</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">X</span>
-            </button>
-          </div>
-          <div class="modal-body">
-			  <div class="form-group">
-    			<h1>Yolkan</h1>
-    				<p>Pulsa el botón de "hablar" para iniciar el reconocimiento, al finalizar pulsa "detener".</p>
-					<div class="form-group">
-    				<center><button onClick="testSpeech()" class="btn btn-success form"><i class="fa fa-microphone"></i>Comenzar prueba</button></center> </div>
-
-    				
-						<div class="form-group">
-        				<textarea class="phrase form-control bg-light" rows="2">Palabra...</textarea>
-						</div>
-						<div class="form-group">
-        				<textarea class="result form-control" rows="2">Correcto o Incorrecto</textarea>
-						</div>
-						<div class="form-group">
-        				<textarea class="output form-control" rows="2">...diagnóstico</textarea>
-						</div>
-    				
-
-    				<script src="script.js"></script>
-			  
-			
-		  		</div>
-          
-        </div>
-      </div>
-		</div></div>
+	
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -305,56 +264,7 @@ $idcurso=$_POST['idcurso'];
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin.min.js"></script>
-	<script src="js/script.js"></script>
+	
   </body>
-<!--<script type="text/javascript">
 
-	var recognition;
-	var recognizing = false;
-	if (!('webkitSpeechRecognition' in window)) {
-		alert("¡API no soportada!");
-	} else {
-
-		recognition = new webkitSpeechRecognition();
-		recognition.lang = "es-VE";
-		recognition.continuous = true;
-		recognition.interimResults = true;
-
-		recognition.onstart = function() {
-			recognizing = true;
-			console.log("empezando a eschucar");
-		}
-		recognition.onresult = function(event) {
-
-		 for (var i = event.resultIndex; i < event.results.length; i++) {
-			if(event.results[i].isFinal)
-				document.getElementById("texto").value += event.results[i][0].transcript;
-		    }
-			
-			//texto
-		}
-		recognition.onerror = function(event) {
-		}
-		recognition.onend = function() {
-			recognizing = false;
-			document.getElementById("procesar").innerHTML = "<i class='fa fa-microphone'></i> Hablar";
-			console.log("terminó de eschucar, llegó a su fin");
-
-		}
-
-	}
-
-	function procesar() {
-
-		if (recognizing == false) {
-			recognition.start();
-			recognizing = true;
-			document.getElementById("procesar").innerHTML = "<i class='fa fa-microphone'></i> Detener";
-		} else {
-			recognition.stop();
-			recognizing = false;
-			document.getElementById("procesar").innerHTML = "<i class='fa fa-microphone'></i> Hablar";
-		}
-	}
-</script> -->
 </html>

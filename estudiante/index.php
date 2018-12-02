@@ -102,7 +102,7 @@ if ($_SESSION['id']==null){
 				if($row2=mysqli_fetch_row($Foto)){
 					$ft=trim($row2[0]);
 				}
-				echo "<img src='../phpregistro/bdimagen/$ft' width='auto' height='32'>";
+				echo "<img class='rounded-circle' src='../phpregistro/bdimagen/$ft' width='auto' height='32'>";
 				?>  
 			</i>
           </a>
@@ -188,7 +188,7 @@ if ($_SESSION['id']==null){
 
           <!-- Page Content -->
 		<center>
-          <div class="row container-fluid mx-auto">
+          <div class="row container-fluid mx-auto align-content-center">
 					  <div class="card text-center mr-4" style=" width: 15rem; margin-top: 7px;">
 						<img class="card-img-top" src="../images/mixe.png" alt="mixe" height="160" width="286px">
 						  <div class="card-body" style="background-color: #EFEFEF">
@@ -895,7 +895,7 @@ if ($_SESSION['id']==null){
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin.min.js"></script>
-	<script src="js/script.js"></script>
+	
   </body>
 <!--<script type="text/javascript">
 

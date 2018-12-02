@@ -16,6 +16,7 @@ if ($_SESSION['id']==null){
 }
 $numpreg=$_POST['num'];
 $idcurso=$_POST['idcurso'];
+$unidad=$_POST['unidad'];
 
 ?>
 <!DOCTYPE html>
@@ -211,6 +212,7 @@ $idcurso=$_POST['idcurso'];
 				  <input type="hidden" value="<?php echo($idcurso); ?>" name="idcurso">
 					<input type="hidden" value="<?php echo($introd+1);?>" name="introd">
 				  <input type="hidden" value="<?php echo($numpreg); ?>" name="num">
+				  <input type="hidden" value="<?php echo($unidad); ?>" name="unidad">
 					
 			    <div class="modal-footer">
 					<?php 
@@ -239,12 +241,12 @@ $idcurso=$_POST['idcurso'];
 		  $RespC=$_POST['respc'];
 		  
 		 if($introd<$numpreg){
-			  $quest="INSERT INTO examen (IdCurso, Pregunta, Resp1, Resp2, Resp3, RespC) VALUES ('$idcurso', '$Pregunta', '$Resp1', '$Resp2', '$Resp3', '$RespC')";
+			  $quest="INSERT INTO examen (IdCurso, Pregunta, Resp1, Resp2, Resp3, RespC, Unidad) VALUES ('$idcurso', '$Pregunta', '$Resp1', '$Resp2', '$Resp3', '$RespC', '$$unidad')";
 			  $insertar=mysqli_query($conexion, $quest);
 		  	
 			  }
 		  else{
-			  $quest="INSERT INTO examen (IdCurso, Pregunta, Resp1, Resp2, Resp3, RespC) VALUES ('$idcurso', '$Pregunta', '$Resp1', '$Resp2', '$Resp3', '$RespC')";
+			  $quest="INSERT INTO examen (IdCurso, Pregunta, Resp1, Resp2, Resp3, RespC, Unidad) VALUES ('$idcurso', '$Pregunta', '$Resp1', '$Resp2', '$Resp3', '$RespC', '$unidad')";
 			  $insertar=mysqli_query($conexion, $quest);
 			  echo '<script languaje="javascript">alert("Examen creado");
 				window.location.href="Cursos.php";

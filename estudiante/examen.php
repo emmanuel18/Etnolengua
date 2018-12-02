@@ -199,6 +199,7 @@ $idcurso=$_POST['idcurso'];
 				 		<input type='hidden' name='ncurso' value='<?php echo($ncurso);?>'>
 						<div class='jumbotron'>
 							<?php
+							$contrue=0;
 						 $cont=0;
 						 $Evaluacion="SELECT Pregunta, Resp1, Resp2, Resp3, RespC from examen where IdCurso='$idcurso' LIMIT $cont, 1";
 						 $consultaEval=mysqli_query($conexion, $Evaluacion);
@@ -242,6 +243,13 @@ $idcurso=$_POST['idcurso'];
 							 echo("<label>");
 							 echo($row4['RespC']);
 							 echo("</label>");
+							 
+							 echo("<input type='hidden' name='preg' value='");
+							 echo($row4['Pregunta']);	  
+							 echo("'>");
+							 echo("<input type='hidden' name='contrue' value='");
+							 echo($contrue);	  
+							 echo("'>");
 
 							 
 							 

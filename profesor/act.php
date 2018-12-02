@@ -16,6 +16,7 @@ if ($_SESSION['id']==null){
 }
 
 $idcurso=$_POST['idcurso'];
+$unidad=$_POST['unidad'];
 
 ?>
 <!DOCTYPE html>
@@ -172,19 +173,22 @@ $idcurso=$_POST['idcurso'];
           
           <!-- Page Content -->
           
-          <div class="form-group bg-light">
-			  <h1 class="h1 text-center">Curso: <?php 
+          <div class="container-fluid align-content-center">
+			  <h2 class="breadcrumb justify-content-center text-dark"><b>Curso:</b>
+			   <?php 
 				  $Ncurso="SELECT Nombre From Cursos Where IdCurso=$idcurso";
 				  $Nc=mysqli_query($conexion, $Ncurso);
 				  if($rw3=mysqli_fetch_row($Nc)){
 					$rs3=trim($rw3[0]);	
 				  }
-				  echo utf8_encode($rs3);
-				  ?></h1>
+				  echo utf8_encode($rs3." ");
+				  ?><b>&nbsp;Unidad: </b>
+				  <?php echo($unidad); ?>
+			  </h2> 
 			     
 		</div>
-		<h2 class="h2 text-center"><p class="fa fa-chalkboard"></p> Crear Actividades</h2>
-		<div class="row container">	
+		<h2 class="h2 text-center text-secondary"><p class="fa fa-chalkboard"></p> Crear Actividades</h2>
+		<div class="row container justify-content-center">	
 			
 			<p>&nbsp; &nbsp; &nbsp;</p>
 			
@@ -218,11 +222,12 @@ $idcurso=$_POST['idcurso'];
 			    
 		 </div>
 			<p> </p>
-			<h2 class="h2 text-center"><p class="fa fa-upload"></p> Subir Archivos</h2>
-		<div class="row container">	
+			<h2 class="h2 text-center text-secondary"><p class="fa fa-upload"></p> Subir Archivos</h2>
+		<div class="row container justify-content-center">	
 			<p>&nbsp; &nbsp; &nbsp;</p>
 			<form action="uploadimg/index.php" method="post">
 				<input type="hidden" name="idcurso" value="<?php echo($idcurso); ?>">
+				<input type="hidden" value="<?php echo($unidad); ?>" name="unidad">
 				<input type="hidden" name="tipo" value="imagen">
 				<button class="dropdown-item bg-secondary radius" type="submit" href="#" data-toggle="modal" data-target="#reading" style="width: 14rem;"> 
 					<div class="card-body">
@@ -234,6 +239,7 @@ $idcurso=$_POST['idcurso'];
 			<p>&nbsp; &nbsp; &nbsp;</p>
 			<form action="uploadaudio/index.php" method="post">
 				<input type="hidden" name="idcurso" value="<?php echo($idcurso); ?>">
+				<input type="hidden" value="<?php echo($unidad); ?>" name="unidad">
 				<input type="hidden" name="tipo" value="audio">
 				<button class="dropdown-item radius bg-info" type="submit" href="#" data-toggle="modal" data-target="#quest" style="width: 14rem;"> 
 					<div class="card-body">
@@ -245,6 +251,7 @@ $idcurso=$_POST['idcurso'];
 			<p>&nbsp; &nbsp; &nbsp;</p>
 			<form action="uploadvideo/index.php" method="post">
 				<input type="hidden" name="idcurso" value="<?php echo($idcurso); ?>">
+				<input type="hidden" value="<?php echo($unidad); ?>" name="unidad">
 				<input type="hidden" name="tipo" value="video">
 				<button class="dropdown-item radius bg-warning" type="submit" href="#" data-toggle="modal" data-target="#test" style="width: 14rem;"> 
 					<div class="card-body">
@@ -256,6 +263,7 @@ $idcurso=$_POST['idcurso'];
 			<p>&nbsp; &nbsp; &nbsp;</p>
 			<form action="uploaddoc/index.php" method="post">
 				<input type="hidden" name="idcurso" value="<?php echo($idcurso); ?>">
+				<input type="hidden" value="<?php echo($unidad); ?>" name="unidad">
 				<input type="hidden" name="tipo" value="documento">
 				<button class="dropdown-item radius bg-primary" type="submit" href="#" data-toggle="modal" data-target="#" style="width: 14rem;"> 
 					<div class="card-body">
@@ -269,6 +277,7 @@ $idcurso=$_POST['idcurso'];
         <!-- /.container-fluid -->
 
         <!-- Sticky Footer -->
+		  <br>
         <footer class="sticky-footer">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
@@ -364,7 +373,7 @@ $idcurso=$_POST['idcurso'];
 			    </div>
 			</div>
 			<input type="hidden" value="<?php echo($idcurso); ?>" name="idcurso">
-			
+			<input type="hidden" value="<?php echo($unidad); ?>" name="unidad">
 			<div class="modal-footer">
             	<button class="btn btn-primary" type="submit">Enviar</button>
             	
@@ -388,7 +397,7 @@ $idcurso=$_POST['idcurso'];
 			
 		}
 		else{
-		$Cuestionario="INSERT INTO cuestionario (IdCurso, Nombre, Pregunta1, Pregunta2, Pregunta3, Pregunta4, Pregunta5, Pregunta6, Pregunta7, Pregunta8 ) VALUES ('$idcurso', '$Titulo', '$Pregunta1', '$Pregunta2', '$Pregunta3', '$Pregunta4', '$Pregunta5', '$Pregunta6', '$Pregunta7', '$Pregunta8')";
+		$Cuestionario="INSERT INTO cuestionario (IdCurso, Nombre, Pregunta1, Pregunta2, Pregunta3, Pregunta4, Pregunta5, Pregunta6, Pregunta7, Pregunta8, Unidad ) VALUES ('$idcurso', '$Titulo', '$Pregunta1', '$Pregunta2', '$Pregunta3', '$Pregunta4', '$Pregunta5', '$Pregunta6', '$Pregunta7', '$Pregunta8', '$unidad')";
 		$insertar=mysqli_query($conexion, $Cuestionario);
 		echo '<script languaje="javascript">alert("Cuestionario creado");
 			window.location.href="Cursos.php";
@@ -420,7 +429,7 @@ $idcurso=$_POST['idcurso'];
 				
 			</div>
 				<input type="hidden" value="<?php echo($idcurso); ?>" name="idcurso">	
-				
+				<input type="hidden" value="<?php echo($unidad); ?>" name="unidad">
 			<div class="modal-footer">
             	<button class="btn btn-primary" type="submit" >Enviar</button>
             	
@@ -438,7 +447,7 @@ $idcurso=$_POST['idcurso'];
 		echo("nel");
 	}
 	else{
-		$Lectura="INSERT INTO lectura (IdCurso, TextLngInd, TextEsp) VALUES ('$idcurso', '$ind', '$esp')";
+		$Lectura="INSERT INTO lectura (IdCurso, TextLngInd, TextEsp, Unidad) VALUES ('$idcurso', '$ind', '$esp', '$unidad')";
 		$insertar=mysqli_query($conexion, $Lectura);
 		echo '<script languaje="javascript">alert("Lectura creada");
 			window.location.href="Cursos.php";
@@ -452,7 +461,7 @@ $idcurso=$_POST['idcurso'];
 	 <div class="modal-dialog" role="document">
 		 <div class="modal-content">
 			 <div class="modal-header">
-			 <h5 class="modal-title" id="exampleModalLabel">Crea una evaluación general del curso</h5>
+			 <h5 class="modal-title" id="exampleModalLabel">Crea una evaluación para la unidad</h5>
 				 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
 				 <span aria-hidden="true">X</span> 
 				 </button>
@@ -468,6 +477,7 @@ $idcurso=$_POST['idcurso'];
 					
 				    <input type="hidden" value="<?php echo($idcurso); ?>" name="idcurso">
 					<input type="hidden" value="<?php echo(0); ?>" name="introd">
+					<input type="hidden" value="<?php echo($unidad); ?>" name="unidad">
 					<div class="modal-footer">
             			<button class="btn btn-primary" type="submit">Crear</button>
           			</div>

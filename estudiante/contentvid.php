@@ -466,9 +466,9 @@ $idcurso=$_POST['idcurso'];
 							$lecturaleng="SELECT TextEsp from lectura where IdCurso='$idcurso'";
 							$lecturalengcon=mysqli_query($conexion, $lecturaleng);
 							if($reslec=mysqli_fetch_row($lecturalengcon)){
-								$rslec1=trim($reslec[0]);	
+								$rslec2=trim($reslec[0]);	
 							}
-							echo(utf8_encode ($rslec1));
+							echo(utf8_encode ($rslec2));
 							?>
 					      </p>						  
 					  

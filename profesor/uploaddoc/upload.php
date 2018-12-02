@@ -19,7 +19,8 @@ function base64ToJpeg($base64_string) {
 	$name=$file;
 	$idcurso=$_POST['idcurso'];
 	$tipo=$_POST['tipo'];
-	$insert="INSERT INTO archivo(IdCurso, Nombre, Tipo) values ('$idcurso', '$name', '$tipo')";
+	$unidad=$_POST['unidad'];
+	$insert="INSERT INTO archivo(IdCurso, Nombre, Tipo, Unidad) values ('$idcurso', '$name', '$tipo', '$unidad')";
 	$conexion = mysqli_connect("localhost", "etnoleng_emmanue", "estrada_18", "etnoleng_mixe");
 	$Query=mysqli_query($conexion, $insert);
     return $file;

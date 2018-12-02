@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 session_start();
 $id=$_SESSION['id'];
 $cr=$_SESSION['Correo'];
@@ -104,7 +105,7 @@ $ncurso=$_POST['ncurso'];
 				if($row2=mysqli_fetch_row($Foto)){
 					$ft=trim($row2[0]);
 				}
-				echo "<img src='../phpregistro/bdimagen/$ft' width='auto' height='32'>";
+				echo "<img class='rounded-circle' src='../phpregistro/bdimagen/$ft' width='auto' height='32'>";
 				?>  
 			</i>
           </a>
@@ -201,12 +202,15 @@ $ncurso=$_POST['ncurso'];
 			?>
 		<center>
           <div class="row bg-light ">
-			  <div class="text-center mx-auto">
-				  <div class="container-fluid">
-					 <div id='carouselExampleControls' class='carousel' data-ride='carousel'> 
+			 
+				  <div class="container-fluid row">
+					  					  
+					  <!-- Galeri -->
+					 <!-- <div id='carouselExampleControls' class='carousel' data-ride='carousel'> 
 						 <div class='carousel-inner'>
 							 <br>
 							  <?php
+							    error_reporting(0);
 							 	$cont=1;
 								while ($arrayimg=mysqli_fetch_array($img)){
 									if($cont==1){
@@ -236,17 +240,69 @@ $ncurso=$_POST['ncurso'];
 							<span class="carousel-control-next-icon" aria-hidden="true"></span>
 							<span class="sr-only">Next</span>
 						  </a>
-					</div>
-				  </div>
-				  
-				  <div class="form-group">
-					  <form action="contentvid.php" method="post"><br>
-						  <input type="hidden" name="ncurso" value="<?php echo($ncurso); ?>">
-						  <input type="hidden" name="idcurso" value="<?php echo($idcur); ?>">
-						  <button class="btn btn-primary" type="submit"><i class="fas fa-arrow-circle-right"></i> Siguiente lección</button>					  
-					  </form>				  	
-				  </div>  
+					</div> -->
+					 
+					  <div class="card text-center mx-auto bg-light" style=" width: 15rem; margin-top: 7px;">
+						  <div class="card-header"><h4><b>Unidad</b></h4></div>
+						  <img class="card-img-top" src="img/30.png" alt="mixe"  width="40%">
+						  <div class="card-body" style="background-color: #EFEFEF">
+							
+							  <form action="contentvid.php" method="post"><br>
+								  <input type="hidden" name="ncurso" value="<?php echo($ncurso); ?>">
+								  <input type="hidden" name="idcurso" value="<?php echo($idcur); ?>">
+								  <button class="btn btn-primary btn-block" type="submit">
+									  <i class="fas fa-arrow-circle-right"></i> Ir a la unidad
+								  </button>	
+							  </form>
+						  </div>
+					  </div>
+					  <div class="card text-center mx-auto bg-light" style=" width: 15rem; margin-top: 7px;">
+						  <div class="card-header"><h4><b>Unidad</b></h4></div>
+						  <img class="card-img-top" src="img/60.png" alt="mixe"  width="40%">
+						  <div class="card-body" style="background-color: #EFEFEF">
+							  <form action="contentvid.php" method="post"><br>
+								  <input type="hidden" name="ncurso" value="<?php echo($ncurso); ?>">
+								  <input type="hidden" name="idcurso" value="<?php echo($idcur); ?>">
+								  <button class="btn btn-success btn-block" type="submit">
+									  <i class="fas fa-arrow-circle-right"></i> Ir a la unidad
+								  </button>	
+							  </form>
+						  </div>
+					  </div>
+					  <div class="card text-center mx-auto bg-light" style=" width: 15rem; margin-top: 7px;">
+						  <div class="card-header"><h4><b>Unidad</b></h4></div>
+						  <img class="card-img-top" src="img/90.png" alt="mixe" width="40%">
+						  <div class="card-body" style="background-color: #EFEFEF">
+							 
+							  <form action="contentvid.php" method="post"><br>
+								  <input type="hidden" name="ncurso" value="<?php echo($ncurso); ?>">
+								  <input type="hidden" name="idcurso" value="<?php echo($idcur); ?>">
+								  <button class="btn btn-secondary btn-block" type="submit">
+									  <i class="fas fa-arrow-circle-right"></i> Ir a la unidad
+								  </button>	
+							  </form>
+						  </div>
+					  </div>
+					  <div class="card mx-auto bg-info text-light" style=" width: 15rem; margin-top: 7px;">
+						  <div class="card-header"><h4><b>Evaluación final</b></h4></div>
+						  <img class="card-img-top" src="img/test.png" alt="mixe" width="40%">
+						  <div class="card-body">
+							 
+							  <form action="contentvid.php" method="post"><br>
+								  <input type="hidden" name="ncurso" value="<?php echo($ncurso); ?>">
+								  <input type="hidden" name="idcurso" value="<?php echo($idcur); ?>">
+								  <button class="btn btn-info btn-block active" type="submit">
+									  <i class="fas fa-arrow-circle-right"></i> Realizar evaluación
+								  </button>	
+							  </form>
+						  </div>
+					  </div>
+					  
+					  
 			  </div>
+				  
+				   
+			 
 			    
 			 </div>
 			</div>
