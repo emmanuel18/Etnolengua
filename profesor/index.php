@@ -258,7 +258,8 @@ if ($_SESSION['id']==null){
 						<option>Tsoltsil </option>
 						<option>Yaqui </option>
 						<option>Zapoteco</option>
-						<option>Zoque</option>						
+						<option>Zoque</option>
+						<option>Otro</option>
 					</select></div>
 				<div class="dropdown-divider"></div>
 				<div class="form-group">
@@ -269,7 +270,7 @@ if ($_SESSION['id']==null){
 				<div class="form-group">
 					<label class="input-group-text bg-primary text-light"> Nivel </label>
 					<select class="form-control" name="Nivel" id="exampleFormControlSelect1" required>
-      					<option>Bajo</option>
+      					<option>Principiante</option>
 						<option>Intermedio</option>
 						<option>Avanzado</option>
 					</select>
@@ -278,7 +279,7 @@ if ($_SESSION['id']==null){
 				<div class="dropdown-divider"></div>
 				
 				<div class="form-group">
-					<input type="submit" class="btn btn-success" value="Crear Curso">
+					<input type="submit" class="btn btn-success btn-group-vertical" value="Crear Curso">
 				</div>
 			</form>
 			</div>

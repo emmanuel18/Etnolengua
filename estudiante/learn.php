@@ -204,6 +204,7 @@ $idcurso=$_POST['idcurso'];
 					  <form action="contentgallery.php" method="post">
 					  <form action="contentgallery.php" method="post">
 						  <input type="hidden" name="ncurso" value="<?php echo($ncurso); ?>">
+						  <input type="hidden" name="idcurso" value="<?php echo($idcurso); ?>">
 						  <button class="btn btn-primary" type="submit"><i class="fas fa-arrow-circle-right"></i> Comenzar curso</button>					  
 					  </form>				  	
 				  </div>  

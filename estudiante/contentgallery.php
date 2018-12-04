@@ -15,6 +15,7 @@ if ($_SESSION['id']==null){
 }
 
 $ncurso=$_POST['ncurso'];
+$idcurso=$_POST['idcurso'];
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -192,12 +193,8 @@ $ncurso=$_POST['ncurso'];
           
           <!-- Page Content -->
 			<?php
-				$idcurso="SELECT IdCurso From cursos where Nombre='$ncurso'";
-				$Query3=mysqli_query($conexion, $idcurso);
-				if($rw2=mysqli_fetch_row($Query3)){
-					$idcur=trim($rw2[0]);	
-				}
-				$consultimg="SELECT Nombre From archivo where IdCurso='$idcur' AND Tipo='imagen'";
+				
+				$consultimg="SELECT Nombre From archivo where IdCurso='$idcurso' AND Tipo='imagen'";
 				$img=mysqli_query($conexion, $consultimg);
 			?>
 		<center>
@@ -249,7 +246,8 @@ $ncurso=$_POST['ncurso'];
 							
 							  <form action="contentvid.php" method="post"><br>
 								  <input type="hidden" name="ncurso" value="<?php echo($ncurso); ?>">
-								  <input type="hidden" name="idcurso" value="<?php echo($idcur); ?>">
+								  <input type="hidden" name="idcurso" value="<?php echo($idcurso); ?>">
+								  <input type="hidden" name="unidad" value=1>
 								  <button class="btn btn-primary btn-block" type="submit">
 									  <i class="fas fa-arrow-circle-right"></i> Ir a la unidad
 								  </button>	
@@ -262,7 +260,8 @@ $ncurso=$_POST['ncurso'];
 						  <div class="card-body" style="background-color: #EFEFEF">
 							  <form action="contentvid.php" method="post"><br>
 								  <input type="hidden" name="ncurso" value="<?php echo($ncurso); ?>">
-								  <input type="hidden" name="idcurso" value="<?php echo($idcur); ?>">
+								  <input type="hidden" name="idcurso" value="<?php echo($idcurso); ?>">
+								  <input type="hidden" name="unidad" value=2>
 								  <button class="btn btn-success btn-block" type="submit">
 									  <i class="fas fa-arrow-circle-right"></i> Ir a la unidad
 								  </button>	
@@ -276,7 +275,8 @@ $ncurso=$_POST['ncurso'];
 							 
 							  <form action="contentvid.php" method="post"><br>
 								  <input type="hidden" name="ncurso" value="<?php echo($ncurso); ?>">
-								  <input type="hidden" name="idcurso" value="<?php echo($idcur); ?>">
+								  <input type="hidden" name="idcurso" value="<?php echo($idcurso); ?>">
+								  <input type="hidden" name="unidad" value=3>
 								  <button class="btn btn-secondary btn-block" type="submit">
 									  <i class="fas fa-arrow-circle-right"></i> Ir a la unidad
 								  </button>	
@@ -288,9 +288,10 @@ $ncurso=$_POST['ncurso'];
 						  <img class="card-img-top" src="img/test.png" alt="mixe" width="40%">
 						  <div class="card-body">
 							 
-							  <form action="contentvid.php" method="post"><br>
+							  <form action="examen.php" method="post"><br>
 								  <input type="hidden" name="ncurso" value="<?php echo($ncurso); ?>">
-								  <input type="hidden" name="idcurso" value="<?php echo($idcur); ?>">
+								  <input type="hidden" name="idcurso" value="<?php echo($idcurso); ?>">
+								  <input type="hidden" name="unidad" value=4>
 								  <button class="btn btn-info btn-block active" type="submit">
 									  <i class="fas fa-arrow-circle-right"></i> Realizar evaluación
 								  </button>	

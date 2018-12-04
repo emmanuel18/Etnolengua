@@ -35,6 +35,7 @@ $unidad=$_POST['unidad'];
 
     <!-- Bootstrap core CSS-->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -82,25 +83,25 @@ $unidad=$_POST['unidad'];
         <li class="nav-item dropdown no-arrow mx-1">
           <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-bell fa-fw"></i>
-            <span class="badge badge-danger">9+</span>
+            <span class="badge badge-danger"></span>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Bandeja vacía</a>
+            <!-- <a class="dropdown-item" href="#">Another action</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" href="#">Something else here</a> -->
           </div>
         </li>
         <li class="nav-item dropdown no-arrow mx-1">
           <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-envelope fa-fw"></i>
-            <span class="badge badge-danger">7</span>
+            <span class="badge badge-danger"></span>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">No tienes mensajes</a>
+            <!-- <a class="dropdown-item" href="#">Another action</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" href="#">Something else here</a> -->
           </div>
         </li>
         <li class="nav-item dropdown no-arrow">
@@ -192,33 +193,115 @@ $unidad=$_POST['unidad'];
 			
 			<p>&nbsp; &nbsp; &nbsp;</p>
 			
-			<a class="dropdown-item bg-primary radius" href="#" data-toggle="modal" data-target="#reading" style="width: 14rem;"> 
+			<button class="dropdown-item bg-primary radius" href="#" data-toggle="modal" data-target="#reading" style="width: 14rem;"
+					<?php 
+					$validlectura="SELECT IdLectura FROM lectura where IdCurso='$idcurso' AND Unidad='$unidad'";
+					$validar=mysqli_query($conexion, $validlectura);
+					if($v=mysqli_fetch_row($validar)){
+						echo("disabled");
+						$check1=1;
+					}
+					
+					?>
+					> 
 				<div class="card-body">
-					<h5 class="card-title text-center text-light">Lectura</h5>
-					<p class="card-img fa fa-book-reader fa-6x text-center text-light"></p>
+					
+					<h5 class="card-title text-center text-light">Lectura
+						<?php
+						error_reporting(0);
+						if($check1==1){
+							echo("<br>Creada");
+						}
+						?>					
+					</h5>
+					<p class="card-img fa 
+							 <?php
+								error_reporting(0);
+								if($check1==1){
+									echo("fa-check-circle");
+								}else{
+									echo("fa-book-reader");
+								}
+							?>
+							  
+							  fa-6x text-center text-light"></p>
+					
 				</div> 
-			</a>	
+			</button>
+			
 			<p>&nbsp; &nbsp; &nbsp;</p>
-			<a class="dropdown-item radius bg-dark" href="#" data-toggle="modal" data-target="#quest" style="width: 14rem;"> 
+			<Button class="dropdown-item radius bg-dark" href="#" data-toggle="modal" data-target="#quest" style="width: 14rem;"
+					<?php 
+					$validcues="SELECT IdCuestionario FROM cuestionario where IdCurso='$idcurso' AND Unidad='$unidad'";
+					$validarcues=mysqli_query($conexion, $validcues);
+					if($v2=mysqli_fetch_row($validarcues)){
+						echo("disabled");
+						$check2=1;
+					}
+					
+					?>
+					> 
 				<div class="card-body">
-					<h5 class="card-title text-center text-light">Cuestionario</h5>
-					<p class="card-img fa fa-6x text-center text-light fa-question-circle"></p>
+					<h5 class="card-title text-center text-light">Cuestionario
+						<?php
+						error_reporting(0);
+						if($check2==1){
+							echo("<br>Creado");
+						}
+						?>
+					</h5>
+					<p class="card-img fa fa-6x text-center text-light 
+							  <?php
+								error_reporting(0);
+								if($check2==1){
+									echo("fa-check-circle");
+								}else{
+									echo("fa-question-circle");
+								}
+							?>
+							  "></p>
 				</div> 
-			</a>
+			</Button>
 			<p>&nbsp; &nbsp; &nbsp;</p>
-			<a class="dropdown-item radius bg-danger" href="#" data-toggle="modal" data-target="#test" style="width: 14rem;"> 
+			<button class="dropdown-item radius bg-danger" href="#" data-toggle="modal" data-target="#test" style="width: 14rem;"
+					<?php 
+					$validtest="SELECT IdExamen FROM examen where IdCurso='$idcurso' AND Unidad='$unidad'";
+					$validartest=mysqli_query($conexion, $validtest);
+					if($v3=mysqli_fetch_row($validartest)){
+						echo("disabled");
+						$check3=1;
+					}
+					
+					?>
+					> 
 				<div class="card-body">
-					<h5 class="card-title text-center text-light">Evaluación</h5>
-					<p class="card-img fa fa-6x text-light text-center fa-pencil-ruler"></p>
+					<h5 class="card-title text-center text-light">Evaluación
+					<?php
+						error_reporting(0);
+						if($check3==1){
+							echo("<br>Creada");
+						}
+					?>
+					</h5>
+					<p class="card-img fa fa-6x text-light text-center 
+							  <?php
+								error_reporting(0);
+								if($check3==1){
+									echo("fa-check-circle");
+								}else{
+									echo("fa-pencil-ruler");
+								}
+							 ?>
+							  "></p>
 				</div> 
-			</a>
+			</button>
 			<p>&nbsp; &nbsp; &nbsp;</p>
-			<a class="dropdown-item radius bg-success" href="#" data-toggle="modal" data-target="#" style="width: 14rem;"> 
+			<button class="dropdown-item radius bg-success" href="#" data-toggle="modal" data-target="#" style="width: 14rem;"> 
 				<div class="card-body">
 					<h5 class="card-title text-center text-light">Juego(beta)</h5>
 					<p class="card-img fa fa-gamepad fa-6x text-center text-light"></p>
 				</div> 
-			</a>
+			</button>
 			    
 		 </div>
 			<p> </p>
@@ -229,10 +312,35 @@ $unidad=$_POST['unidad'];
 				<input type="hidden" name="idcurso" value="<?php echo($idcurso); ?>">
 				<input type="hidden" value="<?php echo($unidad); ?>" name="unidad">
 				<input type="hidden" name="tipo" value="imagen">
-				<button class="dropdown-item bg-secondary radius" type="submit" href="#" data-toggle="modal" data-target="#reading" style="width: 14rem;"> 
+				<button class="dropdown-item bg-secondary radius" type="submit" href="#" data-toggle="modal" data-target="#reading" style="width: 14rem;"
+						<?php 
+							$validimg="SELECT IdFile FROM archivo where IdCurso='$idcurso' AND Unidad='$unidad' AND Tipo='imagen'";
+							$validarimg=mysqli_query($conexion, $validimg);
+							if($v4=mysqli_fetch_row($validarimg)){
+								echo("disabled");
+								$check4=1;
+							}					
+						?>
+						> 
 					<div class="card-body">
-						<h5 class="card-title text-center text-light">Imagen</h5>
-						<p class="card-img fa fa-camera fa-6x text-center text-light"></p>
+						<h5 class="card-title text-center text-light">Imagen
+						<?php
+						error_reporting(0);
+						if($check4==1){
+							echo("Cargada");
+						}
+					?>
+						</h5>
+						<p class="card-img fa fa-6x text-center text-light 
+								  <?php
+								error_reporting(0);
+								if($check4==1){
+									echo("fa-check-circle");
+								}else{
+									echo("fa-camera");
+								}
+							 ?>
+								  "></p>
 					</div> 
 				</button>	
 			</form>
@@ -241,10 +349,35 @@ $unidad=$_POST['unidad'];
 				<input type="hidden" name="idcurso" value="<?php echo($idcurso); ?>">
 				<input type="hidden" value="<?php echo($unidad); ?>" name="unidad">
 				<input type="hidden" name="tipo" value="audio">
-				<button class="dropdown-item radius bg-info" type="submit" href="#" data-toggle="modal" data-target="#quest" style="width: 14rem;"> 
+				<button class="dropdown-item radius bg-info" type="submit" href="#" data-toggle="modal" data-target="#quest" style="width: 14rem;"
+						<?php 
+							$validaud="SELECT IdFile FROM archivo where IdCurso='$idcurso' AND Unidad='$unidad' AND Tipo='audio'";
+							$validaraud=mysqli_query($conexion, $validaud);
+							if($v5=mysqli_fetch_row($validaraud)){
+								echo("disabled");
+								$check5=1;
+							}					
+						?>
+						> 
 					<div class="card-body">
-						<h5 class="card-title text-center text-light">Audio</h5>
-						<p class="card-img fa fa-volume-up fa fa-6x text-center text-light fa-question-circle"></p>
+						<h5 class="card-title text-center text-light">Audio
+						<?php
+						error_reporting(0);
+						if($check5==1){
+							echo(" Cargado");
+						}
+					?>
+						</h5>
+						<p class="card-img fa fa-6x text-center text-light
+								  <?php
+								error_reporting(0);
+								if($check5==1){
+									echo("fa-check-circle");
+								}else{
+									echo("fa-volume-up");
+								}
+							 ?>
+								  "></p>
 					</div> 
 				</button>
 			</form>
@@ -253,10 +386,34 @@ $unidad=$_POST['unidad'];
 				<input type="hidden" name="idcurso" value="<?php echo($idcurso); ?>">
 				<input type="hidden" value="<?php echo($unidad); ?>" name="unidad">
 				<input type="hidden" name="tipo" value="video">
-				<button class="dropdown-item radius bg-warning" type="submit" href="#" data-toggle="modal" data-target="#test" style="width: 14rem;"> 
+				<button class="dropdown-item radius bg-warning" type="submit" href="#" data-toggle="modal" data-target="#test" style="width: 14rem;"
+						<?php 
+							$validvid="SELECT IdFile FROM archivo where IdCurso='$idcurso' AND Unidad='$unidad' AND Tipo='video'";
+							$validarvid=mysqli_query($conexion, $validvid);
+							if($v6=mysqli_fetch_row($validarvid)){
+								echo("disabled");
+								$check6=1;
+							}					
+						?>
+						> 
 					<div class="card-body">
-						<h5 class="card-title text-center text-light">Video</h5>
-						<p class="card-img fa fa-video fa fa-6x text-light text-center fa-pencil-ruler"></p>
+						<h5 class="card-title text-center text-light">Video
+						<?php
+						error_reporting(0);
+						if($check6==1){
+							echo(" Cargado");
+						}
+						?>
+						</h5>
+						<p class="card-img fa fa-6x text-light text-center
+								 <?php
+								error_reporting(0);
+								if($check6==1){
+									echo("fa-check-circle");
+								}else{
+									echo("fa-video");
+								}
+							 ?>"></p>
 					</div> 
 				</button>
 			</form>
@@ -265,10 +422,35 @@ $unidad=$_POST['unidad'];
 				<input type="hidden" name="idcurso" value="<?php echo($idcurso); ?>">
 				<input type="hidden" value="<?php echo($unidad); ?>" name="unidad">
 				<input type="hidden" name="tipo" value="documento">
-				<button class="dropdown-item radius bg-primary" type="submit" href="#" data-toggle="modal" data-target="#" style="width: 14rem;"> 
+				<button class="dropdown-item radius bg-primary" type="submit" href="#" data-toggle="modal" data-target="#" style="width: 14rem;"
+						<?php 
+							$validdoc="SELECT IdFile FROM archivo where IdCurso='$idcurso' AND Unidad='$unidad' AND Tipo='documento'";
+							$validardoc=mysqli_query($conexion, $validdoc);
+							if($v7=mysqli_fetch_row($validardoc)){
+								echo("disabled");
+								$check7=1;
+							}					
+						?>
+						> 
 					<div class="card-body">
-						<h5 class="card-title text-center text-light">Documentos</h5>
-						<p class="card-img fa fa-file-word fa-6x text-center text-light"></p>
+						<h5 class="card-title text-center text-light">Documentos
+						<?php
+						error_reporting(0);
+						if($check7==1){
+							echo("Carg...");
+						}
+						?>
+						</h5>
+						<p class="card-img fa fa-6x text-center text-light
+								  <?php
+								error_reporting(0);
+								if($check7==1){
+									echo("fa-check-circle");
+								}else{
+									echo("fa-file-word");
+								}
+							 ?>
+								  "></p>
 					</div> 
 				</button>
 			</form>    
@@ -320,7 +502,7 @@ $unidad=$_POST['unidad'];
 	 <div class="modal-dialog" role="document">
 		 <div class="modal-content">
 			 <div class="modal-header">
-			 <h5 class="modal-title" id="exampleModalLabel">Crea tu propio cuestionario</h5>
+			 <h5 class="modal-title" id="exampleModalLabel">Crea un cuestionario</h5>
 				 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
 				 <span aria-hidden="true">X</span> 
 				 </button>
@@ -419,13 +601,13 @@ $unidad=$_POST['unidad'];
 	  		<div class="form-group">
 				<center>
 				<label for="exampleInputTittle"><b>Inserta Texto en Lengua Indígena</b></label></center>
-				<textarea class="form-control" type="text" name="txtind" placeholder="Lengua Indígena" rows="5"></textarea>
+				<textarea class="form-control" type="text" name="txtind" placeholder="Lengua Indígena" rows="5" required></textarea>
 				
 			</div>
 			<div class="form-group">
 				<center>
 				<label for="exampleInputTittle"><b>Inserta Texto en Español</b></label></center>
-				<textarea class="form-control" type="text" name="esp" placeholder="Español" rows="5"></textarea>
+				<textarea class="form-control" type="text" name="esp" placeholder="Español" rows="5" required></textarea>
 				
 			</div>
 				<input type="hidden" value="<?php echo($idcurso); ?>" name="idcurso">	
@@ -444,7 +626,7 @@ $unidad=$_POST['unidad'];
 	$esp=$_POST['esp'];
 	//$idcurso=$_POST['idcurso'];
 	if (($ind=='' && $esp=='')||($ind=='0' && $esp=='0')){
-		echo("nel");
+		
 	}
 	else{
 		$Lectura="INSERT INTO lectura (IdCurso, TextLngInd, TextEsp, Unidad) VALUES ('$idcurso', '$ind', '$esp', '$unidad')";

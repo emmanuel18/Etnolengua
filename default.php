@@ -21,6 +21,7 @@ if (isset($_SESSION['id'])){
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="keywords" content="etnolengua, aprender lenguas indígeas, dialecto, mixe, tradictor español-mixe">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Etnolengua, es una plataforma educativa dedicada al rescate de las lenguas indígenas a través de la documentación y la enseñanza de estas mediante plataformas digitales.">
     <meta name="Keywords" content="etnolengua, lenguas indígenas, dialecto, mixe, náhuatl, lenguas indígenas en méxico, aprender dialectos, aprender dialectos mexicanos, aprender lenguas indígenas en méxico, dialectos mexicanos, chol">
@@ -33,15 +34,15 @@ if (isset($_SESSION['id'])){
   <body>
 	<!-- Barra de navegación -->
 	
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
 	<a class="navbar-brand img-logo" href="default.php" ><img src="images/logo.png" width="150" height="auto" alt=""/></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent"> 
         <ul class="navbar-nav mr-auto">
          
-          <li class="nav-item"> <a class="nav-link" href="#Quienes" style="color:#FFFFFF";> ¿Quiénes Somos? </a> </li>
-          <li class="nav-item"> <a class="nav-link" href="#contacto" style="color:#FFFFFF";>Contacto</a> </li>
-		  <li class="nav-item"> <a class="nav-link" href="translator.html" style="color:#FFFFFF";>Diccionario</a> </li>
+          <li class="nav-item"> <a class="nav-link" href="#Quienes" style="color:#FFFFFF"> ¿Quiénes Somos? </a> </li>
+          <li class="nav-item"> <a class="nav-link" href="#contacto" style="color:#FFFFFF">Contacto</a> </li>
+		  <li class="nav-item"> <a class="nav-link" href="translator.html" style="color:#FFFFFF">Diccionario</a> </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" action="phpsesioncontrol\login.php" method="POST">
           <input class="form-control mr-sm-2" type="email" name="correo" placeholder="Correo Electronico" aria-label="Search" required>

@@ -17,6 +17,8 @@ if ($_SESSION['id']==null){
 
 $ncurso=$_POST['ncurso'];
 $idcurso=$_POST['idcurso'];
+$unidad=$_POST['unidad'];
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -179,7 +181,7 @@ $idcurso=$_POST['idcurso'];
 
       <div id="content-wrapper">
 		  <div class="container-fluid text-center">
-			  <h2 class="btn-info btn-block btn-lg" style="font-size: 25px;"><i class="fas fa-chalkboard-teacher" style="color: #1B1E49;"></i> Curso: <?php echo($ncurso); ?></h2>
+			  <h2 class="btn-info btn-block btn-lg" style="font-size: 25px;"><i class="fas fa-chalkboard-teacher" style="color: #1B1E49;"></i> Curso: "<?php echo($ncurso); ?>" Unidad: <?php echo($unidad); ?></h2>
 		  </div>
 
           <div class="bg-white">
@@ -225,7 +227,8 @@ $idcurso=$_POST['idcurso'];
 				  <tbody>
 					  <tr>
 						  <?php 
-						  $consultvid="SELECT Nombre From archivo where IdCurso='$idcurso' AND Tipo='video'";
+						  $consultvid="SELECT Nombre From archivo where IdCurso='$idcurso' AND Tipo='video' AND Unidad='$unidad'";
+						  
 						  $vid=mysqli_query($conexion, $consultvid);
 						  $leccion=0;
 						  while ($arrayvid=mysqli_fetch_array($vid)){
@@ -264,7 +267,7 @@ $idcurso=$_POST['idcurso'];
 				  <tbody>
 					  <tr>
 						 <?php 
-						  $consultvid="SELECT Nombre From archivo where IdCurso='$idcurso' AND Tipo='audio'";
+						  $consultvid="SELECT Nombre From archivo where IdCurso='$idcurso' AND Tipo='audio' AND Unidad='$unidad'";
 						  $vid=mysqli_query($conexion, $consultvid);
 						  $leccion=0;
 						  while ($arrayvid=mysqli_fetch_array($vid)){
@@ -303,7 +306,7 @@ $idcurso=$_POST['idcurso'];
 				  <tbody>
 					  <tr>
 						  <?php 
-						  $consultvid="SELECT Nombre From archivo where IdCurso='$idcurso' AND Tipo='documento'";
+						  $consultvid="SELECT Nombre From archivo where IdCurso='$idcurso' AND Tipo='documento' AND Unidad='$unidad'";
 						  $vid=mysqli_query($conexion, $consultvid);
 						  $leccion=0;
 						  while ($arrayvid=mysqli_fetch_array($vid)){
@@ -375,6 +378,7 @@ $idcurso=$_POST['idcurso'];
 				
 				<input type='hidden' name='idcurso' value='<?php echo($idcurso);?>'>
 				<input type='hidden' name='ncurso' value='<?php echo($ncurso);?>'>
+				<input type="hidden" name="unidad" value='<?php echo($unidad);?>'>
 					<div class="card text-white bg-danger o-hidden h-100">
 						<div class="card-body">
 							<div class="card-body-icon">
@@ -448,7 +452,8 @@ $idcurso=$_POST['idcurso'];
 							  <p class="text-justify">
 
 								<?php
-								$lecturaleng="SELECT TextLngInd from lectura where IdCurso='$idcurso'";
+								$lecturaleng="SELECT TextLngInd from lectura where IdCurso='$idcurso' AND Unidad='$unidad'";
+								echo($lecturaleng);
 								$lecturalengcon=mysqli_query($conexion, $lecturaleng);
 								if($reslec=mysqli_fetch_row($lecturalengcon)){
 									$rslec1=trim($reslec[0]);	
@@ -463,7 +468,7 @@ $idcurso=$_POST['idcurso'];
 						  <h5 class="text-center">Español</h5>
 						  <p class="text-justify">
 							<?php
-							$lecturaleng="SELECT TextEsp from lectura where IdCurso='$idcurso'";
+							$lecturaleng="SELECT TextEsp from lectura where IdCurso='$idcurso' AND Unidad='$unidad'";
 							$lecturalengcon=mysqli_query($conexion, $lecturaleng);
 							if($reslec=mysqli_fetch_row($lecturalengcon)){
 								$rslec2=trim($reslec[0]);	
@@ -497,11 +502,11 @@ $idcurso=$_POST['idcurso'];
 				 <form action="contentvid.php" method="post" >					 
 					 <input type='hidden' name='idcurso' value='<?php echo($idcurso);?>'>
 					 <input type='hidden' name='ncurso' value='<?php echo($ncurso);?>'>
-					 
+					 <input type="hidden" name="unidad" value='<?php echo($unidad);?>'>
 					 
 				 	
 				 <?php 
-				 $pregunta="SELECT Nombre, Pregunta1, Pregunta2, Pregunta3, Pregunta4, Pregunta5, Pregunta6, Pregunta7, Pregunta8 FROM cuestionario WHERE IdCurso='$idcurso'";
+				 $pregunta="SELECT Nombre, Pregunta1, Pregunta2, Pregunta3, Pregunta4, Pregunta5, Pregunta6, Pregunta7, Pregunta8 FROM cuestionario WHERE IdCurso='$idcurso' AND Unidad='$unidad'";
 				 $consulpreg=mysqli_query($conexion, $pregunta);
 				 if($arraypreg=mysqli_fetch_array($consulpreg)){
 					 $npreg=1;
@@ -549,7 +554,7 @@ $idcurso=$_POST['idcurso'];
 	  $respuesta6=$_POST['Respuesta6'];
 	  $respuesta7=$_POST['Respuesta7'];
 	  $respuesta8=$_POST['Respuesta8'];
-	  $INSERTAR="insert into respcues (IdCurso, IdEstudiante, Respuesta1, Respuesta2, Respuesta3, Respuesta4, Respuesta5, Respuesta6,Respuesta7, Respuesta8) VALUES('$idcurso', '$iduser', '$respuesta1', '$respuesta2', '$respuesta3', '$respuesta4','$respuesta5', '$respuesta6', '$respuesta7', '$respuesta8')";
+	  $INSERTAR="insert into respcues (IdCurso, IdEstudiante, Respuesta1, Respuesta2, Respuesta3, Respuesta4, Respuesta5, Respuesta6,Respuesta7, Respuesta8, Unidad) VALUES('$idcurso', '$iduser', '$respuesta1', '$respuesta2', '$respuesta3', '$respuesta4','$respuesta5', '$respuesta6', '$respuesta7', '$respuesta8', '$unidad')";
 	  $ConsultaInsersion=mysqli_query($conexion, $INSERTAR);
 	  ?>
   </body>

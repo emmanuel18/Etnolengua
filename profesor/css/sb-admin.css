@@ -56,6 +56,13 @@ body {
   top: 0;
   opacity: 0;
 }
+.isDisabled {
+  color: currentColor;
+  cursor: not-allowed;
+  opacity: 0.5;
+  text-decoration: none;
+  pointer-events: none;
+}
 /*
 .btn-fl{
 	width: 60px;
