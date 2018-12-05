@@ -287,6 +287,7 @@ $idcurso=$_POST['idcurso'];
 								 echo("</form><form action='regiscalif.php' method='post'>");
 								 
 								 echo("<input type='hidden' name='user' value='$iduser'>
+								    <input type='hidden' name='idcurso' value='$idcurso'>
 									<input type='hidden' name='calif' value='");
 								 echo(round($calif, 2));
 								 echo("'>

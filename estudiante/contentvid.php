@@ -240,6 +240,7 @@ $unidad=$_POST['unidad'];
 							  echo($arrayvid['Nombre']);
 							  echo("'><input type='hidden' name='ncurso' value='$ncurso'>");
 							  echo("<input type='hidden' name='nleccion' value='$leccion'>");
+							  echo("<input type='hidden' name='unidad' value='$unidad'>");
 							  echo("<input type='hidden' name='tipo' value='video'>");
 							  echo("<button type='submit' class='btn btn-outline-success'>");
 							  echo("<i class='fas fa-video'> </i>");
@@ -279,6 +280,7 @@ $unidad=$_POST['unidad'];
 							  echo($arrayvid['Nombre']);
 							  echo("'><input type='hidden' name='ncurso' value='$ncurso'>");
 							  echo("<input type='hidden' name='nleccion' value='$leccion'>");
+							  echo("<input type='hidden' name='unidad' value='$unidad'>");
 							  echo("<input type='hidden' name='tipo' value='audio'>");
 							  echo("<button type='submit' class='btn btn-outline-danger'>");
 							  echo("<i class='fas fa-volume-up'> </i>");
@@ -318,6 +320,7 @@ $unidad=$_POST['unidad'];
 							  echo($arrayvid['Nombre']);
 							  echo("'><input type='hidden' name='ncurso' value='$ncurso'>");
 							  echo("<input type='hidden' name='nleccion' value='$leccion'>");
+							  echo("<input type='hidden' name='unidad' value='$unidad'>");
 							  echo("<input type='hidden' name='tipo' value='documento'>");
 							  echo("<button type='submit' class='btn btn-outline-primary w-100'>");
 							  echo("<i class='fas fa-file-word'> </i>");
@@ -453,7 +456,7 @@ $unidad=$_POST['unidad'];
 
 								<?php
 								$lecturaleng="SELECT TextLngInd from lectura where IdCurso='$idcurso' AND Unidad='$unidad'";
-								echo($lecturaleng);
+								
 								$lecturalengcon=mysqli_query($conexion, $lecturaleng);
 								if($reslec=mysqli_fetch_row($lecturalengcon)){
 									$rslec1=trim($reslec[0]);	
