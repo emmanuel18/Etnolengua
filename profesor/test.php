@@ -247,8 +247,10 @@ $unidad=$_POST['unidad'];
 			  }
 		  else{
 			  $quest="INSERT INTO examen (IdCurso, Pregunta, Resp1, Resp2, Resp3, RespC, Unidad) VALUES ('$idcurso', '$Pregunta', '$Resp1', '$Resp2', '$Resp3', '$RespC', '$unidad')";
+			  $publish="UPDATE cursos SET Estado=1 Where IdCurso=$idcurso";
+			  $publicar=mysqli_query($conexion,$publish);
 			  $insertar=mysqli_query($conexion, $quest);
-			  echo '<script languaje="javascript">alert("Examen creado");
+			  echo '<script languaje="javascript">alert("Examen creado... Felicidades, tu curso se publicará en breve.");
 				window.location.href="Cursos.php";
 			</script>';
 		  }

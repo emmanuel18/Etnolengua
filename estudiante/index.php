@@ -197,7 +197,7 @@ if ($_SESSION['id']==null){
 							  <a href="#" class="btn btn-outline-primary" data-toggle="modal" data-target="#mixe">Ir al Curso</a>
 						  </div>
 					  </div>
-								 
+					<!--		 
 					  <div class="card text-center mr-4" style=" width: 15rem; margin-top: 7px;">
 						<img class="card-img-top" src="../images/nahuatl.png" alt="nahuatl" height="160" width="286px">
 						  <div class="card-body" style="background-color: #EFEFEF">
@@ -216,9 +216,9 @@ if ($_SESSION['id']==null){
 						  </div>
 					  </div>
 				 
-				       
+				       -->
 				  <?php
-						$cursos="SELECT IdCurso, Nombre, Descripcion, Presentacion From Cursos ";
+						$cursos="SELECT IdCurso, Nombre, Descripcion, Presentacion From Cursos Where Estado=1";
 						$nomcur=mysqli_query($conexion, $cursos);
 						while ($arrayres=mysqli_fetch_array($nomcur)){
 							

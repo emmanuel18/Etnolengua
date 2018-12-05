@@ -109,7 +109,7 @@ $unidad=$_POST['unidad'];
 				if($row2=mysqli_fetch_row($Foto)){
 					$ft=trim($row2[0]);
 				}
-				echo "<img src='../phpregistro/bdimagen/$ft' width='auto' height='32'>";
+				echo "<img src='../phpregistro/bdimagen/$ft' width='auto' height='32' class='rounded-circle'>";
 				?>  
 			</i>
           </a>
