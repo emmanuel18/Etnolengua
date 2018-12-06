@@ -163,18 +163,13 @@ if ($_SESSION['id']==null){
 				
 			</div>
         </li>
-		<li class="nav-item">
-          <a class="nav-link" data-toggle="modal" data-target="#bot">
+		
+        <li class="nav-item">
+          <a class="nav-link" href="botvoice/index.php">
             <i class="fas fa-fw fa-robot"></i>
-            <span>Bot(beta)</span>
+            <span>Bot (Beta)</span>
           </a>
         </li>
-        <!--<li class="nav-item">
-          <a class="nav-link" href="index.html">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Avance</span>
-          </a>
-        </li>-->
       </ul>
 
       <div id="content-wrapper">
@@ -271,43 +266,8 @@ if ($_SESSION['id']==null){
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fas fa-angle-up"></i>
     </a>
-	<!-- Bot -->
-	<div class="modal fade bd-example-modal-lg" id="bot" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-robot text-primary"></i> Yolkan</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">X</span>
-            </button>
-          </div>
-          <div class="modal-body">
-			  <div class="form-group">
-    			<h1>Yolkan</h1>
-    				<p>Pulsa el botón de "hablar" para iniciar el reconocimiento, al finalizar pulsa "detener".</p>
-					<div class="form-group">
-    				<center><button onClick="testSpeech()" class="btn btn-success form"><i class="fa fa-microphone"></i>Comenzar prueba</button></center> </div>
-
-    				
-						<div class="form-group">
-        				<textarea class="phrase form-control bg-light" rows="2">Palabra...</textarea>
-						</div>
-						<div class="form-group">
-        				<textarea class="result form-control" rows="2">Correcto o Incorrecto</textarea>
-						</div>
-						<div class="form-group">
-        				<textarea class="output form-control" rows="2">...diagnóstico</textarea>
-						</div>
-    				
-
-    				<script src="script.js"></script>
-			  
-			
-		  		</div>
-          
-        </div>
-      </div>
-		</div></div>
+	
+	
     <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -338,16 +298,20 @@ if ($_SESSION['id']==null){
           </div>
           <div class="modal-body">
 			  <ul class="dropdown dropdown-menu-center" role="menu">
-							<li class="dropdown-item" data-toggle="modal" data-target="#act">								
-								<button class="btn btn-block btn-success"><i class="fa fa-pen text-warning"></i> Actividades </button>
-							</li> 
-							<li class="dropdown-item" data-toggle="modal" data-target="#history">								
-								<button class="btn btn-block btn-primary"><i class="fa fa-atlas text-dark"></i> Historia </button>	
-				  			</li>
-							<li class="dropdown-item">
-								<a href="traslatormixe.php" class="btn btn-block btn-outline-secondary"><i class="fa fa-book-open text-info"></i> Diccionario </a>
-							</li>
-						</ul> 
+				  
+				  <li class="dropdown-item" data-toggle="modal" data-target="#act">	
+					  <button class="btn btn-block btn-success"><i class="fa fa-pen text-warning"></i> Actividades </button>
+				  </li> 
+				  <li class="dropdown-item" data-toggle="modal" data-target="#history">	
+					  <button class="btn btn-block btn-primary"><i class="fa fa-atlas text-dark"></i> Historia </button>	
+				  </li>
+				  <li class="dropdown-item">
+					  <a href="traslatormixe.php" class="btn btn-block btn-outline-secondary"><i class="fa fa-book-open text-info"></i> Diccionario </a>
+				  </li>
+				  <li class="dropdown-item">
+					  <a href="botvoice/index.php" class="btn btn-block btn-info"><i class="fa fa-robot"></i> Bot (Beta) </a>
+				  </li>
+			  </ul> 
 		  </div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>            
@@ -897,54 +861,5 @@ if ($_SESSION['id']==null){
     <script src="js/sb-admin.min.js"></script>
 	
   </body>
-<!--<script type="text/javascript">
 
-	var recognition;
-	var recognizing = false;
-	if (!('webkitSpeechRecognition' in window)) {
-		alert("¡API no soportada!");
-	} else {
-
-		recognition = new webkitSpeechRecognition();
-		recognition.lang = "es-VE";
-		recognition.continuous = true;
-		recognition.interimResults = true;
-
-		recognition.onstart = function() {
-			recognizing = true;
-			console.log("empezando a eschucar");
-		}
-		recognition.onresult = function(event) {
-
-		 for (var i = event.resultIndex; i < event.results.length; i++) {
-			if(event.results[i].isFinal)
-				document.getElementById("texto").value += event.results[i][0].transcript;
-		    }
-			
-			//texto
-		}
-		recognition.onerror = function(event) {
-		}
-		recognition.onend = function() {
-			recognizing = false;
-			document.getElementById("procesar").innerHTML = "<i class='fa fa-microphone'></i> Hablar";
-			console.log("terminó de eschucar, llegó a su fin");
-
-		}
-
-	}
-
-	function procesar() {
-
-		if (recognizing == false) {
-			recognition.start();
-			recognizing = true;
-			document.getElementById("procesar").innerHTML = "<i class='fa fa-microphone'></i> Detener";
-		} else {
-			recognition.stop();
-			recognizing = false;
-			document.getElementById("procesar").innerHTML = "<i class='fa fa-microphone'></i> Hablar";
-		}
-	}
-</script> -->
 </html>

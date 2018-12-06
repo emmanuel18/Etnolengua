@@ -3,7 +3,7 @@ var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
 var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
 
 var phrases = [
-  '/tu•uk/'
+  'Yolkan', 'ayuuk'
 ];
 
 var phrasePara = document.querySelector('.phrase');
@@ -34,7 +34,7 @@ function testSpeech() {
   var speechRecognitionList = new SpeechGrammarList();
   speechRecognitionList.addFromString(grammar, 1);
   recognition.grammars = speechRecognitionList;
-  recognition.lang = 'en-EU';
+  recognition.lang = 'es-MX';
   recognition.interimResults = false;
   recognition.maxAlternatives = 1;
 
@@ -51,12 +51,12 @@ function testSpeech() {
     // We then return the transcript property of the SpeechRecognitionAlternative object 
     var speechResult = event.results[0][0].transcript;
     diagnosticPara.textContent = 'Speech received: ' + speechResult + '.';
-    if(speechResult === phrase) {
+    if(speechResult.match(/yol/)||speechResult.match(/ayu/)) {
       resultPara.textContent = '¡Muy bien!';
-      resultPara.style.background = 'lime';
+      resultPara.style.background = '#79F37C';
     } else {
       resultPara.textContent = 'Eso no se escuchó bien.';
-      resultPara.style.background = 'red';
+      resultPara.style.background = '#F37979';
     }
 
     console.log('Confidence: ' + event.results[0][0].confidence);
@@ -65,7 +65,7 @@ function testSpeech() {
   recognition.onspeechend = function() {
     recognition.stop();
     testBtn.disabled = false;
-    testBtn.textContent = 'Intentarlo de nuevo';
+    testBtn.textContent = "Intentarlo de nuevo";
   }
 
   recognition.onerror = function(event) {
