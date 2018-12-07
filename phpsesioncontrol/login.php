@@ -62,7 +62,7 @@ else{
 		
 		else{
 			echo '<script languaje="javascript">alert("Usuario y/o Contraseña Incorrectos ");
-	        window.location.href="../index.php";
+	        window.location.href="../default.php";
 			</script>';
 		}
 	}

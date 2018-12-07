@@ -96,7 +96,7 @@ if ($_SESSION['id']==null){
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas">
 				<?php
-				$query2="SELECT Fotoperfil FROM Userprofe WHERE Correo='$cr'";
+				$query2="SELECT Fotoperfil FROM Userprofe WHERE id='$sesion'";
 				$Foto=mysqli_query($conexion, $query2);
 				if($row2=mysqli_fetch_array($Foto)){
 					$ft=trim($row2[0]);
