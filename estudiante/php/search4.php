@@ -10,11 +10,15 @@ function search()
   $query = "SELECT sound FROM palabras WHERE esp = '$search'";
   $res = $mysqli->query($query);
   
-  while ($row = $res->fetch_array(MYSQLI_ASSOC)) {
-    echo "
-      <h3>Escuchar</h3>
+  while ($row = mysqli_fetch_array($res)) {
+	  if(empty($row["sound"])){
+		echo("<p></p>");
+	}else{
+		  echo "
+      	<h3>Escuchar</h3>
           <audio src='../$row[sound]' controls></audio>
 	     ";
+	  }
   }
  
 }

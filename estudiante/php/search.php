@@ -6,11 +6,20 @@ require_once 'conexion.php';
 function search()
 {
   $mysqli = getConnexion();
-  $search = $mysqli->real_escape_string($_POST['search']);
-  $query = "SELECT mixe FROM palabras WHERE esp = '$search'";
+  $search = $mysqli->real_escape_string($_POST["search"]);
+  
+  $query = "SELECT * FROM palabras WHERE esp = '$search' OR mixe = '$search'";
   $res = $mysqli->query($query);
   while ($row = $res->fetch_array(MYSQLI_ASSOC)) {
-    echo "$row[mixe] ";
+	  if($row["mixe"]===$search){		  
+		  echo "$row[esp]";
+	  }elseif($row["esp"]===$search){		  
+		  echo "$row[mixe]";
+	  }
+	  else{
+		  echo "$row[esp]";
+	  }
+    
 	
   }
  

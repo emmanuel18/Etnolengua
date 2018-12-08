@@ -6,7 +6,7 @@ $(document).ready(function(){
     $.ajax({
       type: 'POST',
       url: 'php/search.php',
-      data: {'search': search},
+      data: {'search': utf8_encode(search)},
      /* beforeSend: function(){
         $('#result').html('<img src="img/pacman.gif">')
       } */

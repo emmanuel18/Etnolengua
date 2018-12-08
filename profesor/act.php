@@ -118,9 +118,9 @@ $unidad=$_POST['unidad'];
 			</i>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">Configuración</a>
+            <!-- <a class="dropdown-item" href="#">Configuración</a>
             <a class="dropdown-item" href="#">Editar perfil</a>
-            <div class="dropdown-divider"></div>
+            <div class="dropdown-divider"></div> -->
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Cerrar sesión</a>
           </div>
         </li>

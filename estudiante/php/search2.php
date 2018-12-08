@@ -9,8 +9,13 @@ function search()
   $search = $mysqli->real_escape_string($_POST['search']);
   $query = "SELECT fonema FROM palabras WHERE esp = '$search'";
   $res = $mysqli->query($query);
-  while ($row = $res->fetch_array(MYSQLI_ASSOC)) {
-    echo "<h3>Símbolo fonético</h3> $row[fonema] ";
+  while ($row = mysqli_fetch_array($res)) {
+	if(empty($row["fonema"])){
+		echo("<p></p>");
+	}else{
+		echo "<h3>Símbolo fonético</h3> $row[fonema] ";
+	}
+    
 	
   }
  

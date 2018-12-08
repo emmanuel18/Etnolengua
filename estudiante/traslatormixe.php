@@ -68,30 +68,30 @@ if ($_SESSION['id']==null){
         <li class="nav-item dropdown no-arrow mx-1">
           <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-bell fa-fw"></i>
-            <span class="badge badge-danger">9+</span>
+            <span class="badge badge-danger"></span>
           </a>
-			<!--
+			
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Sin notificaciones</a>
+            <!--<a class="dropdown-item" href="#">Another action</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" href="#">Something else here</a>-->
           </div>
-           -->
+           
         </li>
         <li class="nav-item dropdown no-arrow mx-1">
           <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-envelope fa-fw"></i>
-            <span class="badge badge-danger">7</span>
+            <span class="badge badge-danger"></span>
           </a>
-			<!--
+			
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">No hay mensajes</a>
+            <!--<a class="dropdown-item" href="#">Another action</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" href="#">Something else here</a>-->
           </div>
-          -->
+          
         </li>
         <li class="nav-item dropdown no-arrow">
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -134,15 +134,11 @@ if ($_SESSION['id']==null){
       <ul class="sidebar navbar-nav">
         
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="index.php" >
             <i class="fas fa-fw fa-folder"></i>
             <span>Mis Cursos</span>
           </a>
-          <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <h6 class="dropdown-header">Lenguas</h6>
-            <a class="dropdown-item" href="index.php">Nahuatl</a>
-			  <a class="dropdown-item" href="index.php">Mixe</a>
-          </div>
+          
         </li>
         <li class="nav-item dropdown active">
           <a class="nav-link dropdown-toggle" id="pagesDropdown" href="charts.html" data-toggle="dropdown" aria-haspopup="false" aria-expanded="true">
@@ -156,12 +152,7 @@ if ($_SESSION['id']==null){
 				
 			</div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="index.html">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Avance</span>
-          </a>
-        </li>
+        
       </ul>
 
       <div id="content-wrapper">
@@ -184,7 +175,7 @@ if ($_SESSION['id']==null){
           <div class="col-sm-6 col-lg-6">
             <blockquote class="blockquote">
               <form>
-				   <textarea rows="5" cols="100" class="form-control" id="search" name="eps" placeholder="Introduce una palabra" aria-describedby="messageHelp"></textarea>	<br>
+				   <textarea rows="5" cols="100" class="form-control" id="search" name="eps" placeholder="Introduce una palabra (detección automática)" aria-describedby="messageHelp"></textarea>	<br>
 				  <button type="submit" id="feedbackSubmit" class="btn btn-primary btn-lg">Traducir</button>
 			  </form>
 			  <br>
