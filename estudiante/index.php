@@ -135,7 +135,7 @@ if ($_SESSION['id']==null){
         
        
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="pagesDropdown" href="charts.html" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" id="pagesDropdown" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-fw fa-list a-li"></i>
             <span>Traductor</span>
 			</a>
