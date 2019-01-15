@@ -66,30 +66,30 @@ if($rw=mysqli_fetch_row($qr)){
         <li class="nav-item dropdown no-arrow mx-1">
           <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-bell fa-fw"></i>
-            <span class="badge badge-danger">9+</span>
+            <span class="badge badge-danger"></span>
           </a>
-			<!--
+			
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Sin notificaciones</a>
+            <!--<a class="dropdown-item" href="#">Another action</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" href="#">Something else here</a>-->
           </div>
-           -->
+           
         </li>
         <li class="nav-item dropdown no-arrow mx-1">
           <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-envelope fa-fw"></i>
-            <span class="badge badge-danger">7</span>
+            <span class="badge badge-danger"></span>
           </a>
-			<!--
+			
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">No hay mensajes</a>
+            <!--<a class="dropdown-item" href="#">Another action</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" href="#">Something else here</a>-->
           </div>
-          -->
+          
         </li>
         <li class="nav-item dropdown no-arrow">
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -100,7 +100,7 @@ if($rw=mysqli_fetch_row($qr)){
 				if($row2=mysqli_fetch_row($Foto)){
 					$ft=trim($row2[0]);
 				}
-				echo "<img src='../phpregistro/bdimagen/$ft' width='auto' height='32'>";
+				echo "<img class='rounded-circle' src='../phpregistro/bdimagen/$ft' width='auto' height='32'>";
 				?>
 			 
 			  </i>
@@ -132,15 +132,11 @@ if($rw=mysqli_fetch_row($qr)){
       <ul class="sidebar navbar-nav">
         
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="index.php" >
             <i class="fas fa-fw fa-folder"></i>
             <span>Mis Cursos</span>
           </a>
-          <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <h6 class="dropdown-header">Lenguas</h6>
-            <a class="dropdown-item" href="index.php">Nahuatl</a>
-			  <a class="dropdown-item" href="index.php">Mixe</a>
-          </div>
+          
         </li>
         <li class="nav-item dropdown active">
           <a class="nav-link dropdown-toggle" id="pagesDropdown" href="charts.html" data-toggle="dropdown" aria-haspopup="false" aria-expanded="true">
@@ -154,12 +150,7 @@ if($rw=mysqli_fetch_row($qr)){
 				
 			</div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="index.html">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Avance</span>
-          </a>
-        </li>
+        
       </ul>
 
       <div id="content-wrapper">
@@ -171,9 +162,57 @@ if($rw=mysqli_fetch_row($qr)){
 
           <!-- Page Content -->
           
-		 <?php 
-			require '../translator2.html';
-		 ?>
+		 <section id="Quienes">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 mb-4 mt-2 text-center">
+            <h2>Diccionario Español-Mixe</h2>
+          </div>
+        </div>
+      </div>
+	  <div class="row">
+          <div class="col-sm-6 col-lg-6">
+            <blockquote class="blockquote">
+              <form>
+				   <textarea rows="5" cols="100" class="form-control" id="search" name="eps" placeholder="Introduce una palabra (detección automática)" aria-describedby="messageHelp"></textarea>	<br>
+				  <button type="submit" id="feedbackSubmit" class="btn btn-primary btn-lg">Traducir</button>
+			  </form>
+			  <br>
+              <blockquote class="blockquote">
+              <form>
+				   <textarea rows="5" cols="100" class="form-control" id="result" name="ind" placeholder="Traducción" aria-describedby="messageHelp"></textarea>					
+			  </form>
+               
+            </blockquote>
+            </blockquote>
+          </div>
+		  
+          <div class="col-sm-6 col-lg-6">
+			  <blockquote class="blockquote text-center">
+				  <div id="result2">
+				  
+				  </div>
+			  </blockquote>
+			  
+			  <blockquote class="blockquote text-center">
+				  <div id="result3">
+				  
+				  </div>
+			  </blockquote>
+			  
+			  <blockquote class="blockquote text-center">
+				  <div id="result4">
+					 
+				  
+				  </div>
+			  </blockquote>
+          
+          </div>
+        </div>
+		
+		
+        
+      </section>
         </div>
         <!-- /.container-fluid -->
 

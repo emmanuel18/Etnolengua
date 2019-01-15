@@ -102,7 +102,7 @@ if ($_SESSION['id']==null){
 				if($row2=mysqli_fetch_row($Foto)){
 					$ft=trim($row2[0]);
 				}
-				echo "<img src='../phpregistro/bdimagen/$ft' width='auto' height='32'>";
+				echo "<img class='rounded-circle' src='../phpregistro/bdimagen/$ft' width='auto' height='32'>";
 				?>
 			 
 			  </i>

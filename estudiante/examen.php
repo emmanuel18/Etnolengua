@@ -17,6 +17,7 @@ if ($_SESSION['id']==null){
 
 $ncurso=$_POST['ncurso'];
 $idcurso=$_POST['idcurso'];
+$unidad=$_POST['unidad'];
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -70,35 +71,35 @@ $idcurso=$_POST['idcurso'];
 		
       <!-- Navbar -->
       <ul class="navbar-nav ml-auto ml-md-0">
-        <li class="nav-item dropdown no-arrow mx-1">
+				<li class="nav-item dropdown no-arrow mx-1">
           <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-bell fa-fw"></i>
-            <span class="badge badge-danger">9+</span>
+            <span class="badge badge-danger"></span>
           </a>
-			<!--
+			
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Sin notificaciones</a>
+            <!--<a class="dropdown-item" href="#">Another action</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" href="#">Something else here</a> -->
           </div>
-           -->
+          
         </li>
         <li class="nav-item dropdown no-arrow mx-1">
           <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-envelope fa-fw"></i>
-            <span class="badge badge-danger">7</span>
+            <span class="badge badge-danger"></span>
           </a>
-			<!--
+			
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">No hay mensajes</a>
+            <!--<a class="dropdown-item" href="#">Another action</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" href="#">Something else here</a>-->
           </div>
-          -->
+          
         </li>
-        <li class="nav-item dropdown no-arrow">
+				<li class="nav-item dropdown no-arrow">
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas">
 				<?php
@@ -107,29 +108,26 @@ $idcurso=$_POST['idcurso'];
 				if($row2=mysqli_fetch_row($Foto)){
 					$ft=trim($row2[0]);
 				}
-				echo "<img src='../phpregistro/bdimagen/$ft' width='auto' height='32'>";
+				echo "<img class='rounded-circle' src='../phpregistro/bdimagen/$ft' width='auto' height='32'>";
 				?>  
 			</i>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="#">Configuración</a>
-            <a class="dropdown-item" href="#">Editar perfil</a>
+           <!-- <a class="dropdown-item" href="#">Configuración</a>
+            <a class="dropdown-item" href="#">Editar perfil</a> -->
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Cerrar sesión</a>
           </div>
         </li>
-		  <div class="navbar-text mr-1">
-		
-		  <?php
-			$token=strtok($rs, " \n\t");
-			if($token!==false){
-				echo("$token");
-			}
-			?>
-		  
-		</div>
-
-      </ul>
+				<div class="navbar-text mr-1">
+					<?php
+					$token=strtok($rs, " \n\t");
+					if($token!==false){
+						echo("$token");
+					}
+					?>
+				</div>
+			</ul>
 
     </nav>
 
@@ -258,7 +256,7 @@ $idcurso=$_POST['idcurso'];
 						 ?>
 							</div>
 						 <input type='hidden' name='contador' value='<?php echo($cont);?>'>
-						
+						 <input type="hidden" name="unidad" value='<?php echo($unidad);?>'>
 							<button class="btn btn-primary" type="submit">Siguiente Pregunta   <i class="fas fa-arrow-circle-right"></i></button>
 						
 
