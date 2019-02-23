@@ -106,8 +106,8 @@ if($rw=mysqli_fetch_row($qr)){
 			  </i>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="#">Configuración</a>
-            <a class="dropdown-item" href="#">Editar perfil</a>
+            <!--<a class="dropdown-item" href="#">Configuración</a>
+            <a class="dropdown-item" href="#">Editar perfil</a> -->
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Cerrar sesión</a>
           </div>
@@ -166,7 +166,7 @@ if($rw=mysqli_fetch_row($qr)){
       <div class="container">
         <div class="row">
           <div class="col-lg-12 mb-4 mt-2 text-center">
-            <h2>Diccionario Español-Mixe</h2>
+            <h2>Diccionario Español-Nahuatl</h2>
           </div>
         </div>
       </div>
@@ -175,7 +175,7 @@ if($rw=mysqli_fetch_row($qr)){
             <blockquote class="blockquote">
               <form>
 				   <textarea rows="5" cols="100" class="form-control" id="search" name="eps" placeholder="Introduce una palabra (detección automática)" aria-describedby="messageHelp"></textarea>	<br>
-				  <button type="submit" id="feedbackSubmit" class="btn btn-primary btn-lg">Traducir</button>
+				  <button type="submit" id="feedbackSubmit" class="btn btn-primary btn-lg"><i class="fas fa-retweet"></i></button>
 			  </form>
 			  <br>
               <blockquote class="blockquote">

@@ -33,6 +33,9 @@ body {
 .bg-gris{
 	background-color: #e9ecef;
 }
+.bg-greenlight{
+	background-color: #40D863;
+}
 .upload-btn-wrapper {
   position: relative;
   overflow: hidden;

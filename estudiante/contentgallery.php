@@ -237,7 +237,7 @@ $idcurso=$_POST['idcurso'];
 					</div> -->
 					 
 					  <div class="card text-center mx-auto bg-light" style=" width: 15rem; margin-top: 7px;">
-						  <div class="card-header"><h4><b>Unidad</b></h4></div>
+						  <div class="card-header"><h4><b>Lección</b></h4></div>
 						  <img class="card-img-top" src="img/30.png" alt="mixe"  width="40%">
 						  <div class="card-body" style="background-color: #EFEFEF">
 							
@@ -246,13 +246,13 @@ $idcurso=$_POST['idcurso'];
 								  <input type="hidden" name="idcurso" value="<?php echo($idcurso); ?>">
 								  <input type="hidden" name="unidad" value=1>
 								  <button class="btn btn-primary btn-block" type="submit">
-									  <i class="fas fa-arrow-circle-right"></i> Ir a la unidad
+									  <i class="fas fa-arrow-circle-right"></i> Ir a la Lección
 								  </button>	
 							  </form>
 						  </div>
 					  </div>
 					  <div class="card text-center mx-auto bg-light" style=" width: 15rem; margin-top: 7px;">
-						  <div class="card-header"><h4><b>Unidad</b></h4></div>
+						  <div class="card-header"><h4><b>Lección</b></h4></div>
 						  <img class="card-img-top" src="img/60.png" alt="mixe"  width="40%">
 						  <div class="card-body" style="background-color: #EFEFEF">
 							  <form action="contentvid.php" method="post"><br>
@@ -260,13 +260,13 @@ $idcurso=$_POST['idcurso'];
 								  <input type="hidden" name="idcurso" value="<?php echo($idcurso); ?>">
 								  <input type="hidden" name="unidad" value=2>
 								  <button class="btn btn-success btn-block" type="submit">
-									  <i class="fas fa-arrow-circle-right"></i> Ir a la unidad
+									  <i class="fas fa-arrow-circle-right"></i> Ir a la Lección
 								  </button>	
 							  </form>
 						  </div>
 					  </div>
 					  <div class="card text-center mx-auto bg-light" style=" width: 15rem; margin-top: 7px;">
-						  <div class="card-header"><h4><b>Unidad</b></h4></div>
+						  <div class="card-header"><h4><b>Lección</b></h4></div>
 						  <img class="card-img-top" src="img/90.png" alt="mixe" width="40%">
 						  <div class="card-body" style="background-color: #EFEFEF">
 							 
@@ -275,13 +275,13 @@ $idcurso=$_POST['idcurso'];
 								  <input type="hidden" name="idcurso" value="<?php echo($idcurso); ?>">
 								  <input type="hidden" name="unidad" value=3>
 								  <button class="btn btn-secondary btn-block" type="submit">
-									  <i class="fas fa-arrow-circle-right"></i> Ir a la unidad
+									  <i class="fas fa-arrow-circle-right"></i> Ir a la Lección
 								  </button>	
 							  </form>
 						  </div>
 					  </div>
 					  <div class="card mx-auto bg-info text-light" style=" width: 15rem; margin-top: 7px;">
-						  <div class="card-header"><h4><b>Evaluación final</b></h4></div>
+						  <div class="card-header"><h4><b>Evaluación</b></h4></div>
 						  <img class="card-img-top" src="img/test.png" alt="mixe" width="40%">
 						  <div class="card-body">
 							 

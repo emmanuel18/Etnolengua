@@ -188,25 +188,25 @@ if ($_SESSION['id']==null){
 							echo "<form action='act.php' method='post' class='mx-auto'>
 									<input type='hidden' name='idcurso' value=$idcurso>
 									<input type='hidden' name='unidad' value=1>
-									<input type='submit' class='btn btn-primary btn-block' name='enviar' value='Unidad 1'>
+									<input type='submit' class='btn btn-primary btn-block' name='enviar' value='Lección 1'>
 								  </form>
 
 								  <form action='act.php' method='post' style=' margin-top: 7px;'>
 									<input type='hidden' name='idcurso' value=$idcurso>
 									<input type='hidden' name='unidad' value=2>
-									<input type='submit' class='btn btn-success btn-block' name='enviar' value='Unidad 2'>
+									<input type='submit' class='btn btn-success btn-block' name='enviar' value='Lección 2'>
 								  </form>
 
 								  <form action='act.php' method='post'  style=' margin-top: 7px;'>
 									<input type='hidden' name='idcurso' value=$idcurso>
 									<input type='hidden' name='unidad' value=3>
-									<input type='submit' class='btn btn-info btn-block' name='enviar' value='Unidad 3'>
+									<input type='submit' class='btn btn-info btn-block' name='enviar' value='Lección 3'>
 								  </form>
 
 								";
 							echo "</p> </div>
 							<div class='card-footer' style='background-color: #EFEFEF'>
-								<a class='btn btn-secondary btn-block' href='#' data-toggle='modal' data-target='#test'>Crear examen final</a>
+								<a class='btn btn-secondary btn-block' href='#' data-toggle='modal' data-target='#test'>Crear Evaluación</a>
 								
 							</div>
 							</div> ";						

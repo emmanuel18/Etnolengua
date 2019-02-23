@@ -108,8 +108,8 @@ if ($_SESSION['id']==null){
 			  </i>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="#">Configuración</a>
-            <a class="dropdown-item" href="#">Editar perfil</a>
+            <!--<a class="dropdown-item" href="#">Configuración</a>
+            <a class="dropdown-item" href="#">Editar perfil</a> -->
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Cerrar sesión</a>
           </div>
@@ -176,7 +176,7 @@ if ($_SESSION['id']==null){
             <blockquote class="blockquote">
               <form>
 				   <textarea rows="5" cols="100" class="form-control" id="search" name="eps" placeholder="Introduce una palabra (detección automática)" aria-describedby="messageHelp"></textarea>	<br>
-				  <button type="submit" id="feedbackSubmit" class="btn btn-primary btn-lg">Traducir</button>
+				  <button type="submit" id="feedbackSubmit" class="btn btn-primary btn-lg"><i class="fas fa-retweet"></i></button>
 			  </form>
 			  <br>
               <blockquote class="blockquote">

@@ -49,15 +49,7 @@ $unidad=$_POST['unidad'];
   </head>
 
   <body id="page-top">
-	 <!-- <script>
-	  $('.btn-fl').hover(function(){
-		  $('.btn').addClass('animacionVer');
-	  })
-		$('.container2').mouseleave(function(){
-			$('.btn').removeClass('animacionVer');
-		})	
-		  
-	  </script> -->
+	 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
       <a class="navbar-brand mr-1" href="index.php"><img src="../images/logo.png" width="150" height="auto" alt=""/></a>
@@ -153,13 +145,7 @@ $unidad=$_POST['unidad'];
             <span>Crear nuevo curso</span>
           </a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Archivos</span>
-          </a>
-          
-        </li>
+       
          <!-- <li class="nav-item">
           <a class="nav-link" href="charts.html">
             <i class="fas fa-fw fa-chart-area"></i>
@@ -183,217 +169,35 @@ $unidad=$_POST['unidad'];
 					$rs3=trim($rw3[0]);	
 				  }
 				  echo utf8_encode($rs3." ");
-				  ?><b>&nbsp;Unidad: </b>
+				  ?><b>&nbsp;Lección: </b>
 				  <?php echo($unidad); ?>
 			  </h2> 
-			     
+			   <div class="alert alert-success"><i class="fas fa-info-circle"></i> Explica la lección a traves de un video, documento o una galería de imágenes</div>  
 		</div>
-		<h2 class="h2 text-center text-secondary"><p class="fa fa-chalkboard"></p> Crear Actividades</h2>
+		
 		<div class="row container justify-content-center">	
 			
 			<p>&nbsp; &nbsp; &nbsp;</p>
+		
 			
-			<button class="dropdown-item bg-primary radius" href="#" data-toggle="modal" data-target="#reading" style="width: 14rem;"
-					<?php 
-					$validlectura="SELECT IdLectura FROM lectura where IdCurso='$idcurso' AND Unidad='$unidad'";
-					$validar=mysqli_query($conexion, $validlectura);
-					if($v=mysqli_fetch_row($validar)){
-						echo("disabled");
-						$check1=1;
-					}
-					
-					?>
-					> 
-				<div class="card-body">
-					
-					<h5 class="card-title text-center text-light">Lectura
-						<?php
-						error_reporting(0);
-						if($check1==1){
-							echo("<br>Creada");
-						}
-						?>					
-					</h5>
-					<p class="card-img fa 
-							 <?php
-								error_reporting(0);
-								if($check1==1){
-									echo("fa-check-circle");
-								}else{
-									echo("fa-book-reader");
-								}
-							?>
-							  
-							  fa-6x text-center text-light"></p>
-					
-				</div> 
-			</button>
-			
-			<p>&nbsp; &nbsp; &nbsp;</p>
-			<Button class="dropdown-item radius bg-dark" href="#" data-toggle="modal" data-target="#quest" style="width: 14rem;"
-					<?php 
-					$validcues="SELECT IdCuestionario FROM cuestionario where IdCurso='$idcurso' AND Unidad='$unidad'";
-					$validarcues=mysqli_query($conexion, $validcues);
-					if($v2=mysqli_fetch_row($validarcues)){
-						echo("disabled");
-						$check2=1;
-					}
-					
-					?>
-					> 
-				<div class="card-body">
-					<h5 class="card-title text-center text-light">Cuestionario
-						<?php
-						error_reporting(0);
-						if($check2==1){
-							echo("<br>Creado");
-						}
-						?>
-					</h5>
-					<p class="card-img fa fa-6x text-center text-light 
-							  <?php
-								error_reporting(0);
-								if($check2==1){
-									echo("fa-check-circle");
-								}else{
-									echo("fa-question-circle");
-								}
-							?>
-							  "></p>
-				</div> 
-			</Button>
-			<p>&nbsp; &nbsp; &nbsp;</p>
-			<button class="dropdown-item radius bg-danger" href="#" data-toggle="modal" data-target="#test" style="width: 14rem;"
-					<?php 
-					$validtest="SELECT IdExamen FROM examen where IdCurso='$idcurso' AND Unidad='$unidad'";
-					$validartest=mysqli_query($conexion, $validtest);
-					if($v3=mysqli_fetch_row($validartest)){
-						echo("disabled");
-						$check3=1;
-					}
-					
-					?>
-					> 
-				<div class="card-body">
-					<h5 class="card-title text-center text-light">Evaluación
-					<?php
-						error_reporting(0);
-						if($check3==1){
-							echo("<br>Creada");
-						}
-					?>
-					</h5>
-					<p class="card-img fa fa-6x text-light text-center 
-							  <?php
-								error_reporting(0);
-								if($check3==1){
-									echo("fa-check-circle");
-								}else{
-									echo("fa-pencil-ruler");
-								}
-							 ?>
-							  "></p>
-				</div> 
-			</button>
-			<p>&nbsp; &nbsp; &nbsp;</p>
-			<button class="dropdown-item radius bg-success" href="#" data-toggle="modal" data-target="#" style="width: 14rem;"> 
-				<div class="card-body">
-					<h5 class="card-title text-center text-light">Juego(beta)</h5>
-					<p class="card-img fa fa-gamepad fa-6x text-center text-light"></p>
-				</div> 
-			</button>
-			    
-		 </div>
-			<p> </p>
-			<h2 class="h2 text-center text-secondary"><p class="fa fa-upload"></p> Subir Archivos</h2>
-		<div class="row container justify-content-center">	
-			<p>&nbsp; &nbsp; &nbsp;</p>
-			<form action="uploadimg/index.php" method="post">
-				<input type="hidden" name="idcurso" value="<?php echo($idcurso); ?>">
-				<input type="hidden" value="<?php echo($unidad); ?>" name="unidad">
-				<input type="hidden" name="tipo" value="imagen">
-				<button class="dropdown-item bg-secondary radius" type="submit" href="#" data-toggle="modal" data-target="#reading" style="width: 14rem;"
+				<button class="dropdown-item radius bg-primary" href="#" data-toggle="modal" data-target="#video" style="width: 14rem;"
 						<?php 
-							$validimg="SELECT IdFile FROM archivo where IdCurso='$idcurso' AND Unidad='$unidad' AND Tipo='imagen'";
-							$validarimg=mysqli_query($conexion, $validimg);
-							if($v4=mysqli_fetch_row($validarimg)){
+						$validvid="SELECT IdFile FROM archivo where IdCurso='$idcurso' AND Unidad='$unidad' AND Tipo='video' OR Tipo='documento'";
+						$validarvid=mysqli_query($conexion, $validvid);
+						$validgal="SELECT IdGaleria FROM galeria where IdCurso='$idcurso' AND NumLec='$unidad'";
+						$validargal=mysqli_query($conexion, $validgal);
+						
+						
+						if($v6=mysqli_fetch_row($validarvid)){
 								echo("disabled");
-								$check4=1;
-							}					
-						?>
-						> 
-					<div class="card-body">
-						<h5 class="card-title text-center text-light">Imagen
-						<?php
-						error_reporting(0);
-						if($check4==1){
-							echo("Cargada");
+								$check6=1;							
 						}
-					?>
-						</h5>
-						<p class="card-img fa fa-6x text-center text-light 
-								  <?php
-								error_reporting(0);
-								if($check4==1){
-									echo("fa-check-circle");
-								}else{
-									echo("fa-camera");
-								}
-							 ?>
-								  "></p>
-					</div> 
-				</button>	
-			</form>
-			<p>&nbsp; &nbsp; &nbsp;</p>
-			<form action="uploadaudio/index.php" method="post">
-				<input type="hidden" name="idcurso" value="<?php echo($idcurso); ?>">
-				<input type="hidden" value="<?php echo($unidad); ?>" name="unidad">
-				<input type="hidden" name="tipo" value="audio">
-				<button class="dropdown-item radius bg-info" type="submit" href="#" data-toggle="modal" data-target="#quest" style="width: 14rem;"
-						<?php 
-							$validaud="SELECT IdFile FROM archivo where IdCurso='$idcurso' AND Unidad='$unidad' AND Tipo='audio'";
-							$validaraud=mysqli_query($conexion, $validaud);
-							if($v5=mysqli_fetch_row($validaraud)){
-								echo("disabled");
-								$check5=1;
-							}					
-						?>
-						> 
-					<div class="card-body">
-						<h5 class="card-title text-center text-light">Audio
-						<?php
-						error_reporting(0);
-						if($check5==1){
-							echo(" Cargado");
+						elseif($v8=mysqli_fetch_row($validargal)){
+							echo("disabled");
+							$check6=1;
+							
 						}
-					?>
-						</h5>
-						<p class="card-img fa fa-6x text-center text-light
-								  <?php
-								error_reporting(0);
-								if($check5==1){
-									echo("fa-check-circle");
-								}else{
-									echo("fa-volume-up");
-								}
-							 ?>
-								  "></p>
-					</div> 
-				</button>
-			</form>
-			<p>&nbsp; &nbsp; &nbsp;</p>
-			<form action="uploadvideo/index.php" method="post">
-				<input type="hidden" name="idcurso" value="<?php echo($idcurso); ?>">
-				<input type="hidden" value="<?php echo($unidad); ?>" name="unidad">
-				<input type="hidden" name="tipo" value="video">
-				<button class="dropdown-item radius bg-warning" type="submit" href="#" data-toggle="modal" data-target="#test" style="width: 14rem;"
-						<?php 
-							$validvid="SELECT IdFile FROM archivo where IdCurso='$idcurso' AND Unidad='$unidad' AND Tipo='video'";
-							$validarvid=mysqli_query($conexion, $validvid);
-							if($v6=mysqli_fetch_row($validarvid)){
-								echo("disabled");
-								$check6=1;
-							}					
+						
 						?>
 						> 
 					<div class="card-body">
@@ -416,27 +220,23 @@ $unidad=$_POST['unidad'];
 							 ?>"></p>
 					</div> 
 				</button>
-			</form>
+			
 			<p>&nbsp; &nbsp; &nbsp;</p>
-			<form action="uploaddoc/index.php" method="post">
-				<input type="hidden" name="idcurso" value="<?php echo($idcurso); ?>">
-				<input type="hidden" value="<?php echo($unidad); ?>" name="unidad">
-				<input type="hidden" name="tipo" value="documento">
-				<button class="dropdown-item radius bg-primary" type="submit" href="#" data-toggle="modal" data-target="#" style="width: 14rem;"
+			
+				<button class="dropdown-item radius bg-warning" href="#" data-toggle="modal" data-target="#documento" style="width: 14rem;"
 						<?php 
-							$validdoc="SELECT IdFile FROM archivo where IdCurso='$idcurso' AND Unidad='$unidad' AND Tipo='documento'";
-							$validardoc=mysqli_query($conexion, $validdoc);
-							if($v7=mysqli_fetch_row($validardoc)){
-								echo("disabled");
-								$check7=1;
-							}					
+							
+						if($check6==1){
+							echo("disabled");							
+						}
+						
 						?>
 						> 
 					<div class="card-body">
 						<h5 class="card-title text-center text-light">Documentos
 						<?php
 						error_reporting(0);
-						if($check7==1){
+						if($check6==1){
 							echo("Carg...");
 						}
 						?>
@@ -444,7 +244,7 @@ $unidad=$_POST['unidad'];
 						<p class="card-img fa fa-6x text-center text-light
 								  <?php
 								error_reporting(0);
-								if($check7==1){
+								if($check6==1){
 									echo("fa-check-circle");
 								}else{
 									echo("fa-file-word");
@@ -453,8 +253,58 @@ $unidad=$_POST['unidad'];
 								  "></p>
 					</div> 
 				</button>
-			</form>    
-		 </div>
+			
+			<p>&nbsp; &nbsp; &nbsp;</p>
+			
+				<button class="dropdown-item radius bg-info" href="#galeria" data-toggle="modal" data-target="#" style="width: 14rem;"
+						<?php 
+							
+						    
+							if($check6==1){
+								echo("disabled");						
+							}					
+						?>
+						> 
+					<div class="card-body">
+						
+						<h5 class="card-title text-center text-light">Galeria
+						<?php
+						error_reporting(0);
+						if($check6==1){
+							echo("Carg...");
+						}
+						?>
+						</h5>
+						<p class="card-img fa fa-6x text-center text-light
+								  <?php
+								error_reporting(0);
+								if($check6==1){
+									echo("fa-check-circle");
+								}else{
+									echo("fa-camera-retro");
+								}
+							 ?>
+								  "></p>
+					</div> 
+				</button>
+			  
+			
+		 </div><div class="dropdown-divider"></div>
+			<?php
+			if ($check6==1){
+				echo("<div class='d-flex justify-content-center'>
+				<form action='act1.php' method='post'>
+					<input type='hidden' name='idcurso' value=$idcurso>
+					<input type='hidden' name='unidad' value=$unidad> 
+					<button type='submit' class='btn btn-success btn-lg'>Crear Actividad</button>
+				</form>
+			</div>");
+			}
+			
+			?>
+			
+		  
+			
         </div>
         <!-- /.container-fluid -->
 
@@ -498,168 +348,104 @@ $unidad=$_POST['unidad'];
       </div>
     </div>
 	  
-	<div class="modal fade" id="quest" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"  aria-hidden="true">
-	 <div class="modal-dialog" role="document">
-		 <div class="modal-content">
-			 <div class="modal-header">
-			 <h5 class="modal-title" id="exampleModalLabel">Crea un cuestionario</h5>
-				 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-				 <span aria-hidden="true">X</span> 
-				 </button>
-			 </div> 
-		<div class="modal-body"> 
-		<form action="act.php" method="post" id="cuestionario">
-	  		<div class="form-group">
-				<center>
-				<label for="exampleInputTittle"><b>Título del Cuestionario</b></label></center>
-				<input class="form-control" type="text" name="Titulo" placeholder="Insertar Título" required>
-			</div>
-			<div class="form-group">
-				<label for="exampleInputQuestion">Pregunta 1</label>
-				<input class="form-control" type="text" name="Pregunta1" placeholder="Escribe la primer pregunta" required>
-				</div>
-			
-					<div class="form-group">
-				<label for="exampleInputQuestion">Pregunta 2</label>
-				<input class="form-control" type="text" name="Pregunta2" placeholder="Escribe la segunda pregunta" required>
-				</div>
-			
-					<div class="form-group">
-				<label for="exampleInputQuestion">Pregunta 3</label>
-				<input class="form-control" type="text" name="Pregunta3" placeholder="Escribe la tercer pregunta" required>
-				</div>
-			
-					<div class="form-group">
-				<label for="exampleInputQuestion">Pregunta 4</label>
-				<input class="form-control" type="text" name="Pregunta4" placeholder="Escribe la cuarta pregunta" required>
-				</div>
-			
-					<div class="form-group">
-				<label for="exampleInputQuestion">Pregunta 5</label>
-				<input class="form-control" type="text" name="Pregunta5" placeholder="Escribe la quinta pregunta" required>
-				</div>
-			
-					<div class="form-group">
-				<label for="exampleInputQuestion">Pregunta 6</label>
-				<input class="form-control" type="text" name="Pregunta6" placeholder="Escribe la sexta pregunta" required>
-				</div>
-			
-					<div class="form-group">
-				<label for="exampleInputQuestion">Pregunta 7</label>
-				<input class="form-control" type="text" name="Pregunta7" placeholder="Escribe la septima pregunta" required>
-				</div>
-			
-					<div class="form-group">
-				<label for="exampleInputQuestion">Pregunta 8</label>
-				<input class="form-control" type="text" name="Pregunta8" placeholder="Escribe la octava pregunta" required>
-			    </div>
-			</div>
-			<input type="hidden" value="<?php echo($idcurso); ?>" name="idcurso">
-			<input type="hidden" value="<?php echo($unidad); ?>" name="unidad">
-			<div class="modal-footer">
-            	<button class="btn btn-primary" type="submit">Enviar</button>
-            	
-          </div>
-	  	</form>
-		 </div>
-		</div>
-		<?php
-		error_reporting(0);
-		$Titulo=$_POST['Titulo'];
-		$Pregunta1=$_POST['Pregunta1'];
-		$Pregunta2=$_POST['Pregunta2'];
-		$Pregunta3=$_POST['Pregunta3'];
-		$Pregunta4=$_POST['Pregunta4'];
-		$Pregunta5=$_POST['Pregunta5'];
-		$Pregunta6=$_POST['Pregunta6'];
-		$Pregunta7=$_POST['Pregunta7'];
-		$Pregunta8=$_POST['Pregunta8'];
-		
-		if($Titulo==''){
-			
-		}
-		else{
-		$Cuestionario="INSERT INTO cuestionario (IdCurso, Nombre, Pregunta1, Pregunta2, Pregunta3, Pregunta4, Pregunta5, Pregunta6, Pregunta7, Pregunta8, Unidad ) VALUES ('$idcurso', '$Titulo', '$Pregunta1', '$Pregunta2', '$Pregunta3', '$Pregunta4', '$Pregunta5', '$Pregunta6', '$Pregunta7', '$Pregunta8', '$unidad')";
-		$insertar=mysqli_query($conexion, $Cuestionario);
-		echo '<script languaje="javascript">alert("Cuestionario creado");
-			window.location.href="Cursos.php";
-			</script>';
-		}
-		?>
-		</div>
-	<div class="modal fade" id="reading" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"  aria-hidden="true">
-	 <div class="modal-dialog" role="document">
-		 <div class="modal-content">
-			 <div class="modal-header">
-			 <h5 class="modal-title" id="exampleModalLabel">Crear una lectura para tus estudiantes</h5>
-				 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-				 <span aria-hidden="true">X</span> 
-				 </button>
-			 </div> 
-		<div class="modal-body"> 
-		<form action="act.php" method="post" id="lec">
-	  		<div class="form-group">
-				<center>
-				<label for="exampleInputTittle"><b>Inserta Texto en Lengua Indígena</b></label></center>
-				<textarea class="form-control" type="text" name="txtind" placeholder="Lengua Indígena" rows="5" required></textarea>
-				
-			</div>
-			<div class="form-group">
-				<center>
-				<label for="exampleInputTittle"><b>Inserta Texto en Español</b></label></center>
-				<textarea class="form-control" type="text" name="esp" placeholder="Español" rows="5" required></textarea>
-				
-			</div>
-				<input type="hidden" value="<?php echo($idcurso); ?>" name="idcurso">	
-				<input type="hidden" value="<?php echo($unidad); ?>" name="unidad">
-			<div class="modal-footer">
-            	<button class="btn btn-primary" type="submit" >Enviar</button>
-            	
-          </div>
-	  	</form>
-		</div>
-		</div>
-		</div>
-		<?php
-	error_reporting(0);	
-	$ind=$_POST['txtind'];
-	$esp=$_POST['esp'];
-	//$idcurso=$_POST['idcurso'];
-	if (($ind=='' && $esp=='')||($ind=='0' && $esp=='0')){
-		
-	}
-	else{
-		$Lectura="INSERT INTO lectura (IdCurso, TextLngInd, TextEsp, Unidad) VALUES ('$idcurso', '$ind', '$esp', '$unidad')";
-		$insertar=mysqli_query($conexion, $Lectura);
-		echo '<script languaje="javascript">alert("Lectura creada");
-			window.location.href="Cursos.php";
-			</script>';
-		
-	}
-?>
+	  <!-- Video -->
+	  <div class="modal fade bd-example-modal-lg" id="video" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered" role="document">
+			  <div class="modal-content">
+				  <div class="modal-header">
+					  <h5 class="modal-title" id="exampleModalCenterTitle">Cargar vídeo</h5>
+					  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						  <span aria-hidden="true">&times;</span>
+					  </button>
+				  </div>
+				  <div class="modal-body">
+					  <div class="alert alert-success"><i class="fas fa-info-circle"></i> Sube un vídeo ilustrativo sobre la lección que no exceda los 500 MB.</div>  
+					  <form action="act.php" method="post" enctype="multipart/form-data">
+						  <div class="form-group alert alert-info">							
+							  <label for="video"><i class="fas fa-video"></i> Elige el archivo del vídeo</label>
+							  <input class="form-control-file text-center btn btn-info" type="file" name="archivo" id="video" accept="video/*" required>		
+						  </div>
+						  <input type="hidden" name="idcurso" value="<?php echo($idcurso); ?>">
+						  <input type="hidden" value="<?php echo($unidad); ?>" name="unidad">
+						  <input type="hidden" value="video" name="tipo">
+						  <div class="mx-auto text-center">
+							  <button type="submit" class="btn btn-primary"><i class="fas fa-upload"></i> Subir</button>
+							  <button class="btn btn-danger" data-dismiss="modal"> Cancelar</button>						  
+						  </div>
+						  
+					  </form>
+				  </div>   
+					  
+				  <div class="modal-footer">
+				  </div>
+    
+			  </div>
+  
+		  </div>
+
 	  </div>
 	  
-	<div class="modal fade" id="test" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"  aria-hidden="true">
+	  <!-- Documento -->
+	  <div class="modal fade bd-example-modal-lg" id="documento" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered" role="document">
+			  <div class="modal-content">
+				  <div class="modal-header">
+					  <h5 class="modal-title" id="exampleModalCenterTitle">Cargar documento</h5>
+					  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						  <span aria-hidden="true">&times;</span>
+					  </button>
+				  </div>
+				  <div class="modal-body">
+					  <div class="alert alert-success"><i class="fas fa-file"></i> Sube un documento ilustrativo sobre la lección que no exceda los 500 MB.</div>  
+					  <form action="act.php" method="post" enctype="multipart/form-data">
+						  <div class="form-group alert alert-info">							
+							  <label for="video"><i class="fas fa-video"></i> Elige el archivo</label>
+							  <input class="form-control-file text-center btn btn-info" type="file" name="archivo" id="video" accept=".pdf, .doc" required>		
+						  </div>
+						  <input type="hidden" name="idcurso" value="<?php echo($idcurso); ?>">
+						  <input type="hidden" value="<?php echo($unidad); ?>" name="unidad">
+						  <input type="hidden" value="video" name="tipo">
+						  <div class="mx-auto text-center">
+							  <button type="submit" class="btn btn-primary"><i class="fas fa-upload"></i> Subir</button>
+							  <button class="btn btn-danger" data-dismiss="modal"> Cancelar</button>						  
+						  </div>
+						  
+					  </form>
+				  </div>   
+					  
+				  <div class="modal-footer">
+				  </div>
+    
+			  </div>
+  
+		  </div>
+
+	  </div>
+	  
+	<!-- Galeria -->
+	<div class="modal fade" id="galeria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"  aria-hidden="true">
 	 <div class="modal-dialog" role="document">
 		 <div class="modal-content">
 			 <div class="modal-header">
-			 <h5 class="modal-title" id="exampleModalLabel">Crea una evaluación para la unidad</h5>
+			 <h5 class="modal-title" id="exampleModalLabel">Crear galería</h5>
 				 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
 				 <span aria-hidden="true">X</span> 
 				 </button>
 			 </div> 
 			<div class="modal-body"> 
-				<form action="test.php" method="post" id="cuestionario">
+				<form action="Galeria.php" method="post" >
+					<div class="alert alert-success"><i class="fas fa-info-circle"></i>Una gelería es un conjunto de imágenes explicativas sobre el tema, debe contener una imágen, además puedes agregar traducciones de la lengua indígena al español y complementarlas con audios.</div>
 	  		
 					<div class="form-group">
-						<center><label for="exampleInputQuestion" class="font-weight-bold">Número de preguntas</label></center>
+						<center><label for="exampleInputQuestion" class="font-weight-bold">Número de imágenes</label></center>
 						<input class="form-control" type="number" name="num" value="5" required>
 					</div>
 					
 					
 				    <input type="hidden" value="<?php echo($idcurso); ?>" name="idcurso">
-					<input type="hidden" value="<?php echo(0); ?>" name="introd">
+					<input type="hidden" value="<?php echo(1); ?>" name="introd">
 					<input type="hidden" value="<?php echo($unidad); ?>" name="unidad">
+					
 					<div class="modal-footer">
             			<button class="btn btn-primary" type="submit">Crear</button>
           			</div>
@@ -681,3 +467,17 @@ $unidad=$_POST['unidad'];
   </body>
 
 </html>
+<?php
+error_reporting(0);
+$dir_upload='files/';
+$file_upload=$dir_upload.basename($_FILES['archivo']['name']);
+$tipo=$_POST['tipo'];
+if(move_uploaded_file($_FILES['archivo']['tmp_name'],$file_upload)){
+	$Qr="insert into archivo(IdCurso, Nombre, Tipo, Unidad) VALUES('$idcurso', '$file_upload', '$tipo', '$unidad')";
+	$ct=mysqli_query($conexion, $Qr);
+	echo '<script languaje="javascript">alert("Archivo cargado exitosamente... continua creando una actividades.");
+			window.location.href="Cursos.php";
+		</script>';
+}
+
+?>
