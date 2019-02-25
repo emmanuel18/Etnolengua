@@ -471,7 +471,7 @@ $unidad=$_POST['unidad'];
 					
 					
 				    <input type="hidden" value="<?php echo($idcurso); ?>" name="idcurso">
-					<input type="hidden" value="<?php echo(0); ?>" name="introd">
+					<input type="hidden" value="<?php echo(1); ?>" name="introd">
 					<input type="hidden" value="<?php echo($unidad); ?>" name="unidad">
 					<div class="modal-footer">
             			<button class="btn btn-primary" type="submit">Crear</button>

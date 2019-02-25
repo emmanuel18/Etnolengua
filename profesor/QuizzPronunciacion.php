@@ -189,11 +189,12 @@ $unidad=$_POST['unidad'];
 		   <div class="row">
 			<div class="col-12 col-md-8 mx-auto">
 			<div class="form-group  jumbotron">
-			  <form action="QuizzGramatica.php" method="post" enctype="multipart/form-data">
+			  <form action="QuizzPronunciacion.php" method="post" enctype="multipart/form-data">
 				<center><label class="col-form-label-lg font-weight-bold">Pregunta <?php echo($introd); ?></label></center>
 				  <div class="input-group mb-3">
 				  
 				  <div class="custom-file">
+					  <label for="imagen">Carga una imagen</label>
 				  <input class="btn btn-block btn-info" type="file" name="imagen" id="imagen" accept="image/*" >
 					 
 				  </div>
@@ -208,6 +209,14 @@ $unidad=$_POST['unidad'];
     				</div>
 					
   				</div>
+				  <div class="input-group mb-3">
+				  
+				  <div class="custom-file">
+					  <label for="audio">Cargar audio (Obligatorio)</label>
+				  <input class="btn btn-block btn-info" type="file" name="audio" id="audio" accept="audio/*" >
+					 
+				  </div>
+				  </div>
 				  <br>
 				  <input type="hidden" value="<?php echo($idcurso); ?>" name="idcurso">
 					<input type="hidden" value="<?php echo($introd+1);?>" name="introd">
