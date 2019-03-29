@@ -215,7 +215,7 @@ $unidad=$_POST['unidad'];
 					
 			    <div class="modal-footer">
 					<?php 
-						if($introd+1<$numpreg){
+						if($introd<$numpreg){
 			  				echo("<input type='submit' class='btn btn-success' value='Siguiente'>");
 			  			}
 		  				else{
@@ -238,7 +238,7 @@ $unidad=$_POST['unidad'];
 		  $file_upload=$dir_upload.basename($_FILES['imagen']['name']);
 		  $Pregunta=$_POST['Pregunta'];
 		  $RespC=$_POST['respc'];
-		  
+		  $RespC=addslashes($RespC);
 		 if($introd<=$numpreg){
 			  if(move_uploaded_file($_FILES['imagen']['tmp_name'],$file_upload)){
 				  $Qr="insert into quizzgram(IdCurso, NumLec, Imagen, Pregunta, Respuesta) VALUES('$idcurso', '$unidad', '$file_upload', '$Pregunta', '$RespC')";
