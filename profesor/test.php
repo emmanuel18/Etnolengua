@@ -241,8 +241,15 @@ $unidad=$_POST['unidad'];
 		  $RespC=$_POST['respc'];
 		  
 		 if($introd<$numpreg){
-			  $quest="INSERT INTO examen (IdCurso, Pregunta, Resp1, Resp2, Resp3, RespC, Unidad) VALUES ('$idcurso', '$Pregunta', '$Resp1', '$Resp2', '$Resp3', '$RespC', '$$unidad')";
+			 if(empty($Pregunta)){
+				 
+			 }else{
+			  $quest="INSERT INTO examen (IdCurso, Pregunta, Resp1, Resp2, Resp3, RespC, Unidad) VALUES ('$idcurso', '$Pregunta', '$Resp1', '$Resp2', '$Resp3', '$RespC', '$unidad')";
+			 echo($quest);
 			  $insertar=mysqli_query($conexion, $quest);
+			 if(!$insertar){
+				 echo("valio verga");
+			 }}
 		  	
 			  }
 		  else{

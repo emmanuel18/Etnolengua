@@ -18,6 +18,8 @@ if ($_SESSION['id']==null){
 $ncurso=$_POST['ncurso'];
 $idcurso=$_POST['idcurso'];
 $unidad=$_POST['unidad'];
+
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -36,7 +38,7 @@ $unidad=$_POST['unidad'];
     <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
     <!-- Page level plugin CSS-->
     <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
@@ -113,8 +115,6 @@ $unidad=$_POST['unidad'];
 			</i>
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-           <!-- <a class="dropdown-item" href="#">Configuración</a>
-            <a class="dropdown-item" href="#">Editar perfil</a> -->
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Cerrar sesión</a>
           </div>
@@ -127,7 +127,7 @@ $unidad=$_POST['unidad'];
 					}
 					?>
 				</div>
-			</ul>
+	  </ul>
 
     </nav>
 
@@ -147,15 +147,9 @@ $unidad=$_POST['unidad'];
 			  <a class="dropdown-item" data-toggle="modal" data-target="#act2" href="">Nahuatl</a>
           </div>
         </li>
-		  <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="MisCursos.php" id="pagesDropdown" role="button" >
-            <i class="fas fa-fw fa-folder-open"></i>
-            <span>Mis Cursos</span>
-          </a>
-          
-        </li>
+		  
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="pagesDropdown" href="charts.html" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" id="pagesDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-fw fa-list a-li"></i>
             <span>Traductor</span>
 			</a>
@@ -182,127 +176,58 @@ $unidad=$_POST['unidad'];
 
           <div class="bg-white">
 			
+			<?php
+			  $consultvid="SELECT Nombre From archivo where IdCurso='$idcurso' AND Tipo='video'";
+			  $vid=mysqli_query($conexion, $consultvid);
+			  $validcues="SELECT IdCuestionario FROM cuestionario where IdCurso='$idcurso' AND Unidad='$unidad'";
+			  
+					$validgram="SELECT IdQuizz FROM quizzgram where IdCurso='$idcurso' AND NumLec='$unidad'";
+					$validpron="SELECT IdQuizz FROM quizzpron where IdCurso='$idcurso' AND NumLec='$unidad'";
+					$validsimb="SELECT IdQuizz FROM quizzsimb where IdCurso='$idcurso' AND NumLec='$unidad'";
+					$validargram=mysqli_query($conexion, $validgram);
+					$validarpron=mysqli_query($conexion, $validpron);
+					$validarsimb=mysqli_query($conexion, $validsimb);
+					$validarcues=mysqli_query($conexion, $validcues);
+					if($v2=mysqli_fetch_row($validarcues)){
+						$check2=1;
+						$act="Cuestionario";
+					}
+					elseif($v2=mysqli_fetch_row($validargram)){
+						$check2=2;
+						$act="Gramática";
+					}
+					elseif($v2=mysqli_fetch_row($validarpron)){
+						$check2=3;
+						$act="Pronunciación";
+					}
+					elseif($v2=mysqli_fetch_row($validarsimb)){
+						$check2=4;
+						$act="Fonética";
+					}
+			?>
 		    <div class="col-12 col-md-8 mx-auto">
-				<div class="container">
-					<div class="text-center">
-					  <h3>Evaluación</h3>
-					</div>
-					<div class="form-group">
-					<form action="examen2.php" method="post" class="mx-auto">
-						<input type='hidden' name='idcurso' value='<?php echo($idcurso);?>'>
-				 		<input type='hidden' name='ncurso' value='<?php echo($ncurso);?>'>
-						<div class='jumbotron mx-auto'>
-							<?php
-							 $resp=$_POST['resp'];
-							 $cont=$_POST['contador'];
-							 $pregunta=$_POST['preg'];
-							 $contrue=$_POST['contrue'];
-							 $correc="SELECT RespC from examen where Pregunta='$pregunta'";
-							 $querycorrec=mysqli_query($conexion, $correc);
-							 if($row5=mysqli_fetch_array($querycorrec)){
-								 $rw5=trim($row5[0]);
-								 if($resp==$rw5){
-									$contrue=$contrue+1; 
-								 }
-							 }
-							
-							
-							 $Evaluacion="SELECT Pregunta, Resp1, Resp2, Resp3, RespC from examen where IdCurso='$idcurso' LIMIT $cont, 1";
-							 $consultaEval=mysqli_query($conexion, $Evaluacion);
-
-							 if($row4=mysqli_fetch_array($consultaEval)){
-
-								 echo("<h5>");	
-								 echo utf8_encode($row4['Pregunta']);
-								 echo("</h5>");
-
-								 echo("<input type='radio' name='resp' value='");
-								 echo utf8_encode($row4['Resp1']);	  
-								 echo("'>");
-								 echo("<label>");
-								 echo utf8_encode($row4['Resp1']);
-								 echo("</label>");
-								 echo("<br>");
-
-								 echo("<input type='radio' name='resp' value='");
-								 echo utf8_encode($row4['Resp2']);	  
-								 echo("'>");
-								 echo("<label>");
-								 echo utf8_encode($row4['Resp2']);
-								 echo("</label>");
-								 echo("<br>");
-
-								 echo("<input type='radio' name='resp' value='");
-								 echo utf8_encode($row4['Resp3']);	  
-								 echo("'>");
-								 echo("<label>");
-								 echo utf8_encode($row4['Resp3']);
-								 echo("</label>");
-								 echo("<br>");
-
-								 echo("<input type='radio' name='resp' value='");
-								 echo utf8_encode($row4['RespC']);	  
-								 echo("'>");
-								 echo("<label>");
-								 echo utf8_encode($row4['RespC']);
-								 echo("</label>");
-								 
-								 echo("<input type='hidden' name='preg' value='");
-							     echo utf8_encode($row4['Pregunta']);	  
-							     echo("'>");
-								 echo("<input type='hidden' name='contrue' value='");
-							     echo utf8_encode($contrue);	  
-							     echo("'>");
-								 $cont++;
-								 echo("</div><input type='hidden' name='contador' value='$cont'>
-								 <input type='hidden' name='unidad' value='$unidad'>");
-								 echo("<button class='btn btn-primary' type='submit'>Siguiente Pregunta   <i class='fas fa-arrow-circle-right'></i></button></form>");
-								 
-							 }else{
-								 $npregun="select count(*) from examen where idcurso='$idcurso'";
-								 $consultapreg=mysqli_query($conexion, $npregun);							 
-								 if($pre=mysqli_fetch_array($consultapreg)){
-								 	$npreg=trim($pre[0]);								 
-							 	 }
-								 $calif=($contrue/$npreg)*10;
-								 if($calif>=8){
-									 echo("<center><h5>¡Felicidades!, tu puntaje es de ".round($calif, 2)."/10 </h5>");
-								 	 echo("<i class='fas fa-grin-stars text-success fa-10x'></i> <p>Sigue preparandote tomando otro de nuestros curso.</p></center>");
-								 }elseif($calif<8&&$calif>6){
-									 echo("<center><h5>Tu puntaje es de ".round($calif, 2)."/10 </h5>");
-								 	 echo("<i class='fas fa-smile-wink text-success fa-10x'></i> <p>Puedes volver a hacer la evaluación o tomar otro de nuestros cursos.</p></center>");
-								 }elseif($calif<=6){
-									 echo("<center><h5>¡Ups!, tu puntaje es de ".round($calif, 2)."/10 </h5>");
-								 	 echo("<i class='far fa-grin-beam-sweat text-primary fa-10x'></i><p>Realiza las actividades del curso.</p><p>¡Te deseamos mucho exito!</p></center>");
-								 }
-								 
-								 					 
-								 echo("</div>");
-								 echo("</form><form action='regiscalif.php' method='post'>");
-								 
-								 echo("<input type='hidden' name='user' value='$iduser'>
-								    <input type='hidden' name='idcurso' value='$idcurso'>
-									<input type='hidden' name='unidad' value='$unidad'>
-									<input type='hidden' name='calif' value='");
-								 echo(round($calif, 2));
-								 echo("'>");
-								 echo("
-								 <input type='hidden' name='unidad' value='$unidad'>
-									<button class='btn btn-success' type='submit'>Volver a 'Cursos' <i class='fas fa-undo'></i></button>
-									</form>");
-								 
-								 
-							 }
-											
-							 
-						 ?>
-							
-						
-							
-										 		
+			  <div class="container">
+				<div class="text-center">
+					  <h3>
+						Actividad:
+						  <?php
+						  echo($act); 
+						  ?>
+				  </h3>
+				  </div>
 					
 						
-						</div>
+					
+								
+				  <?php
+					
+					if ($act=='Cuestionario'){
+						include 'cuest.php';
+					}elseif($act='Gramática'){
+						include 'gramatica.php';
+					}
+					echo("<br>");
+					?>
                 </div>
             </div>
 						
@@ -368,3 +293,16 @@ $unidad=$_POST['unidad'];
   </body>
 
 </html>
+<?php
+	  error_reporting(0);
+	  $respuesta1=$_POST['Respuesta1'];
+	  $respuesta2=$_POST['Respuesta2'];
+	  $respuesta3=$_POST['Respuesta3'];
+	  $respuesta4=$_POST['Respuesta4'];
+	  $respuesta5=$_POST['Respuesta5'];
+	  $respuesta6=$_POST['Respuesta6'];
+	  $respuesta7=$_POST['Respuesta7'];
+	  $respuesta8=$_POST['Respuesta8'];
+	  $INSERTAR="insert into respcues (IdCurso, IdEstudiante, Respuesta1, Respuesta2, Respuesta3, Respuesta4, Respuesta5, Respuesta6,Respuesta7, Respuesta8, Unidad) VALUES('$idcurso', '$iduser', '$respuesta1', '$respuesta2', '$respuesta3', '$respuesta4','$respuesta5', '$respuesta6', '$respuesta7', '$respuesta8', '$unidad')";
+	  $ConsultaInsersion=mysqli_query($conexion, $INSERTAR);
+	  ?>

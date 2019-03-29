@@ -197,11 +197,30 @@ $unidad=$_POST['unidad'];
 			<Button class="dropdown-item radius bg-warning" href="#" data-toggle="modal" data-target="#quest" style="width: 14rem;"
 					<?php 
 					$validcues="SELECT IdCuestionario FROM cuestionario where IdCurso='$idcurso' AND Unidad='$unidad'";
+					$validgram="SELECT IdQuizz FROM quizzgram where IdCurso='$idcurso' AND NumLec='$unidad'";
+					$validpron="SELECT IdQuizz FROM quizzpron where IdCurso='$idcurso' AND NumLec='$unidad'";
+					$validsimb="SELECT IdQuizz FROM quizzsimb where IdCurso='$idcurso' AND NumLec='$unidad'";
+					$validargram=mysqli_query($conexion, $validgram);
+					$validarpron=mysqli_query($conexion, $validpron);
+					$validarsimb=mysqli_query($conexion, $validsimb);
 					$validarcues=mysqli_query($conexion, $validcues);
 					if($v2=mysqli_fetch_row($validarcues)){
 						echo("disabled");
 						$check2=1;
 					}
+					elseif($v2=mysqli_fetch_row($validargram)){
+						echo("disabled");
+						$check2=1;
+					}
+					elseif($v2=mysqli_fetch_row($validarpron)){
+						echo("disabled");
+						$check2=1;
+					}
+					elseif($v2=mysqli_fetch_row($validarsimb)){
+						echo("disabled");
+						$check2=1;
+					}
+					
 					
 					?>
 					> 
@@ -227,26 +246,75 @@ $unidad=$_POST['unidad'];
 				</div> 
 			</Button>
 			<p>&nbsp; &nbsp; &nbsp;</p>
-			<a class="dropdown-item radius bg-success" href="#" data-toggle="modal" data-target="#Pronunciación" style="width: 14rem;"> 
+			<button class="dropdown-item radius bg-success" href="#" data-toggle="modal" data-target="#Pronunciación" style="width: 14rem;" 
+					<?php
+					if($check2==1){
+						echo("disabled");
+					}					
+					
+					?>
+					> 
 				<div class="card-body">
 					<h5 class="card-title text-center text-light">Escucha la<br>Pronunciación</h5>
-					<p class="card-img fa fa-assistive-listening-systems fa-6x text-center text-light"></p>					
+					<p class="card-img fa 
+							  <?php
+							     error_reporting(0);
+								if($check2==1){
+									echo("fa-check-circle");
+								}else{
+									echo("fa-headphones-alt");
+								}
+							  ?>
+							  fa-6x text-center text-light"></p>					
 				</div> 
-			</a>
+			</button>
 			<p>&nbsp; &nbsp; &nbsp;</p>
-			<a class="dropdown-item radius bg-primary" href="#" data-toggle="modal" data-target="#Gramática" style="width: 14rem;"> 
+			<button class="dropdown-item radius bg-primary" href="#" data-toggle="modal" data-target="#Gramática" style="width: 14rem;"
+					<?php
+					if($check2==1){
+						echo("disabled");
+					}					
+					
+					?>
+			   > 
 				<div class="card-body">
-					<h5 class="card-title text-center text-light"><br>Gramática</h5>
-					<p class="card-img fa fa-pencil-alt fa-6x text-center text-light"></p>
+					<h5 class="card-title text-center text-light"><br>Escritura</h5>
+					<p class="card-img fa 
+							  <?php
+							     error_reporting(0);
+								if($check2==1){
+									echo("fa-check-circle");
+								}else{
+									echo("fa-pencil-alt");
+								}
+							  ?>
+							  fa-6x text-center text-light"></p>
+					
 				</div> 
-			</a>
+			</button>
 			 <p>&nbsp; &nbsp; &nbsp;</p>
-			<a class="dropdown-item radius bg-danger" href="#" data-toggle="modal" data-target="#Palabra" style="width: 14rem;"> 
+			<button class="dropdown-item radius bg-danger" href="#" data-toggle="modal" data-target="#Palabra" style="width: 14rem;"
+			   <?php
+					if($check2==1){
+						echo("disabled");
+					}					
+					
+					?>
+			   > 
 				<div class="card-body">
-					<h5 class="card-title text-center text-light">Pronuncia la <br>Palabra</h5>
-					<p class="card-img fa  fa-volume-up fa-6x text-center text-light"></p>
+					<h5 class="card-title text-center text-light">Pronuncia</h5>
+					<p class="card-img fa 
+							  <?php
+							     error_reporting(0);
+								if($check2==1){
+									echo("fa-check-circle");
+								}else{
+									echo("fa-microphone-alt");
+								}
+							  ?>
+							   fa-6x text-center text-light"></p>
 				</div> 
-			</a>
+			</button>
 			
 			 
 			
@@ -313,7 +381,7 @@ $unidad=$_POST['unidad'];
 				 </button>
 			 </div> 
 		<div class="modal-body"> 
-		<form action="act.php" method="post" id="cuestionario">
+		<form action="act1.php" method="post" id="cuestionario">
 	  		<div class="form-group">
 				<center>
 				<label for="exampleInputTittle"><b>Título del Cuestionario</b></label></center>
@@ -368,29 +436,7 @@ $unidad=$_POST['unidad'];
 	  	</form>
 		 </div>
 		</div>
-		<?php
-		error_reporting(0);
-		$Titulo=$_POST['Titulo'];
-		$Pregunta1=$_POST['Pregunta1'];
-		$Pregunta2=$_POST['Pregunta2'];
-		$Pregunta3=$_POST['Pregunta3'];
-		$Pregunta4=$_POST['Pregunta4'];
-		$Pregunta5=$_POST['Pregunta5'];
-		$Pregunta6=$_POST['Pregunta6'];
-		$Pregunta7=$_POST['Pregunta7'];
-		$Pregunta8=$_POST['Pregunta8'];
 		
-		if($Titulo==''){
-			
-		}
-		else{
-		$Cuestionario="INSERT INTO cuestionario (IdCurso, Nombre, Pregunta1, Pregunta2, Pregunta3, Pregunta4, Pregunta5, Pregunta6, Pregunta7, Pregunta8, Unidad ) VALUES ('$idcurso', '$Titulo', '$Pregunta1', '$Pregunta2', '$Pregunta3', '$Pregunta4', '$Pregunta5', '$Pregunta6', '$Pregunta7', '$Pregunta8', '$unidad')";
-		$insertar=mysqli_query($conexion, $Cuestionario);
-		echo '<script languaje="javascript">alert("Cuestionario creado");
-			window.location.href="Cursos.php";
-			</script>';
-		}
-		?>
 		</div>
 	<div class="modal fade" id="Palabra" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"  aria-hidden="true">
 	 <div class="modal-dialog" role="document">
@@ -495,3 +541,26 @@ $unidad=$_POST['unidad'];
   </body>
 
 </html>
+<?php
+		error_reporting(0);
+		$Titulo=$_POST['Titulo'];
+		$Pregunta1=$_POST['Pregunta1'];
+		$Pregunta2=$_POST['Pregunta2'];
+		$Pregunta3=$_POST['Pregunta3'];
+		$Pregunta4=$_POST['Pregunta4'];
+		$Pregunta5=$_POST['Pregunta5'];
+		$Pregunta6=$_POST['Pregunta6'];
+		$Pregunta7=$_POST['Pregunta7'];
+		$Pregunta8=$_POST['Pregunta8'];
+		
+		if($Titulo==''){
+			
+		}
+		else{
+		$Cuestionario="INSERT INTO cuestionario (IdCurso, Nombre, Pregunta1, Pregunta2, Pregunta3, Pregunta4, Pregunta5, Pregunta6, Pregunta7, Pregunta8, Unidad ) VALUES ('$idcurso', '$Titulo', '$Pregunta1', '$Pregunta2', '$Pregunta3', '$Pregunta4', '$Pregunta5', '$Pregunta6', '$Pregunta7', '$Pregunta8', '$unidad')";
+		$insertar=mysqli_query($conexion, $Cuestionario);
+		echo '<script languaje="javascript">alert("Cuestionario creado");
+			window.location.href="Cursos.php";
+			</script>';
+		}
+		?>

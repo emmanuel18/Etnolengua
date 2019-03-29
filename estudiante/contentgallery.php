@@ -31,7 +31,7 @@ $idcurso=$_POST['idcurso'];
     <title>Perfil || Estudiante</title>
 	<link rel="icon" type="image/png" href="../images/favicon.png" alt="Etnolengua Favicon">
     <!-- Bootstrap core CSS-->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -145,13 +145,7 @@ $idcurso=$_POST['idcurso'];
 			  <a class="dropdown-item" data-toggle="modal" data-target="#act2" href="">Nahuatl</a>
           </div>
         </li>
-		  <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="MisCursos.php" id="pagesDropdown" role="button" >
-            <i class="fas fa-fw fa-folder-open"></i>
-            <span>Mis Cursos</span>
-          </a>
-          
-        </li>
+		
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="pagesDropdown" href="charts.html" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-fw fa-list a-li"></i>
@@ -199,42 +193,7 @@ $idcurso=$_POST['idcurso'];
 			 
 				  <div class="container-fluid row">
 					  					  
-					  <!-- Galeri -->
-					 <!-- <div id='carouselExampleControls' class='carousel' data-ride='carousel'> 
-						 <div class='carousel-inner'>
-							 <br>
-							  <?php
-							    error_reporting(0);
-							 	$cont=1;
-								while ($arrayimg=mysqli_fetch_array($img)){
-									if($cont==1){
-										echo"<div class='carousel-item active'>
-										<img class='d-block rounded' src='../profesor/uploadimg/uploads/";
-										echo($arrayimg["Nombre"]);	
-										echo"' height='450px' width='auto' alt=''>
-										</div>";
-										$cont=2;
-									}else{
-										echo"<div class='carousel-item w-100'>
-										<img class='d-block rounded' src='../profesor/uploadimg/uploads/";
-										echo($arrayimg["Nombre"]);	
-										echo"' height='450px' width='auto' alt=''>
-										</div>";
-									}
-									
-								}					  
-							  ?>					  
-					  	
-						  </div>
-						  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-							<span class="carousel-control-prev-icon text-black" aria-hidden="true"></span>
-							<span class="sr-only">Previous</span>
-						  </a>
-						  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-							<span class="carousel-control-next-icon" aria-hidden="true"></span>
-							<span class="sr-only">Next</span>
-						  </a>
-					</div> -->
+					  
 					 
 					  <div class="card text-center mx-auto bg-light" style=" width: 15rem; margin-top: 7px;">
 						  <div class="card-header"><h4><b>Lección</b></h4></div>
@@ -357,7 +316,7 @@ $idcurso=$_POST['idcurso'];
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin.min.js"></script>
-	<script src="js/script.js"></script>
+	
   </body>
 
 </html>

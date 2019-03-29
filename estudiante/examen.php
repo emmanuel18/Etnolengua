@@ -33,10 +33,10 @@ $unidad=$_POST['unidad'];
     <title>Perfil || Estudiante</title>
 	<link rel="icon" type="image/png" href="../images/favicon.png" alt="Etnolengua Favicon">
     <!-- Bootstrap core CSS-->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
 
     <!-- Page level plugin CSS-->
     <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
@@ -195,8 +195,9 @@ $unidad=$_POST['unidad'];
 					<form action="examen2.php" method="post" >
 						<input type='hidden' name='idcurso' value='<?php echo($idcurso);?>'>
 				 		<input type='hidden' name='ncurso' value='<?php echo($ncurso);?>'>
-						<div class='jumbotron'>
+						<div class='jumbotron mx-auto'>
 							<?php
+							
 							$contrue=0;
 						 $cont=0;
 						 $Evaluacion="SELECT Pregunta, Resp1, Resp2, Resp3, RespC from examen where IdCurso='$idcurso' LIMIT $cont, 1";
@@ -207,55 +208,55 @@ $unidad=$_POST['unidad'];
 							 
 							 
 							 echo("<h5>");	
-							 echo($row4['Pregunta']);
+							 echo utf8_encode($row4['Pregunta']);
 							 echo("</h5>");
 
 
 							 echo("<input type='radio' name='resp' value='");
-							 echo($row4['Resp1']);	  
+							 echo utf8_encode($row4['Resp1']);	  
 							 echo("' required>");
 							 echo("<label>");
-							 echo($row4['Resp1']);
+							 echo utf8_encode($row4['Resp1']);
 							 echo("</label>");
 							 echo("<br>");
 
 							 echo("<input type='radio' name='resp' value='");
-							 echo($row4['Resp2']);	  
+							 echo utf8_encode($row4['Resp2']);	  
 							 echo("'>");
 							 echo("<label>");
-							 echo($row4['Resp2']);
+							 echo utf8_encode($row4['Resp2']);
 							 echo("</label>");
 							 echo("<br>");
 
 							 echo("<input type='radio' name='resp' value='");
-							 echo($row4['Resp3']);	  
+							 echo utf8_encode($row4['Resp3']);	  
 							 echo("'>");
 							 echo("<label>");
-							 echo($row4['Resp3']);
+							 echo utf8_encode($row4['Resp3']);
 							 echo("</label>");
 							 echo("<br>");
 
 							 echo("<input type='radio' name='resp' value='");
-							 echo($row4['RespC']);	  
+							 echo utf8_encode($row4['RespC']);	  
 							 echo("'>");
 							 echo("<label>");
-							 echo($row4['RespC']);
+							 echo utf8_encode($row4['RespC']);
 							 echo("</label>");
 							 
 							 echo("<input type='hidden' name='preg' value='");
-							 echo($row4['Pregunta']);	  
+							 echo utf8_encode($row4['Pregunta']);	  
 							 echo("'>");
 							 echo("<input type='hidden' name='contrue' value='");
-							 echo($contrue);	  
+							 echo utf8_encode($contrue);	  
 							 echo("'>");
 
 							 
 							 
 						 }
-						 $cont++;
+						 
 						 ?>
 							</div>
-						 <input type='hidden' name='contador' value='<?php echo($cont);?>'>
+						 <input type='hidden' name='contador' value=<?php echo($cont);?>>
 						 <input type="hidden" name="unidad" value='<?php echo($unidad);?>'>
 							<button class="btn btn-primary" type="submit">Siguiente Pregunta   <i class="fas fa-arrow-circle-right"></i></button>
 						

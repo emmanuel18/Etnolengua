@@ -296,7 +296,7 @@ if ($_SESSION['id']==null){
 					
 				    <input type="hidden" value="<?php echo($idcurso); ?>" name="idcurso">
 					<input type="hidden" value="<?php echo(0); ?>" name="introd">
-					<input type="hidden" value="4>" name="unidad">
+					<input type="hidden" value="4" name="unidad">
 					<div class="modal-footer">
             			<button class="btn btn-primary" type="submit">Crear</button>
           			</div>

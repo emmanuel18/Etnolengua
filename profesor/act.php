@@ -182,7 +182,7 @@ $unidad=$_POST['unidad'];
 			
 				<button class="dropdown-item radius bg-primary" href="#" data-toggle="modal" data-target="#video" style="width: 14rem;"
 						<?php 
-						$validvid="SELECT IdFile FROM archivo where IdCurso='$idcurso' AND Unidad='$unidad' AND Tipo='video' OR Tipo='documento'";
+						$validvid="SELECT IdFile FROM archivo where IdCurso='$idcurso' AND Unidad='$unidad' AND Tipo='video' OR Tipo='documento' AND Unidad='$unidad'";
 						$validarvid=mysqli_query($conexion, $validvid);
 						$validgal="SELECT IdGaleria FROM galeria where IdCurso='$idcurso' AND NumLec='$unidad'";
 						$validargal=mysqli_query($conexion, $validgal);
@@ -404,7 +404,7 @@ $unidad=$_POST['unidad'];
 						  </div>
 						  <input type="hidden" name="idcurso" value="<?php echo($idcurso); ?>">
 						  <input type="hidden" value="<?php echo($unidad); ?>" name="unidad">
-						  <input type="hidden" value="video" name="tipo">
+						  <input type="hidden" value="documento" name="tipo">
 						  <div class="mx-auto text-center">
 							  <button type="submit" class="btn btn-primary"><i class="fas fa-upload"></i> Subir</button>
 							  <button class="btn btn-danger" data-dismiss="modal"> Cancelar</button>						  

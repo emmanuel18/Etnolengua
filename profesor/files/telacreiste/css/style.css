@@ -1,0 +1,93 @@
+body {
+  background-image: url("https://images.unsplash.com/photo-1462007361476-49e695345154?dpr=2&auto=format&fit=crop&w=1500&h=1001&q=80&cs=tinysrgb&crop=");
+  background-size: cover;
+}
+.grid-container {
+  -webkit-filter: blur(1px);
+          filter: blur(1px);
+}
+.grid {
+  width: 200vw;
+  height: 100vh;
+  background-color: rgba(10,10,10,0.75);
+  background-image: linear-gradient(top, rgba(128,0,0,0) 35%, rgba(255,14,255,0.25) 45%, #ff0ebe 50%, rgba(255,14,255,0.25) 55%, rgba(128,0,0,0) 65%), linear-gradient(left, rgba(128,0,0,0) 35%, rgba(255,14,255,0.25) 45%, #ff0ebe 50%, rgba(255,14,255,0.25) 55%, rgba(128,0,0,0) 65%);
+  background-size: 1px 10px, 10px 1px;
+  -webkit-transform: perspective(100px) rotateX(45deg) scale(0.53) translateY(50%);
+          transform: perspective(100px) rotateX(45deg) scale(0.53) translateY(50%);
+  -webkit-animation: slide 8000ms ease-in infinite;
+          animation: slide 8000ms ease-in infinite;
+  margin-left: -50%;
+}
+.horizon {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 102px;
+  -webkit-filter: blur(2px);
+          filter: blur(2px);
+  width: 100vw;
+  -webkit-transform: translateY(-100px);
+          transform: translateY(-100px);
+  background-image: radial-gradient(center, ellipse, #fff 0%, rgba(128,128,255,0.2) 50%, rgba(128,128,225,0) 80%);
+  background-size: 200% 100%;
+  background-position: 50% 50px;
+  background-repeat: no-repeat;
+}
+.hackerman {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 85vh;
+  background-image: url("../wewe.png");
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.hackerman-logo {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  width: auto;
+  color: transparent;
+  font-family: 'HandelGothicITCW01-Heav_734428';
+  font-size: 4vw;
+  font-style: italic;
+  text-transform: uppercase;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(bottom, #fff 25%, #201f41 50%, #fff 50%, #86a9bf 100%);
+  -webkit-text-stroke: 2px #fff;
+  -webkit-filter: blur(1px);
+          filter: blur(1px);
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.hackerman-shadow {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  color: transparent;
+  font-family: 'HandelGothicITCW01-Heav_734428';
+  font-size: 4vw;
+  font-style: italic;
+  text-shadow: -10px 10px 10px #201f41;
+  text-transform: uppercase;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+@-webkit-keyframes slide {
+  0% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+@keyframes slide {
+  0% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}

@@ -186,6 +186,15 @@ if ($_SESSION['id']==null){
     						<input type="file" class="custom-file-input" name="foto" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" accept="image/png, image/jpeg" required>
     						<label class="custom-file-label" for="validatedCustomFile">Elige una Imagen</label>
   						</div>
+				</div>
+				<div class="dropdown-divider"></div>
+				
+				<div class="form-group">
+					<label class="input-group-text bg-primary text-light">Sube un video de presentación</label>
+						<div class="custom-file">
+    						<input type="file" class="custom-file-input" name="video" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" accept="video/*" required>
+    						<label class="custom-file-label" for="validatedCustomFile">Elige un video</label>
+  						</div>
 				</div> 
 				<div class="dropdown-divider"></div>
 				<div class="form-group">

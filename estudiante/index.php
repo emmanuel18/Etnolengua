@@ -3,6 +3,7 @@ session_start();
 $id=$_SESSION['id'];
 $cr=$_SESSION['Correo'];
 $ps=$_SESSION['Password'];
+$iduser=$_SESSION['IdSesion'];
 $Query="SELECT Nombre FROM userestudiante WHERE Correo='$cr'";
 $conexion = mysqli_connect("localhost", "etnoleng_emmanue", "estrada_18", "etnoleng_mixe");
 $qr=mysqli_query($conexion,$Query);
@@ -27,7 +28,7 @@ if ($_SESSION['id']==null){
     <title>Perfil || Estudiante</title>
 	<link rel="icon" type="image/png" href="../images/favicon.png" alt="Etnolengua Favicon">
     <!-- Bootstrap core CSS-->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

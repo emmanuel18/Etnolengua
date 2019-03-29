@@ -17,6 +17,9 @@
 	src: url(../../fonts/Branding-Bold.otf);
 	
 }
+.bold{
+	font-family: Brandingbold;
+}
 b{
 	font-family: Brandingbold;
 }
@@ -29,7 +32,11 @@ body {
   height: 100%;
   font-family: "Branding Light";
 }
+.opacity{
+ background: #B4B4B4!important;
+	opacity: 0.75;
 
+}
 .text-black{
 	color: #000000;
 }
@@ -44,9 +51,12 @@ body {
 }
 .br-pt-nr{
 	background-color: #f38630;
+	
 }
 
-
+.text-shadow {  
+  text-shadow: 2px 2px 4px #000000;
+}
 .dropdown-menu-center {
     right: 0;
     left: auto;

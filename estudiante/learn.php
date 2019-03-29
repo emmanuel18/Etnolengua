@@ -3,6 +3,7 @@ session_start();
 $id=$_SESSION['id'];
 $cr=$_SESSION['Correo'];
 $ps=$_SESSION['Password'];
+
 $Query="SELECT Nombre FROM userestudiante WHERE Correo='$cr'";
 $conexion = mysqli_connect("localhost", "etnoleng_emmanue", "estrada_18", "etnoleng_mixe");
 $qr=mysqli_query($conexion,$Query);
@@ -12,6 +13,7 @@ if($rw=mysqli_fetch_row($qr)){
 if ($_SESSION['id']==null){
 	header('location: ../index.php');
 }
+
 
 $ncurso=$_POST['nombre'];
 $idcurso=$_POST['idcurso'];
@@ -30,7 +32,7 @@ $idcurso=$_POST['idcurso'];
     <title>Perfil || Estudiante</title>
 	<link rel="icon" type="image/png" href="../images/favicon.png" alt="Etnolengua Favicon">
     <!-- Bootstrap core CSS-->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -178,7 +180,7 @@ $idcurso=$_POST['idcurso'];
 						  <?php 
 						  
 							$descripcion="SELECT Descripcion FROM Cursos where  IdCurso='$idcurso'";
-							$foto1="SELECT Presentacion FROM Cursos where IdCurso='$idcurso'";
+							$foto1="SELECT VideoInt FROM Cursos where IdCurso='$idcurso'";
 							$condes=mysqli_query($conexion, $descripcion);
 							$foto2=mysqli_query($conexion, $foto1);
 							if($xondes1=mysqli_fetch_row($condes)){
@@ -186,21 +188,55 @@ $idcurso=$_POST['idcurso'];
 							}
 							if($foto3=mysqli_fetch_row($foto2)){
 								$foto1=trim($foto3[0]);	
+								$foto1=utf8_encode($foto1);
 							}
 							echo(utf8_encode ($condes1));
 						  ?>
 					  </p>
 				  </div>
 				  <div class="figure-img">
-			  	  	<img src="../profesor/php/bdfiles/<?php echo($foto1) ?>" class="rounded img-fluid" style="width: auto; height: 350px;">
+					  <video src="../profesor/php/bdfiles/<?php echo($foto1); ?>" controls  style="width: auto; height: 350px;">
+						  Tu navegador no implementa el elemento <code>video</code>.
+					  </video>
+			  	  	
 				  </div>
 				  <div class="form-group">
-					  <form action="contentgallery.php" method="post">
-					  <form action="contentgallery.php" method="post">
-						  <input type="hidden" name="ncurso" value="<?php echo($ncurso); ?>">
-						  <input type="hidden" name="idcurso" value="<?php echo($idcurso); ?>">
-						  <button class="btn btn-primary" type="submit"><i class="fas fa-arrow-circle-right"></i> Comenzar curso</button>					  
-					  </form>				  	
+					  
+					  <?php
+	                     $iduser = "SELECT id from userestudiante where Correo='$cr'";
+						 $consulid = mysqli_query( $conexion, $iduser );
+						 if ( $rt = mysqli_fetch_row( $consulid ) ) {
+							 $rs1 = trim( $rt[0] );
+						 }
+						 
+	
+					  $avance="SELECT Calificacion1 FROM Avance WHERE IdEstudiante='$rs1' AND IdCurso='$idcurso'"; 
+					  $conavance=mysqli_query($conexion, $avance);
+						 if($avance1=mysqli_fetch_row($conavance)){
+							 $result2=trim($avance1[0]);							 
+						 }
+						 else{
+							$result2=0;	 
+						 }
+						 if($result2==0){
+							 echo("<form action='examen.php' method='post'>
+						  <input type='hidden' name='ncurso' value='$ncurso'>
+						  <input type='hidden' name='idcurso' value='$idcurso'>
+						  <input type='hidden' name='unidad' value='0'>
+						  <button class='btn btn-primary' type='submit'><i class='fas fa-arrow-circle-right'></i> Realizar Examen Diagnóstico</button>					  
+					  </form>");
+						 }
+						 else
+						 {
+							 echo("<form action='contentgallery.php' method='post'>
+						  <input type='hidden' name='ncurso' value='$ncurso'>
+						  <input type='hidden' name='idcurso' value='$idcurso'>
+						  <input type='hidden' name='unidad' value='0'>
+						  <button class='btn btn-primary' type='submit'><i class='fas fa-arrow-circle-right'></i> Continuar Curso</button>					  
+					  </form>");
+						 }
+					  ?>
+					  				  	
 				  </div>  
 			  </div>
 			    

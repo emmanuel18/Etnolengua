@@ -183,7 +183,7 @@ $numpreg=$_POST['num'];
 					<input type="hidden" value="<?php echo($introd+1); ?>" name="introd">
 					<div class="form-group text-center">
 						<?php 
-						if($introd+1<$numpreg){
+						if($introd<$numpreg){
 			  				echo("<input type='submit' class='btn btn-success' value='Siguiente'>");
 			  			}
 		  				else{
@@ -258,19 +258,27 @@ $numpreg=$_POST['num'];
 <?php
 error_reporting(0);
 $dir_upload='files/';
-$dir2_upload='files2/';
+
 $file_upload=$dir_upload.basename($_FILES['foto']['name']);
 $ind=$_POST['ind'];
+$ind=addslashes($ind);
+echo $ind;
 $esp=$_POST['esp'];
-$file2_upload=$dir2_upload.basename($_FILES['audio']['name']);
+$file2_upload=$dir_upload.basename($_FILES['audio']['name']);
 //move_uploaded_file($_FILES['foto']['tmp_name'],$file_upload);
 //move_uploaded_file($_FILES['audio']['tmp_name'],$file2_upload);
 if($introd<=$numpreg){
 	if(move_uploaded_file($_FILES['foto']['tmp_name'],$file_upload))
 {
 	if(move_uploaded_file($_FILES['audio']['tmp_name'],$file2_upload)){
-		$Qr="insert into galeria(IdCurso, NumLec, Img, Ind, Esp, Sonido) VALUES('$idcurso', '$unidad', '$file_upload', '$ind', '$esp','$file2_upload')";
-		$ct=mysqli_query($conexion, $Qr);
+		$Qr1="insert into galeria(IdCurso, NumLec, Img, Ind, Esp, Sonido) VALUES($idcurso, $unidad, '$file_upload', '$ind', '$esp', '$file2_upload')";
+		$ct=mysqli_character_set_name(mysqli_query($conexion, $Qr1));
+		
+		echo $Qr1;
+		if(!$ct){
+			
+		}
+		
 	}
 	else{
 		
@@ -283,8 +291,8 @@ else{
 	if(move_uploaded_file($_FILES['foto']['tmp_name'],$file_upload))
 {
 	if(move_uploaded_file($_FILES['audio']['tmp_name'],$file2_upload)){
-		$Qr="insert into galeria(IdCurso, NumLec, Img, Ind, Esp, Sonido) VALUES('$idcurso', '$unidad', '$file_upload', '$ind', '$esp','$file2_upload')";
-		$ct=mysqli_query($conexion, $Qr);
+		$Qr1="insert into galeria(IdCurso, NumLec, Img, Ind, Esp, Sonido) VALUES('$idcurso', '$unidad', '$file_upload', '$ind', '$esp','$file2_upload')";
+		$ct=mysqli_query($conexion, $Qr1);
 	}
 	else{
 		
