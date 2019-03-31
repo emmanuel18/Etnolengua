@@ -198,7 +198,7 @@ $unidad=$_POST['unidad'];
 					}
 					elseif($v2=mysqli_fetch_row($validarpron)){
 						$check2=3;
-						$act="Pronunciación";
+						$act="Escuchar";
 					}
 					elseif($v2=mysqli_fetch_row($validarsimb)){
 						$check2=4;
@@ -223,8 +223,11 @@ $unidad=$_POST['unidad'];
 					
 					if ($act=='Cuestionario'){
 						include 'cuest.php';
-					}elseif($act='Gramática'){
+					}elseif($act=='Gramática'){
 						include 'gramatica.php';
+					}elseif($act=='Escuchar'){
+						
+						include 'escucha.php';
 					}
 					echo("<br>");
 					?>
@@ -247,7 +250,7 @@ $unidad=$_POST['unidad'];
         <footer class="sticky-footer">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
-              <span>Copyright © Etnolengua 2018</span>
+              <span>Copyright © Etnolengua 2019</span>
             </div>
           </div>
         </footer>

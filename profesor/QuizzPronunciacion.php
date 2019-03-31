@@ -250,27 +250,33 @@ $unidad = $_POST[ 'unidad' ];
 			$file_upload = $dir_upload . basename( $_FILES[ 'imagen' ][ 'name' ] );
 			$Pregunta = $_POST[ 'Pregunta' ];
 			$RespC = $_POST[ 'respc' ];
+			$RespC=addslashes($RespC);
+			$Audio = $dir_upload . basename( $_FILES['audio']['name']);
 
 			if ( $introd <= $numpreg ) {
-				if ( move_uploaded_file( $_FILES[ 'imagen' ][ 'tmp_name' ], $file_upload ) ) {
-					$Qr = "insert into quizzgram(IdCurso, NumLec, Imagen, Pregunta, Respuesta) VALUES('$idcurso', '$unidad', '$file_upload', '$Pregunta', '$RespC')";
+				if (move_uploaded_file( $_FILES[ 'audio' ][ 'tmp_name' ], $Audio )) {
+					if(move_uploaded_file( $_FILES[ 'imagen' ][ 'tmp_name' ], $file_upload )) {
+						$Qr = "insert into quizzpron(IdCurso, NumLec, Imagen, Pregunta, Respuesta, Audio) VALUES('$idcurso', '$unidad', '$file_upload', '$Pregunta', '$RespC', '$Audio')";
+						echo("1");
+					}else{
+						$Qr = "insert into quizzpron(IdCurso, NumLec, Pregunta, Respuesta, Audio) VALUES('$idcurso', '$unidad', '$Pregunta', '$RespC', '$Audio')";
+						echo("2");
+					}					
 					$ct = mysqli_query( $conexion, $Qr );
-				} else {
-					$Qr = "insert into quizzgram(IdCurso, NumLec, Pregunta, Respuesta) VALUES('$idcurso', '$unidad', '$Pregunta', '$RespC')";
-					if ( !empty( $Pregunta ) ) {
-						$ct = mysqli_query( $conexion, $Qr );
-					}
-				}
+					echo("3");
+				} 
 			} else {
-				if ( move_uploaded_file( $_FILES[ 'imagen' ][ 'tmp_name' ], $file_upload ) ) {
-					$Qr = "insert into quizzgram(IdCurso, NumLec, Imagen, Pregunta, Respuesta) VALUES('$idcurso', '$unidad', '$file_upload', '$Pregunta', '$RespC')";
+				if (move_uploaded_file( $_FILES[ 'audio' ][ 'tmp_name' ], $Audio )) {
+					if(move_uploaded_file( $_FILES[ 'imagen' ][ 'tmp_name' ], $file_upload )) {
+						$Qr = "insert into quizzpron(IdCurso, NumLec, Imagen, Pregunta, Respuesta, Audio) VALUES('$idcurso', '$unidad', '$file_upload', '$Pregunta', '$RespC', '$Audio')";
+						echo("4");
+					}else{
+						$Qr = "insert into quizzpron(IdCurso, NumLec, Pregunta, Respuesta, Audio) VALUES('$idcurso', '$unidad', '$Pregunta', '$RespC', '$Audio')";
+						echo("5");
+					}					
 					$ct = mysqli_query( $conexion, $Qr );
-				} else {
-					$Qr = "insert into quizzgram(IdCurso, NumLec, Pregunta, Respuesta) VALUES('$idcurso', '$unidad', '$Pregunta', '$RespC')";
-					if ( !empty( $Pregunta ) ) {
-						$ct = mysqli_query( $conexion, $Qr );
-					}
-				}
+					echo("6");
+				} 
 				echo '<script languaje="javascript">alert("Quizz creado exitosamente.");
 				window.location.href="Cursos.php";
 			</script>';
@@ -280,7 +286,7 @@ $unidad = $_POST[ 'unidad' ];
 			<footer class="sticky-footer">
 				<div class="container my-auto">
 					<div class="copyright text-center my-auto">
-						<span>Copyright © Etnolengua 2018</span>
+						<span>Copyright © Etnolengua 2019</span>
 					</div>
 				</div>
 			</footer>

@@ -32,7 +32,7 @@ $cont = 0;
 				<div class='carousel-caption d-none d-md-block bold text-white'>
 					<h3 class='text-shadow'>".$arrayres["Ind"]."</h3>
 					<h4 class='text-shadow'>".$arrayres["Esp"]."</h4>
-					<audio controls=''>
+					<audio controls='' onerror='this.style.opacity=0'>
 					
 					<source src='../profesor/".$arrayres["Sonido"]."' type='audio/mpeg'>
 					</audio> 

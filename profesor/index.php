@@ -57,12 +57,12 @@ if ($_SESSION['id']==null){
       <!-- Navbar Search -->
       <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Buscar Herramientas" aria-label="Search" aria-describedby="basic-addon2">
+          <!--<input type="text" class="form-control" placeholder="Buscar Herramientas" aria-label="Search" aria-describedby="basic-addon2">
           <div class="input-group-append">
             <button class="btn btn-primary" type="button">
               <i class="fas fa-search"></i>
             </button>
-          </div>
+          </div> -->
         </div>
       </form>
 
@@ -302,7 +302,7 @@ if ($_SESSION['id']==null){
         <footer class="sticky-footer">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
-              <span>Copyright © Etnolengua 2018</span>
+              <span>Copyright © Etnolengua 2019</span>
             </div>
           </div>
         </footer>

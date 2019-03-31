@@ -1,7 +1,7 @@
 <?php
 error_reporting( 0 );
 //contador de preguntas y calificaciones
-$npregun = "select count(*) from quizzgram where idcurso='$idcurso' and numlec='$unidad'";
+$npregun = "select count(*) from quizzpron where idcurso='$idcurso' and numlec='$unidad'";
 $consultapreg = mysqli_query( $conexion, $npregun );
 
 if ( $pre = mysqli_fetch_array( $consultapreg ) ) {
@@ -13,7 +13,7 @@ $resprecib = $_POST[ 'resp' ];
 $pregunta = $_POST[ 'pregunta' ];
 $cont = $_POST[ 'contador' ];
 //consulta y cuenta respuestas correctas
-$answer = "Select Respuesta from quizzgram where idcurso='$idcurso' and numlec='$unidad' and Pregunta='$pregunta'";
+$answer = "Select Respuesta from quizzpron where idcurso='$idcurso' and numlec='$unidad' and Pregunta='$pregunta'";
 $consulanswer = mysqli_query( $conexion, $answer );
 
 if ( $res1 = mysqli_fetch_array( $consulanswer ) ) {
@@ -32,18 +32,20 @@ if ( $res1 = mysqli_fetch_array( $consulanswer ) ) {
 	<div class='jumbotron'>
 
 		<?php
-		error_reporting( 0 );
-
-		$Evaluacion = "SELECT * from quizzgram where IdCurso='$idcurso' AND NumLec='$unidad' LIMIT $cont, 1";
-		$respuestas = "SELECT Respuesta From quizzgram where IdCurso='$idcurso' AND NumLec='$unidad' ORDER BY RAND()";
+		//error_reporting( 0 );
+		
+		$Evaluacion = "SELECT * from quizzpron where IdCurso='$idcurso' AND NumLec='$unidad' LIMIT $cont, 1";
+		$respuestas = "SELECT Respuesta From quizzpron where IdCurso='$idcurso' AND NumLec='$unidad' ORDER BY RAND()";
 		$consultaEval = mysqli_query( $conexion, $Evaluacion );
 		$consultaResp = mysqli_query( $conexion, $respuestas );
-
+		
 		if ( $row4 = mysqli_fetch_array( $consultaEval ) ) {
 			echo( "<div class='mx-auto img-fluid'><center>" );
-			echo( "<img src='../profesor/" );
-			echo( $row4[ 'Imagen' ] );
-			echo( "' height='250px' width='auto' onerror='this.style.opacity=0'>" );
+			
+			echo( "<audio src='../profesor/" );
+			echo( $row4[ 'Audio' ] );
+			echo( "' controls>" );
+			
 			echo( "</center></div>" );
 			echo( "<h5 class='text-center'>" );
 			echo( $row4[ 'Pregunta' ] );
@@ -99,13 +101,13 @@ if ( $res1 = mysqli_fetch_array( $consulanswer ) ) {
 
 <?php
 if ( ( $cont ) == $npreg ) {
-	echo($unidad);
+	$registrarcalif = "INSERT INTO avance (IdCurso, IdEstudiante, Unidad, Calificacion1) VALUES ('$idcurso', '$iduser', '$unidad', '$calif')";
+	
 	if($unidad>=3){
 		$redir='examen.php';
 	}else{
 		$redir='contentvid.php';
 	}
-	$registrarcalif = "INSERT INTO calificacion (IdCurso, IdEstudiante, Calificacion, Unidad) VALUES ('$idcurso', '$iduser', '$calif', '$unidad')";
 	$insertcalif = mysqli_query( $conexion, $registrarcalif );
 	echo( "<form action='".$redir."' method='post'><input type='hidden' name='unidad' value='" );
 	echo( $unidad + 1 );

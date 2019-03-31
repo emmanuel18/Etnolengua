@@ -168,7 +168,7 @@ if ($_SESSION['id']==null){
           <!-- Page Content -->
 		<center>
           <div class="row container-fluid mx-auto align-content-center">
-					  <div class="card text-center mr-4" style=" width: 15rem; margin-top: 7px;">
+					<!--  <div class="card text-center mr-4" style=" width: 15rem; margin-top: 7px;">
 						<img class="card-img-top" src="../images/mixe.png" alt="mixe" height="160" width="286px">
 						  <div class="card-body" style="background-color: #EFEFEF">
 							<h5 class="card-title">Mixe</h5>
@@ -176,7 +176,7 @@ if ($_SESSION['id']==null){
 							  <a href="#" class="btn btn-outline-primary" data-toggle="modal" data-target="#mixe">Ir al Curso</a>
 						  </div>
 					  </div>
-					<!--		 
+							 
 					  <div class="card text-center mr-4" style=" width: 15rem; margin-top: 7px;">
 						<img class="card-img-top" src="../images/nahuatl.png" alt="nahuatl" height="160" width="286px">
 						  <div class="card-body" style="background-color: #EFEFEF">
@@ -201,13 +201,13 @@ if ($_SESSION['id']==null){
 						$nomcur=mysqli_query($conexion, $cursos);
 						while ($arrayres=mysqli_fetch_array($nomcur)){
 							
-							echo "<form action='learn.php' method='post'>";
+							echo "<form class='mx-auto' action='learn.php' method='post'>";
 							echo "<div class='card text-center mr-4' style=' width: 15rem; margin-top: 7px;'>";						
 							echo "<img class='card-img-top' src='../profesor/php/bdfiles/"; 
 							echo $arrayres["Presentacion"];
 							echo "' height='160' width='286px'>";
 							echo "<div class='card-body' style='background-color: #EFEFEF'>";
-							echo "<h5 class='card-title'>";
+							echo "<h5 class='card-title bold'>";
 							echo utf8_encode ($arrayres["Nombre"]);
 							echo "<input type='hidden' name='nombre' value='";
 							echo utf8_encode ($arrayres["Nombre"]);
@@ -235,7 +235,7 @@ if ($_SESSION['id']==null){
         <footer class="sticky-footer">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
-              <span>Copyright © Etnolengua 2018</span>
+              <span>Copyright © Etnolengua 2019</span>
             </div>
           </div>
         </footer>
