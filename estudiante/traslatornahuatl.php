@@ -11,6 +11,7 @@ if($rw=mysqli_fetch_row($qr)){
 	
 }
 ?>
+<!-- Últimas 10 páginas Dic-Taan -->
 <!DOCTYPE html>
 <html lang="es">
 
@@ -25,10 +26,10 @@ if($rw=mysqli_fetch_row($qr)){
     <title>Perfil || Estudiante</title>
 	<link rel="icon" type="image/png" href="../images/favicon.png" alt="Etnolengua Favicon">
     <!-- Bootstrap core CSS-->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
 
     <!-- Page level plugin CSS-->
     <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
@@ -264,6 +265,8 @@ if($rw=mysqli_fetch_row($qr)){
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin.min.js"></script>
+	  <script type="text/javascript" src="js/indexN.js"></script>
+	  <script type="text/javascript" src="js/indexN2.js"></script>
 
   </body>
 

@@ -168,34 +168,7 @@ if ($_SESSION['id']==null){
           <!-- Page Content -->
 		<center>
           <div class="row container-fluid mx-auto align-content-center">
-					<!--  <div class="card text-center mr-4" style=" width: 15rem; margin-top: 7px;">
-						<img class="card-img-top" src="../images/mixe.png" alt="mixe" height="160" width="286px">
-						  <div class="card-body" style="background-color: #EFEFEF">
-							<h5 class="card-title">Mixe</h5>
-							  <p class="card-text">Curso Basico de la Lengua Mixe</p>
-							  <a href="#" class="btn btn-outline-primary" data-toggle="modal" data-target="#mixe">Ir al Curso</a>
-						  </div>
-					  </div>
-							 
-					  <div class="card text-center mr-4" style=" width: 15rem; margin-top: 7px;">
-						<img class="card-img-top" src="../images/nahuatl.png" alt="nahuatl" height="160" width="286px">
-						  <div class="card-body" style="background-color: #EFEFEF">
-							<h5 class="card-title">Nahuatl</h5>
-							  <p class="card-text">Curso Basico de la Lengua Nahuatl</p>
-							  <a href="#" class="btn btn-outline-primary" data-toggle="modal" data-target="#nahuatl">Ir al Curso</a>
-						  </div>
-					  </div>
-				  
-					  <div class="card text-center mr-4" style=" width: 15rem; margin-top: 7px;">
-						<img class="card-img-top" src="../images/yum.png" alt="chol" height="160" width="286px">
-						  <div class="card-body" style="background-color: #EFEFEF">
-							<h5 class="card-title">Chol</h5>
-							  <p class="card-text">Curso Basico de la Lengua Chol</p>
-							  <a href="#" class="btn btn-outline-primary" data-toggle="modal" data-target="#chol">Ir al Curso</a>
-						  </div>
-					  </div>
-				 
-				       -->
+					
 				  <?php
 						$cursos="SELECT IdCurso, Nombre, Descripcion, Presentacion From cursos Where Estado=1";
 						$nomcur=mysqli_query($conexion, $cursos);
@@ -205,7 +178,7 @@ if ($_SESSION['id']==null){
 							echo "<div class='card text-center mr-4' style=' width: 15rem; margin-top: 7px;'>";						
 							echo "<img class='card-img-top' src='../profesor/php/bdfiles/"; 
 							echo $arrayres["Presentacion"];
-							echo "' height='160' width='286px'>";
+							echo "' height='250px' width='auto'>";
 							echo "<div class='card-body' style='background-color: #EFEFEF'>";
 							echo "<h5 class='card-title bold'>";
 							echo utf8_encode ($arrayres["Nombre"]);
@@ -219,7 +192,7 @@ if ($_SESSION['id']==null){
 							echo "<p class='card-text'>";
 							echo utf8_encode ($arrayres["Descripcion"]);
 							echo "</p>";
-							echo "<button type='submit' href='' class='btn btn-outline-primary'>Ir al Curso</button>";
+							echo "<button type='submit' href='' class='btn btn-block btn-outline-primary'>Ir al Curso</button>";
 							echo "</div></div>";
 							echo "</form>";
 						}

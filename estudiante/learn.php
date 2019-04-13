@@ -155,7 +155,12 @@ $idcurso=$_POST['idcurso'];
 				
 			</div>
         </li>
-		
+		<li class="nav-item">
+          <a class="nav-link" href="botvoice/index.php">
+            <i class="fas fa-fw fa-robot"></i>
+            <span>Bot (Beta)</span>
+          </a>
+        </li>
         <!--<li class="nav-item">
           <a class="nav-link" href="index.html">
             <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -179,8 +184,8 @@ $idcurso=$_POST['idcurso'];
 					  <p><b>Descripción: </b>
 						  <?php 
 						  
-							$descripcion="SELECT Descripcion FROM Cursos where  IdCurso='$idcurso'";
-							$foto1="SELECT VideoInt FROM Cursos where IdCurso='$idcurso'";
+							$descripcion="SELECT Descripcion FROM cursos where  IdCurso='$idcurso'";
+							$foto1="SELECT VideoInt FROM cursos where IdCurso='$idcurso'";
 							$condes=mysqli_query($conexion, $descripcion);
 							$foto2=mysqli_query($conexion, $foto1);
 							if($xondes1=mysqli_fetch_row($condes)){
@@ -195,7 +200,7 @@ $idcurso=$_POST['idcurso'];
 					  </p>
 				  </div>
 				  <div class="figure-img">
-					  <video src="../profesor/php/bdfiles/<?php echo($foto1); ?>" controls  style="width: auto; height: 350px;">
+					  <video src="../profesor/php/bdfiles/<?php echo($foto1); ?>" controls  style="width: auto; height: 350px;" preload="auto">
 						  Tu navegador no implementa el elemento <code>video</code>.
 					  </video>
 			  	  	
@@ -210,7 +215,7 @@ $idcurso=$_POST['idcurso'];
 						 }
 						 
 	
-					  $avance="SELECT Calificacion1 FROM Avance WHERE IdEstudiante='$rs1' AND IdCurso='$idcurso'"; 
+					  $avance="SELECT Calificacion1 FROM avance WHERE IdEstudiante='$rs1' AND IdCurso='$idcurso'"; 
 					  $conavance=mysqli_query($conexion, $avance);
 						 if($avance1=mysqli_fetch_row($conavance)){
 							 $result2=trim($avance1[0]);							 

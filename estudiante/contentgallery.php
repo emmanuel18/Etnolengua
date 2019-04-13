@@ -4,7 +4,7 @@ session_start();
 $id = $_SESSION[ 'id' ];
 $cr = $_SESSION[ 'Correo' ];
 $ps = $_SESSION[ 'Password' ];
-$sesion=$_SESSION['IdSesion'];
+$sesion = $_SESSION[ 'IdSesion' ];
 $Query = "SELECT Nombre FROM userestudiante WHERE Correo='$cr'";
 $conexion = mysqli_connect( "localhost", "etnoleng_emmanue", "estrada_18", "etnoleng_mixe" );
 $qr = mysqli_query( $conexion, $Query );
@@ -58,6 +58,8 @@ $idcurso = $_POST[ 'idcurso' ];
 	
 
 
+
+
 		<form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
 			<div class="input-group">
 				<!--<input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
@@ -78,6 +80,8 @@ $idcurso = $_POST[ 'idcurso' ];
           </a>
 			
 
+
+
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
 					<a class="dropdown-item" href="#">Sin notificaciones</a>
 					<!--<a class="dropdown-item" href="#">Another action</a>
@@ -92,6 +96,8 @@ $idcurso = $_POST[ 'idcurso' ];
             <span class="badge badge-danger"></span>
           </a>
 			
+
+
 
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
 					<a class="dropdown-item" href="#">No hay mensajes</a>
@@ -115,6 +121,8 @@ $idcurso = $_POST[ 'idcurso' ];
 			</i>
           </a>
 			
+
+
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
 					<!-- <a class="dropdown-item" href="#">Configuración</a>
             <a class="dropdown-item" href="#">Editar perfil</a> -->
@@ -140,16 +148,13 @@ $idcurso = $_POST[ 'idcurso' ];
 		<ul class="sidebar navbar-nav">
 
 			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<a class="nav-link " href="index.php" role="button">
             <i class="fas fa-fw fa-folder"></i>
             <span>Cursos</span>
           </a>
 			
-				<div class="dropdown-menu" aria-labelledby="pagesDropdown">
-					<h6 class="dropdown-header">Lenguas</h6>
-					<a class="dropdown-item" data-toggle="modal" data-target="#act" href="">Mixe</a>
-					<a class="dropdown-item" data-toggle="modal" data-target="#act2" href="">Nahuatl</a>
-				</div>
+
+
 			</li>
 
 			<li class="nav-item dropdown">
@@ -158,6 +163,8 @@ $idcurso = $_POST[ 'idcurso' ];
             <span>Traductor</span>
 			</a>
 			
+
+
 				<div class="dropdown-menu" aria-labelledby="pagesDropdown">
 					<h6 class="dropdown-header">Lenguas</h6>
 					<a class="dropdown-item" href="traslatormixe.php">Mixe</a>
@@ -166,12 +173,11 @@ $idcurso = $_POST[ 'idcurso' ];
 				</div>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" data-toggle="modal" data-target="#bot">
+          <a class="nav-link" href="botvoice/index.php">
             <i class="fas fa-fw fa-robot"></i>
-            <span>Bot(beta)</span>
+            <span>Bot (Beta)</span>
           </a>
-			
-			</li>
+        </li>
 			<!--<li class="nav-item">
           <a class="nav-link" href="index.html">
             <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -195,13 +201,12 @@ $idcurso = $_POST[ 'idcurso' ];
 
 				$consultimg = "SELECT Nombre From archivo where IdCurso='$idcurso' AND Tipo='imagen'";
 				$img = mysqli_query( $conexion, $consultimg );
-				
-				$unid="SELECT Unidad FROM avance WHERE IdEstudiante='$sesion' and IdCurso='$idcurso' order by Unidad desc";
-				$unid1=mysqli_query($conexion, $unid);
-				if($rw6=mysqli_fetch_row($unid1))
-				{
-					$unid2=trim($rw6[0]);
-					
+
+				$unid = "SELECT Unidad FROM avance WHERE IdEstudiante='$sesion' and IdCurso='$idcurso' order by Unidad desc";
+				$unid1 = mysqli_query( $conexion, $unid );
+				if ( $rw6 = mysqli_fetch_row( $unid1 ) ) {
+					$unid2 = trim( $rw6[ 0 ] );
+
 				}
 
 				?>
@@ -227,6 +232,8 @@ $idcurso = $_POST[ 'idcurso' ];
 									  <i class="fas fa-arrow-circle-right"></i> Ir a la Lección
 								  </button>
 									
+
+
 									</form>
 								</div>
 							</div>
@@ -240,13 +247,7 @@ $idcurso = $_POST[ 'idcurso' ];
 										<input type="hidden" name="ncurso" value="<?php echo($ncurso); ?>">
 										<input type="hidden" name="idcurso" value="<?php echo($idcurso); ?>">
 										<input type="hidden" name="unidad" value=2>
-										<button class="btn btn-success btn-block" type="submit"
-												<?php
-												if ($unid2<1)
-												{
-													echo("disabled");
-												}
-												?>>
+										<button class="btn btn-success btn-block" type="submit" <?php if ($unid2<1) { echo( "disabled"); } ?>>
 									  <i class="fas fa-arrow-circle-right"></i> 
 											<?php
 											if ($unid2<1)
@@ -259,7 +260,7 @@ $idcurso = $_POST[ 'idcurso' ];
 											}
 											?>
 								  </button>
-									
+
 									</form>
 								</div>
 							</div>
@@ -274,13 +275,7 @@ $idcurso = $_POST[ 'idcurso' ];
 										<input type="hidden" name="ncurso" value="<?php echo($ncurso); ?>">
 										<input type="hidden" name="idcurso" value="<?php echo($idcurso); ?>">
 										<input type="hidden" name="unidad" value=3>
-										<button class="btn btn-secondary btn-block" type="submit"
-												<?php
-												if ($unid2<2)
-												{
-													echo("disabled");
-												}
-												?>>
+										<button class="btn btn-secondary btn-block" type="submit" <?php if ($unid2<2) { echo( "disabled"); } ?>>
 									  <i class="fas fa-arrow-circle-right"></i> 
 											<?php
 											if ($unid2<2)
@@ -295,7 +290,7 @@ $idcurso = $_POST[ 'idcurso' ];
 												
 									  
 								  </button>
-									
+
 									</form>
 								</div>
 							</div>
@@ -310,13 +305,7 @@ $idcurso = $_POST[ 'idcurso' ];
 										<input type="hidden" name="ncurso" value="<?php echo($ncurso); ?>">
 										<input type="hidden" name="idcurso" value="<?php echo($idcurso); ?>">
 										<input type="hidden" name="unidad" value=4>
-										<button class="btn btn-info btn-block active" type="submit"
-												<?php
-												if ($unid2<3)
-												{
-													echo("disabled");
-												}
-												?>>
+										<button class="btn btn-info btn-block active" type="submit" <?php if ($unid2<3) { echo( "disabled"); } ?>>
 									  <i class="fas fa-arrow-circle-right"></i> 
 											<?php
 											if ($unid2<3)
@@ -329,7 +318,7 @@ $idcurso = $_POST[ 'idcurso' ];
 											}
 											?>
 								  </button>
-									
+
 									</form>
 								</div>
 							</div>
@@ -367,6 +356,8 @@ $idcurso = $_POST[ 'idcurso' ];
     </a>
 
 
+
+
 	<!-- Logout Modal-->
 	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
@@ -377,6 +368,8 @@ $idcurso = $_POST[ 'idcurso' ];
               <span aria-hidden="true">×</span>
             </button>
 				
+
+
 				</div>
 				<div class="modal-body">Selecciona "cerrar sesión" para salir.</div>
 				<div class="modal-footer">

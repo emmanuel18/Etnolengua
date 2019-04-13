@@ -18,6 +18,7 @@ if ($_SESSION['id']==null){
 $ncurso=$_POST['ncurso'];
 $idcurso=$_POST['idcurso'];
 $unidad=$_POST['unidad'];
+$idpreg=$_POST['idpreg'];
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -183,7 +184,7 @@ $unidad=$_POST['unidad'];
           <div class="bg-white">
 			
 		    <div class="col-12 col-md-8 mx-auto">
-				<div class="container">
+				<div class="container text-center">
 					<div class="text-center">
 					  <h3>Evaluación</h3>
 					</div>
@@ -197,7 +198,7 @@ $unidad=$_POST['unidad'];
 							 $cont=$_POST['contador'];
 							 $pregunta=$_POST['preg'];
 							 $contrue=$_POST['contrue'];
-							 $correc="SELECT RespC from examen where Pregunta='$pregunta'";
+							 $correc="SELECT RespC from examen where IdExamen='$idpreg'";
 							 $querycorrec=mysqli_query($conexion, $correc);
 							 if($row5=mysqli_fetch_array($querycorrec)){
 								 $rw5=trim($row5[0]);
@@ -207,45 +208,22 @@ $unidad=$_POST['unidad'];
 							 }
 							
 							
-							 $Evaluacion="SELECT Pregunta, Resp1, Resp2, Resp3, RespC from examen where IdCurso='$idcurso' LIMIT $cont, 1";
+							 $Evaluacion="SELECT * from examen where IdCurso='$idcurso' LIMIT $cont, 1";
 							 $consultaEval=mysqli_query($conexion, $Evaluacion);
 
 							 if($row4=mysqli_fetch_array($consultaEval)){
 
-								 echo("<h5>");	
-								 echo utf8_encode($row4['Pregunta']);
-								 echo("</h5>");
+								 echo( "<h5 class='text-center'>" );
+									echo utf8_encode( $row4[ 'Pregunta' ] );
+									echo( "</h5>" );
+									echo( "<select name='resp' class='form-control' required> 
+									<option value=''>Selecciona una respuesta</option>
+							 <option value='" . utf8_encode( $row4[ 'Resp1' ] ) . "'>" . utf8_encode( $row4[ 'Resp1' ] ) . "</option>
+							 <option value='" . utf8_encode( $row4[ 'RespC' ] ) . "'>" . utf8_encode( $row4[ 'RespC' ] ) . "</option>
+							 <option value='" . utf8_encode( $row4[ 'Resp2' ] ) . "'>" . utf8_encode( $row4[ 'Resp2' ] ) . "</option>
+							 <option value='" . utf8_encode( $row4[ 'Resp3' ] ) . "'>" . utf8_encode( $row4[ 'Resp3' ] ) . "</option>
+							 </select>" );
 
-								 echo("<input type='radio' name='resp' value='");
-								 echo utf8_encode($row4['Resp1']);	  
-								 echo("'>");
-								 echo("<label>");
-								 echo utf8_encode($row4['Resp1']);
-								 echo("</label>");
-								 echo("<br>");
-
-								 echo("<input type='radio' name='resp' value='");
-								 echo utf8_encode($row4['Resp2']);	  
-								 echo("'>");
-								 echo("<label>");
-								 echo utf8_encode($row4['Resp2']);
-								 echo("</label>");
-								 echo("<br>");
-
-								 echo("<input type='radio' name='resp' value='");
-								 echo utf8_encode($row4['Resp3']);	  
-								 echo("'>");
-								 echo("<label>");
-								 echo utf8_encode($row4['Resp3']);
-								 echo("</label>");
-								 echo("<br>");
-
-								 echo("<input type='radio' name='resp' value='");
-								 echo utf8_encode($row4['RespC']);	  
-								 echo("'>");
-								 echo("<label>");
-								 echo utf8_encode($row4['RespC']);
-								 echo("</label>");
 								 
 								 echo("<input type='hidden' name='preg' value='");
 							     echo utf8_encode($row4['Pregunta']);	  
@@ -253,6 +231,9 @@ $unidad=$_POST['unidad'];
 								 echo("<input type='hidden' name='contrue' value='");
 							     echo utf8_encode($contrue);	  
 							     echo("'>");
+								 echo( "<input type='hidden' name='idpreg' value='" );
+								echo $row4['IdExamen'] ;
+								echo( "'>" );
 								 $cont++;
 								 echo("</div><input type='hidden' name='contador' value='$cont'>
 								 <input type='hidden' name='unidad' value='$unidad'>");
@@ -266,13 +247,13 @@ $unidad=$_POST['unidad'];
 							 	 }
 								 $calif=($contrue/$npreg)*10;
 								 if($calif>=8){
-									 echo("<center><h5>¡Felicidades!, tu puntaje es de ".round($calif, 2)."/10 </h5>");
+									 echo("<center><h5>¡Felicidades!, tu puntaje es de ".$contrue." de ".$npreg." </h5>");
 								 	 echo("<i class='fas fa-grin-stars text-success fa-10x'></i> <p>Sigue preparandote tomando otro de nuestros curso.</p></center>");
 								 }elseif($calif<8&&$calif>6){
-									 echo("<center><h5>Tu puntaje es de ".round($calif, 2)."/10 </h5>");
+									 echo("<center><h5>Tu puntaje es de ".$contrue." de ".$npreg." </h5>");
 								 	 echo("<i class='fas fa-smile-wink text-success fa-10x'></i> <p>Puedes volver a hacer la evaluación o tomar otro de nuestros cursos.</p></center>");
 								 }elseif($calif<=6){
-									 echo("<center><h5>¡Ups!, tu puntaje es de ".round($calif, 2)."/10 </h5>");
+									 echo("<center><h5>¡Ups!, tu puntaje es de ".$contrue." de ".$npreg." </h5>");
 								 	 echo("<i class='far fa-grin-beam-sweat text-primary fa-10x'></i><p>Realiza las actividades del curso.</p><p>¡Te deseamos mucho exito!</p></center>");
 								 }
 								 

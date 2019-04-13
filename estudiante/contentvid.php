@@ -54,10 +54,12 @@ $unidad = $_POST[ 'unidad' ];
 		<a class="navbar-brand mr-1 logo" href="index.php"><img src="../images/logo.png" width="150" height="auto" alt=""/></a>
 
 
-		<button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+		<a class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle">
         <i class="fas fa-bars"></i>
-      </button>
+      </a>
 	
+
+
 
 
 		<form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -80,6 +82,8 @@ $unidad = $_POST[ 'unidad' ];
           </a>
 			
 
+
+
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
 					<a class="dropdown-item" href="#">Sin notificaciones</a>
 					<!--<a class="dropdown-item" href="#">Another action</a>
@@ -94,6 +98,8 @@ $unidad = $_POST[ 'unidad' ];
             <span class="badge badge-danger"></span>
           </a>
 			
+
+
 
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
 					<a class="dropdown-item" href="#">No hay mensajes</a>
@@ -117,6 +123,8 @@ $unidad = $_POST[ 'unidad' ];
 			</i>
           </a>
 			
+
+
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
 					<!-- <a class="dropdown-item" href="#">Configuración</a>
             <a class="dropdown-item" href="#">Editar perfil</a> -->
@@ -140,33 +148,26 @@ $unidad = $_POST[ 'unidad' ];
 
 		<!-- Sidebar -->
 		<ul class="sidebar navbar-nav">
-
 			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<a class="nav-link " href="index.php" role="button">
             <i class="fas fa-fw fa-folder"></i>
             <span>Cursos</span>
           </a>
 			
-				<div class="dropdown-menu" aria-labelledby="pagesDropdown">
-					<h6 class="dropdown-header">Lenguas</h6>
-					<a class="dropdown-item" data-toggle="modal" data-target="#act" href="">Mixe</a>
-					<a class="dropdown-item" data-toggle="modal" data-target="#act2" href="">Nahuatl</a>
-				</div>
-			</li>
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="MisCursos.php" id="pagesDropdown" role="button">
-            <i class="fas fa-fw fa-folder-open"></i>
-            <span>Mis Cursos</span>
-          </a>
-			
+
+
 
 			</li>
+
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" id="pagesDropdown" href="charts.html" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-fw fa-list a-li"></i>
             <span>Traductor</span>
 			</a>
 			
+
+
+
 				<div class="dropdown-menu" aria-labelledby="pagesDropdown">
 					<h6 class="dropdown-header">Lenguas</h6>
 					<a class="dropdown-item" href="traslatormixe.php">Mixe</a>
@@ -174,7 +175,14 @@ $unidad = $_POST[ 'unidad' ];
 
 				</div>
 			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="botvoice/index.php">
+            <i class="fas fa-fw fa-robot"></i>
+            <span>Bot (Beta)</span>
+          </a>
+			
 
+			</li>
 			<!--<li class="nav-item">
           <a class="nav-link" href="index.html">
             <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -189,14 +197,14 @@ $unidad = $_POST[ 'unidad' ];
 			</div>
 
 			<div class="bg-white">
-<div class="text-center">
-				<?php
-				/*
+				<div class="text-center">
+					<?php
+					/*
 
-				$consultvid = "SELECT Nombre, Tipo From archivo where IdCurso='$idcurso' AND Unidad='$unidad'";
-				$vid = mysqli_query( $conexion, $consultvid );
-				?>
-				
+					$consultvid = "SELECT Nombre, Tipo From archivo where IdCurso='$idcurso' AND Unidad='$unidad'";
+					$vid = mysqli_query( $conexion, $consultvid );
+					?>
+
 
 					<?php
 					while ( $arrayvid = mysqli_fetch_array( $vid ) ) {
@@ -211,10 +219,17 @@ $unidad = $_POST[ 'unidad' ];
 							echo "' class='embed-responsive-item' width='720' height='420' style='border: none; outline: none;'></iframe>";
 						}
 					} */
-					
-					include 'gallery.php';
+
+					$galeria = "SELECT IdGaleria FROM galeria WHERE NumLec=$unidad AND IdCurso=$idcurso LIMIT 1";
+					$galeria1 = mysqli_query( $conexion, $galeria );
+					if ( $galeria2 = mysqli_fetch_array( $galeria1 ) ) {
+						include 'gallery.php';
+					} 
+
+
 
 					?>
+					
 				</div>
 			</div>
 
@@ -251,6 +266,8 @@ $unidad = $_POST[ 'unidad' ];
     </a>
 
 
+
+
 	<!-- Logout Modal-->
 	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
@@ -261,6 +278,8 @@ $unidad = $_POST[ 'unidad' ];
               <span aria-hidden="true">×</span>
             </button>
 				
+
+
 				</div>
 				<div class="modal-body">Selecciona "cerrar sesión" para salir.</div>
 				<div class="modal-footer">
@@ -271,6 +290,7 @@ $unidad = $_POST[ 'unidad' ];
 		</div>
 	</div>
 	<!-- Lectura Modal-->
+	
 
 
 	<!-- Bootstrap core JavaScript-->
@@ -278,9 +298,10 @@ $unidad = $_POST[ 'unidad' ];
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 	<!-- Core plugin JavaScript-->
-
+	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 	<!-- Custom scripts for all pages-->
 	<script src="js/sb-admin.min.js"></script>
+
 
 </body>
 

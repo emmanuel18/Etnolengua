@@ -10,8 +10,8 @@ $insertar="INSERT INTO avance (IdCurso, IdEstudiante, Unidad, Calificacion1) VAL
 
 $registrar=mysqli_query($conexion, $insertar);
 
-//if($registrar){
+if($registrar){
 	header('Location: index.php');
-//}
+}
 
 ?>

@@ -11,9 +11,10 @@ if ( $pre = mysqli_fetch_array( $consultapreg ) ) {
 $aciertos = $_POST[ 'aciertos' ];
 $resprecib = $_POST[ 'resp' ];
 $pregunta = $_POST[ 'pregunta' ];
+$idpregunta = $_POST[ 'idpregunta' ];
 $cont = $_POST[ 'contador' ];
 //consulta y cuenta respuestas correctas
-$answer = "Select Respuesta from quizzpron where idcurso='$idcurso' and numlec='$unidad' and Pregunta='$pregunta'";
+$answer = "Select Respuesta from quizzpron where idcurso='$idcurso' and numlec='$unidad' and IdQuizz='$idpregunta'";
 $consulanswer = mysqli_query( $conexion, $answer );
 
 if ( $res1 = mysqli_fetch_array( $consulanswer ) ) {
@@ -21,31 +22,36 @@ if ( $res1 = mysqli_fetch_array( $consulanswer ) ) {
 
 	if ( strcmp( $resprecib, $resp1 ) == 0 ) {
 		$aciertos++;
+	} else {
+		$cont = $cont - 1;
+		$alert = "<div class='alert alert-danger' role='alert'>Incorrecto, la respuesta correcta es: " . $resp1 . "</div>";
 	}
 }
 
 ?>
-<form action="actividad.php" method="post">
+<div class='jumbotron w-50 mx-auto'>
+	<form action="actividad.php" method="post">
 
-	<input type='hidden' name='idcurso' value='<?php echo($idcurso);?>'>
-	<input type='hidden' name='ncurso' value='<?php echo($ncurso);?>'>
-	<div class='jumbotron'>
+		<input type='hidden' name='idcurso' value='<?php echo($idcurso);?>'>
+		<input type='hidden' name='ncurso' value='<?php echo($ncurso);?>'>
+
 
 		<?php
 		//error_reporting( 0 );
-		
+
 		$Evaluacion = "SELECT * from quizzpron where IdCurso='$idcurso' AND NumLec='$unidad' LIMIT $cont, 1";
 		$respuestas = "SELECT Respuesta From quizzpron where IdCurso='$idcurso' AND NumLec='$unidad' ORDER BY RAND()";
 		$consultaEval = mysqli_query( $conexion, $Evaluacion );
 		$consultaResp = mysqli_query( $conexion, $respuestas );
-		
+
 		if ( $row4 = mysqli_fetch_array( $consultaEval ) ) {
 			echo( "<div class='mx-auto img-fluid'><center>" );
-			
+			echo( "<h4 class='text-center'>Reactivo: " . ( $cont + 1 ) . "</h4><br>" );
+
 			echo( "<audio src='../profesor/" );
 			echo( $row4[ 'Audio' ] );
 			echo( "' controls>" );
-			
+
 			echo( "</center></div>" );
 			echo( "<h5 class='text-center'>" );
 			echo( $row4[ 'Pregunta' ] );
@@ -53,71 +59,83 @@ if ( $res1 = mysqli_fetch_array( $consulanswer ) ) {
 			echo( "<input type='hidden' name='pregunta' value='" );
 			echo( $row4[ 'Pregunta' ] );
 			echo( "'>" );
-			echo( "<div class='input-group mb-3'><div class='input-group-prepend'><label class='input-group-text' for='inputGroupSelect01'>Respuesta</label></div><select class='custom-select' id='inputGroupSelect01' name='resp' required><option value='' selected>Eliger una opción...</option>" );
+			echo( "<input type='hidden' name='idpregunta' value='" );
+			echo( $row4[ 'IdQuizz' ] );
+			echo( "'>" );
+
+			$correcta = $row4[ 'Respuesta' ];
+
+			echo( "<div class='input-group mb-3'><div class='input-group-prepend'><label class='input-group-text' for='search'>Elige una respuesta</label></div><select class='custom-select' id='search' name='resp' required><option >Elige una opción...</option>" );
 			while ( $row5 = mysqli_fetch_array( $consultaResp ) ) {
-				echo( "<option value='" );
-				echo( $row5[ 'Respuesta' ] );
-				echo( "'>" );
+
+
+
+				echo( "<option value=" . addslashes( $row5[ 'Respuesta' ] ) . ">" );
 				echo( $row5[ 'Respuesta' ] );
 				echo( "</option>" );
 			}
-			echo( "</select></div>" );
+			echo( "</select></div><div>" . $alert . "</div>" );
 
 		} else {
 
 			$calif = ( $aciertos / $npreg ) * 10;
-			if ( $calif >= 8 ) {
-				echo( "<center><h5>¡Felicidades!, tu puntaje es de " . round( $calif, 2 ) . "/10 </h5>" );
-				echo( "<i class='fas fa-grin-stars text-success fa-10x'></i> <p>Sigue preparandote tomando otro de nuestros curso.</p></center>" );
-			} elseif ( $calif < 8 && $calif > 6 ) {
-				echo( "<center><h5>Tu puntaje es de " . round( $calif, 2 ) . "/10 </h5>" );
-				echo( "<i class='fas fa-smile-wink text-success fa-10x'></i> <p>Puedes volver a hacer la evaluación o tomar otro de nuestros cursos.</p></center>" );
-			} elseif ( $calif <= 6 ) {
-				echo( "<center><h5>¡Ups!, tu puntaje es de " . round( $calif, 2 ) . "/10 </h5>" );
-				echo( "<i class='far fa-grin-beam-sweat text-primary fa-10x'></i><p> Te recomendamos repasar otra vez las lecciones.</p><p>Pero no te preocupes lo puedes seguir intentando cuantas veces sea necesario.</p><p>¡Te deseamos mucho exito!</p></center>" );
+
+
+
+
+
+		}
+
+
+
+		?>
+
+
+
+		<input type='hidden' name='contador' value='<?php echo($cont+1);?>'>
+
+		<input type='hidden' name='aciertos' value='<?php echo($aciertos);?>'>
+		<center>
+			<?php
+			if ( ( $cont ) < $npreg ) {
+				echo( "<input type='hidden' name='unidad' value='" );
+				echo( $unidad );
+				echo( "'>" );
+				echo( "<button class='btn btn-primary' type='submit'>Revisar <i class='fas fa-arrow-circle-right'></i></button>" );
 			}
+			?>
+
+		</center>
+
+	</form>
+
+	<?php
+
+	if ( ( $cont ) == $npreg ) {
+		if ( $unidad == 1 ) {
+			include 'botchido.php';
+		}elseif( $unidad == 2 ){
+			include 'botchido2.php';
 		}
 
-		?>
+		$registrarcalif = "INSERT INTO avance (IdCurso, IdEstudiante, Unidad, Calificacion1) VALUES ('$idcurso', '$iduser', '$unidad', '$calif')";
 
-	</div>
-
-	<input type='hidden' name='contador' value='<?php echo($cont+1);?>'>
-
-	<input type='hidden' name='aciertos' value='<?php echo($aciertos);?>'>
-	<center>
-		<?php
-		if ( ( $cont ) < $npreg ) {
-			echo( "<input type='hidden' name='unidad' value='" );
-			echo( $unidad );
-			echo( "'>" );
-			echo( "<button class='btn btn-primary' type='submit'>Siguiente Pregunta <i class='fas fa-arrow-circle-right'></i></button>" );
+		if ( $unidad >= 4 ) {
+			$redir = 'examen.php';
+		} else {
+			$redir = 'contentvid.php';
 		}
-		?>
-
-	</center>
-
-</form>
-
-<?php
-if ( ( $cont ) == $npreg ) {
-	$registrarcalif = "INSERT INTO avance (IdCurso, IdEstudiante, Unidad, Calificacion1) VALUES ('$idcurso', '$iduser', '$unidad', '$calif')";
-	
-	if($unidad>=3){
-		$redir='examen.php';
-	}else{
-		$redir='contentvid.php';
+		$insertcalif = mysqli_query( $conexion, $registrarcalif );
+		echo( "<form action='" . $redir . "' method='post'><input type='hidden' name='unidad' value='" );
+		echo( $unidad + 1 );
+		echo( "'>" );
+		echo( "<input type='hidden' name='ncurso' value='" );
+		echo( $ncurso );
+		echo( "'>" );
+		echo( "<input type='hidden' name='idcurso' value='" );
+		echo( $idcurso );
+		echo( "'>" );
+		echo( "<center><button class='btn btn-danger text-white' type='submit'>Finalizar lección <i class='fas fa-arrow-circle-right'></i></button></center></form>" );
 	}
-	$insertcalif = mysqli_query( $conexion, $registrarcalif );
-	echo( "<form action='".$redir."' method='post'><input type='hidden' name='unidad' value='" );
-	echo( $unidad + 1 );
-	echo( "'>" );
-	echo("<input type='hidden' name='ncurso' value='" );
-	echo( $ncurso);
-	echo( "'>" );
-	echo("<input type='hidden' name='idcurso' value='" );
-	echo( $idcurso);
-	echo( "'>" );
-	echo( "<center><button class='btn btn-danger text-white' type='submit'>Finalizar lección <i class='fas fa-arrow-circle-right'></i></button></center></form>" );
-}
-?>
+	?>
+</div>

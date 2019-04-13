@@ -52,7 +52,7 @@ if($Pass1==$Pass2){
        				echo($resultado);
        			}else{
 					echo '<script languaje="javascript">alert("Registro exitoso, inicia sesión");
-					window.location.href="../index.php";
+					window.location.href="../default.php";
 					</script>';
         		}
 			} else {
@@ -60,7 +60,7 @@ if($Pass1==$Pass2){
 				$query="INSERT INTO userestudiante (Nombre, Correo, Password, Fecnac, Fotoperfil) VALUES ('$Nombre', '$Correo', MD5('$Pass1'), '$Fecha', '$arch')";
 				$resultado=mysqli_query($conexion, $query);
 				echo '<script languaje="javascript">alert("Registro exitoso, inicia sesión");
-					window.location.href="../index.php";
+					window.location.href="../default.php";
 					</script>';
 			}
 	
